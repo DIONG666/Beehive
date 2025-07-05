@@ -28,7 +28,7 @@ class IndexBuilder:
     def _initialize_components(self):
         """初始化组件"""
         try:
-            from retriever.embedder import JinaEmbedder
+            from embedder import JinaEmbedder
             self.embedder = JinaEmbedder()
         except ImportError as e:
             print(f"⚠️ 警告: 无法导入嵌入器 - {e}")

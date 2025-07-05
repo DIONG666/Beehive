@@ -9,32 +9,18 @@ echo "======================================"
 python_version=$(python3 --version 2>&1)
 echo "Python版本: $python_version"
 
-# 检查依赖
-echo "🔍 检查依赖..."
-missing_deps=""
-
-# 检查核心依赖
-if ! python3 -c "import openai" 2>/dev/null; then
-    missing_deps="$missing_deps openai"
-fi
-
-if ! python3 -c "import numpy" 2>/dev/null; then
-    missing_deps="$missing_deps numpy"
-fi
-
-if ! python3 -c "import requests" 2>/dev/null; then
-    missing_deps="$missing_deps requests"
-fi
-
-if ! python3 -c "import aiohttp" 2>/dev/null; then
-    missing_deps="$missing_deps aiohttp"
-fi
-
-# 安装缺失的依赖
-if [ -n "$missing_deps" ]; then
-    echo "⚠️ 缺少以下依赖:$missing_deps"
-    echo "正在安装..."
-    pip install $missing_deps
+# 安装依赖
+echo "� 安装依赖包..."
+if [ -f "requirements.txt" ]; then
+    echo "正在安装 requirements.txt 中的依赖..."
+    pip install -r requirements.txt
+    if [ $? -eq 0 ]; then
+        echo "✅ 依赖安装完成"
+    else
+        echo "❌ 依赖安装失败，请手动运行: pip install -r requirements.txt"
+    fi
+else
+    echo "⚠️ 未找到 requirements.txt 文件"
 fi
 
 # 检查环境变量
@@ -57,7 +43,7 @@ if [ ! -d "data/frames_dataset" ]; then
 fi
 
 # 构建索引（如果有数据文件）
-if ls data/frames_dataset/*.{txt,md,json} 1> /dev/null 2>&1; then
+if [ -d "data/frames_dataset" ] && [ "$(ls -A data/frames_dataset 2>/dev/null)" ]; then
     echo "🔧 检测到数据文件，构建索引..."
     python3 retriever/build_index.py --data-dir data/frames_dataset/
 else

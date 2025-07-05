@@ -10,12 +10,12 @@ class Config:
     # 模型配置
     DEEPSEEK_API_KEY = os.getenv("DEEPSEEK_API_KEY", "")
     DEEPSEEK_BASE_URL = "https://api.deepseek.com"
-    DEEPSEEK_MODEL = "deepseek-chat"
+    DEEPSEEK_MODEL = "deepseek-reasoner"
     
     # Jina API配置
     JINA_API_KEY = os.getenv("JINA_API_KEY", "")
-    JINA_EMBEDDING_MODEL = "jina-embeddings-v2-base-en"
-    JINA_RERANKER_MODEL = "jina-reranker-v2-base-multilingual"
+    JINA_EMBEDDING_MODEL = "jina-embeddings-v4"
+    JINA_RERANKER_MODEL = "jina-reranker-m0"
     
     # 搜索配置
     BING_API_KEY = os.getenv("BING_API_KEY", "")
@@ -29,13 +29,13 @@ class Config:
     
     # 检索配置
     FAISS_INDEX_PATH = os.path.join(INDEX_DIR, "faiss_index.bin")
-    EMBEDDING_DIM = 768
+    EMBEDDING_DIM = 2048
     TOP_K = 20
     RERANK_TOP_K = 5
     
     # Agent配置
     MAX_ITERATIONS = 10
-    MAX_CONTEXT_LENGTH = 4000
+    MAX_CONTEXT_LENGTH = 4096
     TEMPERATURE = 0.1
     
     # 工具启用配置

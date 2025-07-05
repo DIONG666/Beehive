@@ -46,8 +46,8 @@ class DeepSeekPlanner:
                 model=self.model,
                 messages=messages,
                 temperature=temperature or self.temperature,
-                max_tokens=2000,
-                stream=False
+                max_tokens=2048,
+                stream=True
             )
             return response.choices[0].message.content.strip()
         except Exception as e:
