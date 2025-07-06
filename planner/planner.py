@@ -46,8 +46,8 @@ class DeepSeekPlanner:
                 model=self.model,
                 messages=messages,
                 temperature=temperature or self.temperature,
-                max_tokens=2048,
-                stream=True
+                max_tokens=1024,
+                stream=False,
             )
             return response.choices[0].message.content.strip()
         except Exception as e:
@@ -55,32 +55,36 @@ class DeepSeekPlanner:
     
     async def decompose_query(self, query: str) -> List[str]:
         """
-        分解复杂查询为子问题
+        分解复杂查询为子问题或提取web链接
         
         Args:
             query: 原始查询
             
         Returns:
-            子问题列表
+            子查询或web链接列表
         """
+
         messages = [
             {"role": "system", "content": "你是一个专业的查询分析师。"},
             {"role": "user", "content": QUERY_DECOMPOSITION_PROMPT.format(query=query)}
         ]
         
         response = await self.generate_response(messages)
+        # print(f"🔍 分解查询: {query}\n响应: {response}")
         
         # 解析子问题
         sub_queries = []
         lines = response.split('\n')
         for line in lines:
             line = line.strip()
-            if line.startswith('子问题') and ':' in line:
-                sub_query = line.split(':', 1)[1].strip()
-                if sub_query:
-                    sub_queries.append(sub_query)
+            if line and ('子问题' in line or '链接' in line):
+                # 提取实际的查询内容
+                if ':' in line:
+                    query_content = line.split(':', 1)[1].strip()
+                    sub_queries.append(query_content)
         
         return sub_queries if sub_queries else [query]
+    
     
     async def plan_next_action(self, query: str, context: str, 
                              available_tools: List[str]) -> Dict[str, Any]:

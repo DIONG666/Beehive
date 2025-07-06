@@ -32,161 +32,145 @@ class KnowledgeBaseSearchTool:
             print(f"⚠️ 警告: 无法导入检索组件 - {e}")
             print("请确保已正确安装相关依赖")
     
-    async def search(self, query: str, top_k: Optional[int] = None) -> List[Dict[str, Any]]:
+    async def search(self, query: str, top_k: Optional[int] = None) -> Dict[str, Any]:
         """
-        在知识库中搜索相关文档
+        在知识库中搜索相关文档，返回最相关结果和相关性状态
         
         Args:
             query: 搜索查询
             top_k: 返回结果数量
             
         Returns:
-            搜索结果列表，每个结果包含content, source, score等字段
+            包含results, max_score, use_knowledge_base的字典
         """
         if not self.retriever:
-            return [{
-                'content': '知识库搜索功能暂时不可用，请检查配置。',
-                'source': 'system_error',
-                'score': 0.0,
-                'error': True
-            }]
+            return {
+                'results': [{
+                    'content': '知识库搜索功能暂时不可用，请检查配置。',
+                    'source': 'system_error',
+                    'score': 0.0,
+                    'error': True
+                }],
+                'max_score': 0.0,
+                'use_knowledge_base': False
+            }
         
         try:
-            top_k = top_k or Config.TOP_K
-            
-            # 第一阶段：向量检索
             print(f"🔍 在知识库中搜索: {query}")
-            initial_results = await self.retriever.search(query, top_k)
             
-            if not initial_results:
-                return [{
-                    'content': '未找到相关文档。',
-                    'source': 'knowledge_base',
-                    'score': 0.0
-                }]
+            # 首先进行向量检索
+            top_k = top_k or Config.TOP_K
+            initial_results = await self.retriever.search(query, top_k * 2)
             
-            # 第二阶段：重排序
-            if self.reranker and len(initial_results) > 1:
-                print(f"🔄 对{len(initial_results)}个结果进行重排序...")
-                reranked_results = await self.reranker.rerank(query, initial_results)
-                final_results = reranked_results[:Config.RERANK_TOP_K]
+            if not initial_results or len(initial_results) == 0:
+                return {
+                    'results': [{
+                        'content': '知识库中未找到相关内容',
+                        'source': 'empty_results',
+                        'score': 0.0
+                    }],
+                    'max_score': 0.0,
+                    'use_knowledge_base': False
+                }
+            
+            # 检查最高分数
+            max_score = max(result.get('score', 0.0) for result in initial_results)
+            print(f"📊 知识库检索最高相关性分数: {max_score:.3f}")
+            
+            # 如果最高分数 >= 0.7，使用reranker进一步排序
+            if max_score >= 0.7:
+                print("✅ 相关性分数足够高，使用知识库结果并进行重排序")
+                
+                if self.reranker:
+                    try:
+                        reranked_results = await self.reranker.rerank(
+                            query, initial_results, Config.RERANK_TOP_K
+                        )
+                        final_results = reranked_results[:top_k]
+                    except Exception as e:
+                        print(f"⚠️ 重排序失败，使用原始结果: {str(e)}")
+                        final_results = initial_results[:top_k]
+                else:
+                    final_results = initial_results[:top_k]
+                
+                return {
+                    'results': final_results,
+                    'max_score': max_score,
+                    'use_knowledge_base': True
+                }
             else:
-                final_results = initial_results[:Config.RERANK_TOP_K]
-            
-            print(f"✅ 找到 {len(final_results)} 个相关文档")
-            return final_results
-            
+                print(f"⚠️ 相关性分数过低 ({max_score:.3f} < 0.7)，建议使用网络搜索")
+                return {
+                    'results': initial_results[:top_k],
+                    'max_score': max_score,
+                    'use_knowledge_base': False
+                }
+                
         except Exception as e:
             print(f"❌ 知识库搜索出错: {str(e)}")
-            return [{
-                'content': f'搜索过程中出现错误: {str(e)}',
-                'source': 'search_error',
-                'score': 0.0,
-                'error': True
-            }]
+            return {
+                'results': [{
+                    'content': f'搜索过程中出现错误: {str(e)}',
+                    'source': 'search_error',
+                    'score': 0.0,
+                    'error': True
+                }],
+                'max_score': 0.0,
+                'use_knowledge_base': False
+            }
     
-    async def search_by_keywords(self, keywords: List[str], 
-                               top_k: Optional[int] = None) -> List[Dict[str, Any]]:
+    async def add_document_to_knowledge_base(self, document: Dict[str, Any]) -> bool:
         """
-        根据关键词列表搜索
+        将新文档添加到知识库
         
         Args:
-            keywords: 关键词列表
-            top_k: 返回结果数量
+            document: 文档字典，包含content, source, url等字段
             
         Returns:
-            搜索结果列表
+            是否添加成功
         """
-        # 将关键词组合成查询
-        query = ' '.join(keywords)
-        return await self.search(query, top_k)
-    
-    async def search_similar(self, document_id: str, 
-                           top_k: Optional[int] = None) -> List[Dict[str, Any]]:
-        """
-        搜索与指定文档相似的文档
-        
-        Args:
-            document_id: 文档ID
-            top_k: 返回结果数量
-            
-        Returns:
-            相似文档列表
-        """
-        if not self.retriever:
-            return []
-        
         try:
-            return await self.retriever.search_similar(document_id, top_k or Config.TOP_K)
+            print(f"📚 添加文档到知识库: {document.get('title', 'Unknown')[:50]}...")
+            
+            # 检查文档是否已存在
+            if self._document_exists(document):
+                print("📄 文档已存在，跳过添加")
+                return True
+            
+            # 这里应该调用索引构建器来添加文档
+            # 为简化，我们先打印日志
+            print("✅ 文档已添加到知识库（模拟）")
+            return True
+            
         except Exception as e:
-            print(f"❌ 相似文档搜索出错: {str(e)}")
-            return []
+            print(f"❌ 添加文档到知识库失败: {str(e)}")
+            return False
     
-    def get_tool_info(self) -> Dict[str, Any]:
-        """获取工具信息"""
-        return {
-            'name': 'search_knowledge_base',
-            'description': '在内部知识库中搜索相关文档和信息',
-            'parameters': {
-                'query': '搜索查询字符串',
-                'top_k': '返回结果数量（可选）'
-            },
-            'example_usage': 'search_knowledge_base("人工智能的发展历史")',
-            'capabilities': [
-                '向量语义搜索',
-                '关键词匹配',
-                '结果重排序',
-                '相似文档推荐'
-            ]
-        }
-    
-    async def validate_query(self, query: str) -> bool:
+    def _document_exists(self, document: Dict[str, Any]) -> bool:
         """
-        验证查询是否有效
+        检查文档是否已存在于知识库中
         
         Args:
-            query: 待验证的查询
+            document: 文档字典
             
         Returns:
-            查询是否有效
+            是否已存在
         """
-        if not query or not query.strip():
+        # 简单检查：基于URL或标题
+        url = document.get('url', '')
+        title = document.get('title', '')
+        
+        if not self.retriever or not self.retriever.documents:
             return False
         
-        if len(query.strip()) < 2:
-            return False
+        for existing_doc in self.retriever.documents:
+            existing_url = existing_doc.get('url', '')
+            existing_title = existing_doc.get('title', '')
+            
+            if url and url == existing_url:
+                return True
+            if title and title == existing_title:
+                return True
         
-        # 检查是否包含有意义的内容
-        meaningful_chars = sum(1 for c in query if c.isalnum() or c in '，。？！,.:;?!')
-        if meaningful_chars < len(query) * 0.3:
-            return False
-        
-        return True
+        return False
     
-    async def suggest_improvements(self, query: str, 
-                                 results: List[Dict[str, Any]]) -> List[str]:
-        """
-        根据搜索结果质量建议查询改进
-        
-        Args:
-            query: 原始查询
-            results: 搜索结果
-            
-        Returns:
-            改进建议列表
-        """
-        suggestions = []
-        
-        if not results or len(results) == 0:
-            suggestions.append("尝试使用更通用的关键词")
-            suggestions.append("检查拼写是否正确")
-            suggestions.append("尝试使用同义词")
-        
-        elif len(results) == 1:
-            suggestions.append("查询可能过于具体，尝试更广泛的术语")
-        
-        elif all(result.get('score', 0) < 0.5 for result in results):
-            suggestions.append("结果相关性较低，尝试重新表述查询")
-            suggestions.append("使用更具体的专业术语")
-        
-        return suggestions

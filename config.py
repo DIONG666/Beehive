@@ -23,7 +23,7 @@ class Config:
     # 项目路径配置
     PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
     DATA_DIR = os.path.join(PROJECT_ROOT, "data")
-    FRAMES_DATASET_DIR = os.path.join(DATA_DIR, "frames_dataset")
+    KNOWLEDGE_BASE_DIR = os.path.join(DATA_DIR, "knowledge_base")
     INDEX_DIR = os.path.join(DATA_DIR, "index")
     MEMORY_CACHE_DIR = os.path.join(DATA_DIR, "memory_cache")
     
@@ -34,13 +34,13 @@ class Config:
     RERANK_TOP_K = 5
     
     # Agent配置
-    MAX_ITERATIONS = 10
-    MAX_CONTEXT_LENGTH = 4096
-    TEMPERATURE = 0.1
+    MAX_ITERATIONS = 20
+    MAX_CONTEXT_LENGTH = 8192
+    TEMPERATURE = 0.7
+    RECENT_CONTEXT = 3
     
     # 工具启用配置
     ENABLE_WEB_SEARCH = True
-    ENABLE_CALCULATOR = True
     ENABLE_SUMMARIZER = True
     
     @classmethod
@@ -57,7 +57,7 @@ class Config:
         """创建必要的目录"""
         directories = [
             cls.DATA_DIR,
-            cls.FRAMES_DATASET_DIR,
+            cls.KNOWLEDGE_BASE_DIR,
             cls.INDEX_DIR,
             cls.MEMORY_CACHE_DIR
         ]

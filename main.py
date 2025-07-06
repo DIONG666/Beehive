@@ -6,7 +6,6 @@ import argparse
 from typing import Optional, Dict, Any
 from config import Config
 from agent.main_agent import MainAgent
-from evaluator.evaluate import FramesEvaluator
 
 
 class MultiAgentResearchSystem:
@@ -50,6 +49,7 @@ class MultiAgentResearchSystem:
         """交互模式"""
         print("🤖 多智能体深度研究系统启动")
         print("输入 'quit' 或 'exit' 退出系统")
+        print("输入 'reset' 重置对话")
         print("-" * 50)
         
         while True:
@@ -59,7 +59,12 @@ class MultiAgentResearchSystem:
                 if query.lower() in ['quit', 'exit', '退出']:
                     print("👋 感谢使用，再见！")
                     break
-                
+
+                if query.lower() == 'reset':
+                    print("🔄 重置对话")
+                    self.main_agent.reset_session()
+                    continue
+
                 if not query:
                     continue
                 
@@ -87,28 +92,13 @@ class MultiAgentResearchSystem:
                 break
             except Exception as e:
                 print(f"\n❌ 系统错误: {str(e)}")
-    
-    async def batch_evaluate(self, dataset_path: str) -> Dict[str, float]:
-        """
-        批量评测模式
-        
-        Args:
-            dataset_path: FRAMES数据集路径
-            
-        Returns:
-            评测结果
-        """
-        evaluator = FramesEvaluator(self)
-        return await evaluator.evaluate(dataset_path)
 
 
 async def main():
     """主函数"""
     parser = argparse.ArgumentParser(description="多智能体深度研究系统")
-    parser.add_argument("--mode", choices=["interactive", "evaluate"], 
+    parser.add_argument("--mode", choices=["interactive"], 
                        default="interactive", help="运行模式")
-    parser.add_argument("--dataset", type=str, 
-                       help="FRAMES数据集路径（评测模式使用）")
     parser.add_argument("--query", type=str, 
                        help="单次查询（非交互模式）")
     
@@ -128,15 +118,6 @@ async def main():
         else:
             # 交互模式
             await system.interactive_mode()
-    
-    elif args.mode == "evaluate":
-        if not args.dataset:
-            print("❌ 评测模式需要指定数据集路径 --dataset")
-            return
-        
-        print("🧪 开始FRAMES基准评测...")
-        results = await system.batch_evaluate(args.dataset)
-        print(f"📊 评测结果: {results}")
 
 
 if __name__ == "__main__":

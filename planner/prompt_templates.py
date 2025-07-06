@@ -14,7 +14,6 @@ REACT_SYSTEM_PROMPT = """你是一个专业的研究助手，使用ReAct（Reaso
 可用工具：
 - search_knowledge_base: 在知识库中搜索相关文档
 - web_search: 在互联网上搜索信息
-- calculator: 执行数学计算
 - summarize_text: 对长文本进行摘要
 
 输出格式：
@@ -35,20 +34,42 @@ Final Answer: [最终答案]
 """
 
 # 查询分解提示
-QUERY_DECOMPOSITION_PROMPT = """请将以下复杂查询分解为多个可以独立处理的子问题：
+QUERY_DECOMPOSITION_PROMPT = """请分析以下查询，如果包含Web链接则直接提取，否则分解为子问题：
 
 原始查询: {query}
 
-请按以下格式输出：
-子问题1: [具体的子问题]
-子问题2: [具体的子问题]
+如果查询中包含Web链接：
+- 直接提取所有Web链接
+
+如果查询中没有Web链接：
+- 将复杂查询分解为3-5个可以在Wikipedia上直接搜索的子问题
+- 每个子问题应该是简洁的英文短语或关键词组合
+- 子问题应该覆盖原始查询的所有重要方面
+- 使用Wikipedia上常见的条目名称和术语
+
+严格按照以下输出格式输出，不要输出其它无关内容：
+如果有Web链接：
+链接1: [完整的Web URL]
+链接2: [完整的Web URL]
 ...
 
-分解原则：
-1. 每个子问题应该相对独立
-2. 子问题的答案组合起来能回答原始问题
-3. 优先分解为可以通过搜索解决的问题
-4. 避免过度分解，保持问题的完整性
+如果没有Web链接：
+子问题1: [Wikipedia搜索词组]
+子问题2: [Wikipedia搜索词组]
+子问题3: [Wikipedia搜索词组]
+...
+
+示例：
+输入: "Tell me about artificial intelligence and machine learning from https://en.wikipedia.org/wiki/Artificial_intelligence"
+输出: 
+链接1: https://en.wikipedia.org/wiki/Artificial_intelligence
+
+输入: "What are the latest developments in quantum computing?"
+输出:
+子问题1: quantum computing
+子问题2: quantum computer development
+子问题3: quantum algorithms
+子问题4: quantum supremacy
 """
 
 # 反思提示模板

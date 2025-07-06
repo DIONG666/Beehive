@@ -3,6 +3,7 @@ openai>=1.0.0
 numpy>=1.21.0
 requests>=2.25.0
 aiohttp>=3.8.0
+datasets>=2.12.0
 
 # 向量搜索和机器学习
 faiss-cpu>=1.7.0  # 如果有GPU，可以改为 faiss-gpu

@@ -92,7 +92,7 @@ class JinaEmbedder:
                 self.api_url,
                 headers=headers,
                 json=data,
-                timeout=30
+                timeout=120
             )
             
             if response.status_code != 200:

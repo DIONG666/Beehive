@@ -1,280 +1,154 @@
 """
-互联网搜索工具：可选接入 Bing API
+Web搜索工具：使用Jina API读取Web内容
 """
 import asyncio
 import aiohttp
+import os
 import json
 from typing import List, Dict, Any, Optional
+import sys
+
+# 添加项目根目录到路径
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
 from config import Config
 
 
 class WebSearchTool:
-    """网络搜索工具"""
+    """Web搜索工具"""
     
     def __init__(self):
-        """初始化网络搜索工具"""
-        self.bing_api_key = Config.BING_API_KEY
-        self.enabled = Config.ENABLE_WEB_SEARCH and bool(self.bing_api_key)
-        self.bing_endpoint = "https://api.bing.microsoft.com/v7.0/search"
-    
-    async def search(self, query: str, count: int = 10, 
-                    market: str = "zh-CN") -> List[Dict[str, Any]]:
+        """初始化Web搜索工具"""
+        self.jina_api_key = Config.JINA_API_KEY
+        self.enabled = Config.ENABLE_WEB_SEARCH and bool(self.jina_api_key)
+        self.jina_reader_endpoint = "https://r.jina.ai/"
+        self.knowledge_base_dir = Config.KNOWLEDGE_BASE_DIR
+
+    async def search(self, query: str, count: int = 5) -> List[str]:
         """
-        执行网络搜索
+        在Wikipedia上搜索内容并返回相关页面链接
         
         Args:
             query: 搜索查询
-            count: 返回结果数量
-            market: 搜索市场（语言和地区）
+            count: 返回结果的数量（默认5个）
             
         Returns:
-            搜索结果列表
+            Wikipedia页面链接列表
         """
-        if not self.enabled:
-            return [{
-                'title': '网络搜索功能未启用',
-                'content': '请配置BING_API_KEY以启用网络搜索功能',
-                'url': '',
-                'source': 'web_search_disabled',
-                'error': True
-            }]
-        
         try:
-            print(f"🌐 在网络上搜索: {query}")
+            # 使用Wikipedia API搜索
+            opensearch_url = "https://en.wikipedia.org/w/api.php"
             
-            # 构建搜索参数
+            # 搜索参数
             params = {
-                'q': query,
-                'count': count,
-                'mkt': market,
-                'responseFilter': 'webpages',
-                'textDecorations': False,
-                'textFormat': 'Raw'
-            }
-            
-            headers = {
-                'Ocp-Apim-Subscription-Key': self.bing_api_key,
-                'User-Agent': 'Multi-Agent Research System/1.0'
-            }
-            
-            # 发起搜索请求
-            async with aiohttp.ClientSession() as session:
-                async with session.get(
-                    self.bing_endpoint, 
-                    params=params, 
-                    headers=headers,
-                    timeout=aiohttp.ClientTimeout(total=30)
-                ) as response:
-                    
-                    if response.status != 200:
-                        raise Exception(f"Bing API返回错误状态码: {response.status}")
-                    
-                    data = await response.json()
-                    return self._parse_bing_results(data)
-                    
-        except Exception as e:
-            print(f"❌ 网络搜索出错: {str(e)}")
-            return [{
-                'title': '网络搜索错误',
-                'content': f'搜索过程中出现错误: {str(e)}',
-                'url': '',
-                'source': 'web_search_error',
-                'error': True
-            }]
-    
-    def _parse_bing_results(self, data: Dict[str, Any]) -> List[Dict[str, Any]]:
-        """
-        解析Bing搜索结果
-        
-        Args:
-            data: Bing API返回的原始数据
-            
-        Returns:
-            格式化的搜索结果
-        """
-        results = []
-        
-        if 'webPages' not in data or 'value' not in data['webPages']:
-            return results
-        
-        for item in data['webPages']['value']:
-            result = {
-                'title': item.get('name', ''),
-                'content': item.get('snippet', ''),
-                'url': item.get('url', ''),
-                'source': 'web_search',
-                'display_url': item.get('displayUrl', ''),
-                'last_crawled': item.get('dateLastCrawled', ''),
-                'score': 1.0  # Bing不提供相关性评分，统一设为1.0
-            }
-            results.append(result)
-        
-        print(f"✅ 找到 {len(results)} 个网络搜索结果")
-        return results
-    
-    async def search_news(self, query: str, count: int = 10) -> List[Dict[str, Any]]:
-        """
-        搜索新闻
-        
-        Args:
-            query: 搜索查询
-            count: 返回结果数量
-            
-        Returns:
-            新闻搜索结果
-        """
-        if not self.enabled:
-            return []
-        
-        try:
-            news_endpoint = "https://api.bing.microsoft.com/v7.0/news/search"
-            
-            params = {
-                'q': query,
-                'count': count,
-                'mkt': 'zh-CN',
-                'sortBy': 'Date'
-            }
-            
-            headers = {
-                'Ocp-Apim-Subscription-Key': self.bing_api_key,
-                'User-Agent': 'Multi-Agent Research System/1.0'
+                'action': 'opensearch',
+                'search': query,
+                'limit': count,
+                'format': 'json',
+                'redirects': 'resolve'
             }
             
             async with aiohttp.ClientSession() as session:
-                async with session.get(
-                    news_endpoint,
-                    params=params,
-                    headers=headers,
-                    timeout=aiohttp.ClientTimeout(total=30)
-                ) as response:
-                    
-                    if response.status != 200:
+                async with session.get(opensearch_url, params=params) as response:
+                    if response.status == 200:
+                        data = await response.json()
+                        
+                        # Wikipedia OpenSearch API返回格式：
+                        # [query, [titles], [descriptions], [urls]]
+                        if len(data) >= 4 and data[3]:
+                            urls = data[3]
+                            print(f"✅ 找到 {len(urls)} 个Wikipedia页面")
+                            return urls[:count]
+                        else:
+                            print(f"⚠️ 未找到相关Wikipedia页面")
+                            return []
+                    else:
+                        print(f"⚠️ Wikipedia API返回状态码: {response.status}")
                         return []
-                    
-                    data = await response.json()
-                    return self._parse_news_results(data)
-                    
+                        
         except Exception as e:
-            print(f"❌ 新闻搜索出错: {str(e)}")
+            print(f"❌ Wikipedia搜索失败: {str(e)}")
             return []
     
-    def _parse_news_results(self, data: Dict[str, Any]) -> List[Dict[str, Any]]:
-        """解析新闻搜索结果"""
-        results = []
-        
-        if 'value' not in data:
-            return results
-        
-        for item in data['value']:
-            result = {
-                'title': item.get('name', ''),
-                'content': item.get('description', ''),
-                'url': item.get('url', ''),
-                'source': 'news_search',
-                'published_time': item.get('datePublished', ''),
-                'provider': item.get('provider', [{}])[0].get('name', '') if item.get('provider') else '',
-                'score': 1.0
-            }
-            results.append(result)
-        
-        return results
     
-    async def search_academic(self, query: str, count: int = 10) -> List[Dict[str, Any]]:
+    async def _get_content_via_jina(self, url: str) -> str:
         """
-        搜索学术资源（通过特定的学术网站）
-        
-        Args:
-            query: 搜索查询
-            count: 返回结果数量
-            
-        Returns:
-            学术搜索结果
-        """
-        # 添加学术相关的搜索词
-        academic_query = f"{query} site:arxiv.org OR site:scholar.google.com OR site:researchgate.net OR site:ieee.org"
-        
-        results = await self.search(academic_query, count)
-        
-        # 标记为学术来源
-        for result in results:
-            result['source'] = 'academic_search'
-        
-        return results
-    
-    async def verify_url(self, url: str) -> bool:
-        """
-        验证URL是否可访问
-        
-        Args:
-            url: 待验证的URL
-            
-        Returns:
-            URL是否可访问
-        """
-        try:
-            async with aiohttp.ClientSession() as session:
-                async with session.head(
-                    url,
-                    timeout=aiohttp.ClientTimeout(total=10)
-                ) as response:
-                    return response.status == 200
-        except:
-            return False
-    
-    def get_tool_info(self) -> Dict[str, Any]:
-        """获取工具信息"""
-        return {
-            'name': 'web_search',
-            'description': '在互联网上搜索最新信息和资源',
-            'parameters': {
-                'query': '搜索查询字符串',
-                'count': '返回结果数量（可选，默认10）',
-                'search_type': '搜索类型：web/news/academic（可选）'
-            },
-            'example_usage': 'web_search("2024年人工智能最新进展")',
-            'capabilities': [
-                '网页搜索',
-                '新闻搜索', 
-                '学术资源搜索',
-                'URL验证'
-            ],
-            'enabled': self.enabled
-        }
-    
-    async def get_page_content(self, url: str, max_length: int = 2000) -> str:
-        """
-        获取网页内容（简单版本，实际项目中可能需要更复杂的解析）
+        使用Jina API获取网页内容
         
         Args:
             url: 网页URL
-            max_length: 最大内容长度
             
         Returns:
-            网页文本内容
+            网页内容
         """
         try:
+            jina_url = f"{self.jina_reader_endpoint}{url}"
+            headers = {
+                'Authorization': f'Bearer {self.jina_api_key}'
+            }
+            
             async with aiohttp.ClientSession() as session:
-                async with session.get(
-                    url,
-                    timeout=aiohttp.ClientTimeout(total=15),
-                    headers={
-                        'User-Agent': 'Multi-Agent Research System/1.0'
-                    }
-                ) as response:
-                    
-                    if response.status != 200:
-                        return ""
-                    
-                    content = await response.text()
-                    
-                    # 简单的HTML标签清理（实际项目中建议使用BeautifulSoup）
-                    import re
-                    text = re.sub(r'<[^>]+>', '', content)
-                    text = re.sub(r'\s+', ' ', text).strip()
-                    
-                    return text[:max_length] if len(text) > max_length else text
-                    
+                async with session.get(jina_url, headers=headers) as response:
+                    if response.status == 200:
+                        content = await response.text()
+                        print(f"✅ 通过Jina API获取内容，长度: {len(content)}")
+                        title = url.split("/")[-1]
+                        await self._save_to_knowledge_base(title, content)
+                        return content
+                    else:
+                        print(f"⚠️ Jina API返回状态码: {response.status}")
+                        return f"无法通过Jina API获取内容: HTTP {response.status}"
+                        
         except Exception as e:
-            print(f"❌ 获取网页内容出错: {str(e)}")
-            return ""
+            print(f"❌ Jina API调用出错: {str(e)}")
+            return f"Jina API调用失败: {str(e)}"
+        
+    
+    async def _save_to_knowledge_base(self, title: str, content: str) -> Optional[str]:
+        """
+        将内容保存到知识库
+        
+        Args:
+            title: 文档标题
+            content: 文档内容
+            
+        Returns:
+            保存的文件路径
+        """
+        try:
+            # 确保知识库目录存在
+            os.makedirs(self.knowledge_base_dir, exist_ok=True)
+            
+            filename = f"wikipedia_{title}.txt"
+            filepath = os.path.join(self.knowledge_base_dir, filename)
+            
+            # 检查文件是否已存在
+            if os.path.exists(filepath):
+                print(f"📄 文件已存在: {filename}")
+                return filepath
+            
+            # 准备文档内容（包含元数据）
+            document_content = f"{content}"
+
+            
+            # 保存文件
+            with open(filepath, 'w', encoding='utf-8') as f:
+                f.write(document_content)
+            
+            print(f"💾 已保存到知识库: {filename}")
+            return filepath
+            
+        except Exception as e:
+            print(f"❌ 保存到知识库失败: {str(e)}")
+            return None
+    
+
+if __name__ == "__main__":
+    # 测试工具
+    web_search_tool = WebSearchTool()
+
+    # 测试搜索功能
+    asyncio.run(web_search_tool.search("Artificial Intelligence", count=3))
+    
+    # 测试获取内容
+    asyncio.run(web_search_tool._get_content_via_jina("https://en.wikipedia.org/wiki/Artificial_intelligence"))
