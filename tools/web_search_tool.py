@@ -24,51 +24,56 @@ class WebSearchTool:
         self.jina_reader_endpoint = "https://r.jina.ai/"
         self.knowledge_base_dir = Config.KNOWLEDGE_BASE_DIR
 
-    async def search(self, query: str, count: int = 5) -> List[str]:
+    async def _search_via_jina(self, query: str, count: int = 5) -> List[str]:
         """
-        在Wikipedia上搜索内容并返回相关页面链接
+        使用Jina API搜索Web内容
         
         Args:
             query: 搜索查询
-            count: 返回结果的数量（默认5个）
+            count: 返回结果的数量
             
         Returns:
-            Wikipedia页面链接列表
+            Web页面URL列表
         """
         try:
-            # 使用Wikipedia API搜索
-            opensearch_url = "https://en.wikipedia.org/w/api.php"
-            
-            # 搜索参数
-            params = {
-                'action': 'opensearch',
-                'search': query,
-                'limit': count,
-                'format': 'json',
-                'redirects': 'resolve'
+            # 构建Jina搜索URL
+            search_url = f"https://s.jina.ai/?q={query.replace(' ', '+')}"
+            headers = {
+                "Authorization": f"Bearer {self.jina_api_key}",
+                "X-Respond-With": "no-content",
+                "X-Site": "https://en.wikipedia.org/wiki/"
             }
             
             async with aiohttp.ClientSession() as session:
-                async with session.get(opensearch_url, params=params) as response:
+                async with session.get(search_url, headers=headers) as response:
                     if response.status == 200:
-                        data = await response.json()
+                        text = await response.text()
                         
-                        # Wikipedia OpenSearch API返回格式：
-                        # [query, [titles], [descriptions], [urls]]
-                        if len(data) >= 4 and data[3]:
-                            urls = data[3]
-                            print(f"✅ 找到 {len(urls)} 个Wikipedia页面")
-                            return urls[:count]
-                        else:
-                            print(f"⚠️ 未找到相关Wikipedia页面")
-                            return []
+                        # 解析搜索结果，提取URL
+                        urls = []
+                        lines = text.split('\n')
+                        
+                        for line in lines:
+                            if line.strip().startswith('[') and 'URL Source:' in line:
+                                # 提取URL
+                                url_start = line.find('https://')
+                                if url_start != -1:
+                                    url = line[url_start:].strip()
+                                    urls.append(url)
+                                    
+                                    if len(urls) >= count:
+                                        break
+                        
+                        print(f"✅ 找到 {len(urls)} 个Web页面URL：{', '.join(urls)}")
+                        return urls
                     else:
-                        print(f"⚠️ Wikipedia API返回状态码: {response.status}")
+                        print(f"⚠️ Jina搜索API返回状态码: {response.status}")
                         return []
                         
         except Exception as e:
-            print(f"❌ Wikipedia搜索失败: {str(e)}")
+            print(f"❌ Jina搜索失败: {str(e)}")
             return []
+       
     
     
     async def _get_content_via_jina(self, url: str) -> str:
@@ -92,7 +97,8 @@ class WebSearchTool:
                     if response.status == 200:
                         content = await response.text()
                         print(f"✅ 通过Jina API获取内容，长度: {len(content)}")
-                        title = url.split("/")[-1]
+                        # 提取URL中https://后面的内容，并替换特殊字符为下划线
+                        title = url.split("https://")[-1].replace(".", "_").replace("/", "_").replace(" ", "_")
                         await self._save_to_knowledge_base(title, content)
                         return content
                     else:
@@ -119,7 +125,7 @@ class WebSearchTool:
             # 确保知识库目录存在
             os.makedirs(self.knowledge_base_dir, exist_ok=True)
             
-            filename = f"wikipedia_{title}.txt"
+            filename = f"{title}.txt"
             filepath = os.path.join(self.knowledge_base_dir, filename)
             
             # 检查文件是否已存在
@@ -148,7 +154,7 @@ if __name__ == "__main__":
     web_search_tool = WebSearchTool()
 
     # 测试搜索功能
-    asyncio.run(web_search_tool.search("Artificial Intelligence", count=3))
+    asyncio.run(web_search_tool._search_via_jina("Artificial Intelligence", count=3))
     
     # 测试获取内容
     asyncio.run(web_search_tool._get_content_via_jina("https://en.wikipedia.org/wiki/Artificial_intelligence"))

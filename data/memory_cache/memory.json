@@ -1,0 +1,37 @@
+[
+  {
+    "id": "entry_20250707_183225_848045",
+    "timestamp": "2025-07-07T18:32:25.848082",
+    "query": "介绍一下GUI Agent",
+    "context": "",
+    "final_answer": "GUI Agent（图形用户界面代理）是一种软件代理，能够通过图形用户界面（GUI）与用户交互，自动化任务如点击按钮、输入文本或操作应用程序。它常用于软件测试、机器人流程自动化（RPA）和用户辅助工具。"
+  },
+  {
+    "id": "entry_20250707_195647_865475",
+    "timestamp": "2025-07-07T19:56:47.865526",
+    "query": "If my future wife has the same first name as the 15th first lady of the United States' mother and her surname is the same as the second assassinated president's mother's maiden name, what is my future wife's name?参考链接：['https://en.wikipedia.org/wiki/President_of_the_United_States', 'https://en.wikipedia.org/wiki/James_Buchanan', 'https://en.wikipedia.org/wiki/Harriet_Lane', 'https://en.wikipedia.org/wiki/List_of_presidents_of_the_United_States_who_died_in_office', 'https://en.wikipedia.org/wiki/James_A._Garfield']",
+    "context": "",
+    "final_answer": ""
+  },
+  {
+    "id": "entry_20250707_200354_408726",
+    "timestamp": "2025-07-07T20:03:54.408834",
+    "query": "How many years earlier would Punxsutawney Phil have to be canonically alive to have made a Groundhog Day prediction in the same state as the US capitol?参考链接：['https://en.wikipedia.org/wiki/Punxsutawney_Phil', 'https://en.wikipedia.org/wiki/United_States_Capitol']",
+    "context": "",
+    "final_answer": "Punxsutawney Phil would not need to be alive any years earlier."
+  },
+  {
+    "id": "entry_20250707_202828_661529",
+    "timestamp": "2025-07-07T20:28:28.661577",
+    "query": "If my future wife has the same first name as the 15th first lady of the United States' mother and her surname is the same as the second assassinated president's mother's maiden name, what is my future wife's name?参考链接：['https://en.wikipedia.org/wiki/President_of_the_United_States', 'https://en.wikipedia.org/wiki/James_Buchanan', 'https://en.wikipedia.org/wiki/Harriet_Lane', 'https://en.wikipedia.org/wiki/List_of_presidents_of_the_United_States_who_died_in_office', 'https://en.wikipedia.org/wiki/James_A._Garfield']",
+    "context": "基于已获得的信息，第15任美国第一夫人是Harriet Lane（James Buchanan的侄女），她的母亲名叫Jane Buchanan，因此名字为Jane。第二位被暗杀的",
+    "final_answer": "Jane Ballou"
+  },
+  {
+    "id": "entry_20250707_204909_524641",
+    "timestamp": "2025-07-07T20:49:09.524693",
+    "query": "根据以下Wikipedia资源回答问题:\n['https://en.wikipedia.org/wiki/President_of_the_United_States', 'https://en.wikipedia.org/wiki/James_Buchanan', 'https://en.wikipedia.org/wiki/Harriet_Lane', 'https://en.wikipedia.org/wiki/List_of_presidents_of_the_United_States_who_died_in_office', 'https://en.wikipedia.org/wiki/James_A._Garfield']\n\n问题: If my future wife has the same first name as the 15th first lady of the United States' mother and her surname is the same as the second assassinated president's mother's maiden name, what is my future wife's name? ",
+    "context": "",
+    "final_answer": ""
+  }
+]

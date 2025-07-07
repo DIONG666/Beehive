@@ -51,7 +51,7 @@ class SummarizerTool:
         try:
             print(f"📝 开始摘要，原文长度: {len(text)} 字符")
             
-            max_len = max_length or self.max_length // 2
+            max_len = max_length
             
             # 如果文本已经足够短，直接返回
             if len(text) <= max_len:
@@ -65,7 +65,7 @@ class SummarizerTool:
                 }
             
             # 根据是否有LLM选择摘要方法
-            if self.planner and len(text) > 500:
+            if self.planner:
                 summary = await self._llm_summarize(text, max_len, style)
                 method = 'llm'
             else:
@@ -98,12 +98,13 @@ class SummarizerTool:
                 'error': f'摘要生成失败，返回截断版本: {str(e)}'
             }
     
-    async def _llm_summarize(self, text: str, max_length: int, 
+    async def _llm_summarize(self, query: str, text: str, max_length: int, 
                            style: str) -> str:
         """
         使用LLM生成摘要
         
         Args:
+            query: 查询
             text: 原文
             max_length: 最大长度
             style: 摘要风格
@@ -119,7 +120,7 @@ class SummarizerTool:
         }
         
         prompt = style_prompts.get(style, style_prompts['general'])
-        prompt += f"\n\n原文：\n{text}\n\n要求：\n1. 摘要长度不超过{max_length}字符\n2. 保持原文的核心信息\n3. 语言简洁清晰"
+        prompt += f"\n\n查询内容：{query}\n\n原文：\n{text}\n\n要求：\n1. 重点总结与查询内容「{query}」最相关的信息\n2. 优先提取能回答查询的关键内容和细节\n3. 严格控制摘要长度不超过{max_length}字符\n4. 保持相关信息的完整性和准确性\n5. 语言简洁清晰，直接生成摘要内容"
         
         messages = [
             {"role": "system", "content": "你是一个专业的文本摘要专家。"},
@@ -128,6 +129,7 @@ class SummarizerTool:
         
         try:
             summary = await self.planner.generate_response(messages)
+            print(f"摘要内容：\n{summary[:200]}...")  # 只打印前200字符
             
             # 如果摘要仍然过长，进行截断
             if len(summary) > max_length:
@@ -256,136 +258,3 @@ class SummarizerTool:
         
         return score
     
-    async def summarize_multiple(self, texts: List[str], 
-                               max_length: int) -> Dict[str, Any]:
-        """
-        对多个文本进行摘要
-        
-        Args:
-            texts: 文本列表
-            max_length: 总的最大长度
-            
-        Returns:
-            合并摘要结果
-        """
-        if not texts:
-            return {
-                'summary': '',
-                'total_original_length': 0,
-                'summary_length': 0,
-                'compression_ratio': 0,
-                'individual_summaries': [],
-                'error': None
-            }
-        
-        try:
-            # 为每个文本分配长度配额
-            per_text_length = max_length // len(texts)
-            
-            individual_summaries = []
-            total_original_length = 0
-            
-            for i, text in enumerate(texts):
-                result = await self.summarize(text, per_text_length)
-                individual_summaries.append({
-                    'index': i,
-                    'original_length': result['original_length'],
-                    'summary': result['summary'],
-                    'summary_length': result['summary_length']
-                })
-                total_original_length += result['original_length']
-            
-            # 合并摘要
-            combined_summary = '\n\n'.join([
-                f"文档{item['index']+1}: {item['summary']}" 
-                for item in individual_summaries
-            ])
-            
-            return {
-                'summary': combined_summary,
-                'total_original_length': total_original_length,
-                'summary_length': len(combined_summary),
-                'compression_ratio': len(combined_summary) / total_original_length if total_original_length > 0 else 0,
-                'individual_summaries': individual_summaries,
-                'error': None
-            }
-            
-        except Exception as e:
-            return {
-                'summary': '',
-                'total_original_length': sum(len(text) for text in texts),
-                'summary_length': 0,
-                'compression_ratio': 0,
-                'individual_summaries': [],
-                'error': f'多文档摘要失败: {str(e)}'
-            }
-    
-    def get_tool_info(self) -> Dict[str, Any]:
-        """获取工具信息"""
-        return {
-            'name': 'summarize_text',
-            'description': '对长文本进行摘要和压缩',
-            'parameters': {
-                'text': '待摘要的文本',
-                'max_length': '最大摘要长度（可选）',
-                'style': '摘要风格：general/academic/news/bullet_points（可选）'
-            },
-            'example_usage': 'summarize_text("长篇文章内容...", max_length=500)',
-            'capabilities': [
-                'LLM智能摘要',
-                '抽取式摘要',
-                '多文档摘要',
-                '多种摘要风格',
-                '自动压缩比调节'
-            ],
-            'enabled': self.enabled
-        }
-    
-    def analyze_text_complexity(self, text: str) -> Dict[str, Any]:
-        """
-        分析文本复杂度，帮助选择摘要策略
-        
-        Args:
-            text: 输入文本
-            
-        Returns:
-            复杂度分析结果
-        """
-        sentences = self._split_sentences(text)
-        words = text.split()
-        
-        # 基础统计
-        char_count = len(text)
-        word_count = len(words)
-        sentence_count = len(sentences)
-        
-        # 平均句长
-        avg_sentence_length = char_count / sentence_count if sentence_count > 0 else 0
-        avg_word_length = sum(len(word) for word in words) / word_count if word_count > 0 else 0
-        
-        # 复杂度评分
-        complexity_score = 0
-        if avg_sentence_length > 50:
-            complexity_score += 1
-        if avg_word_length > 5:
-            complexity_score += 1
-        if char_count > 2000:
-            complexity_score += 1
-        
-        # 推荐策略
-        if complexity_score >= 2:
-            recommended_method = 'llm'
-        elif complexity_score == 1:
-            recommended_method = 'extractive'
-        else:
-            recommended_method = 'truncation'
-        
-        return {
-            'char_count': char_count,
-            'word_count': word_count,
-            'sentence_count': sentence_count,
-            'avg_sentence_length': avg_sentence_length,
-            'avg_word_length': avg_word_length,
-            'complexity_score': complexity_score,
-            'recommended_method': recommended_method
-        }

@@ -55,6 +55,13 @@ def get_last_processed_index(results: List[Dict]) -> int:
         return -1
     return max(int(r.get('index', -1)) for r in results)
 
+def generate_research_prompt(prompt: str, wiki_links: List[str]) -> str:
+    """生成研究提示"""
+    if wiki_links:
+        return f"根据以下Wikipedia资源回答问题:\n{wiki_links}\n\n问题: {prompt}"
+    else:
+        return f"问题: {prompt}"
+
 async def get_system_response(query: str, context: str = "") -> Dict[str, Any]:
     """
     使用多智能体系统获取回答
@@ -80,7 +87,7 @@ async def get_system_response(query: str, context: str = "") -> Dict[str, Any]:
         return {
             'answer': f"系统错误: {str(e)}",
             'citations': [],
-            'reasoning_trace': [],
+            'reasoning_trace': "",
             'error': str(e)
         }
 
@@ -165,11 +172,11 @@ async def process_single_item(item: Dict[str, Any], index: int) -> Dict[str, Any
     """
     # 提取问题信息
     question = item.get('Prompt')
-    prompt = "基于给出的相关Wikipedia链接中的内容回答问题："+question
     ground_truth = item.get('Answer')
     reasoning_type = item.get('reasoning_types')
-    wiki_links = item.get('wiki_links', [])
-    
+    wiki_links = item.get('wiki_links')
+    prompt = generate_research_prompt(question, wiki_links)
+
     if not question:
         return {
             'index': index,
@@ -179,21 +186,15 @@ async def process_single_item(item: Dict[str, Any], index: int) -> Dict[str, Any
     
     print(f"📝 处理问题 {index}: {question[:100]}...")
     
-    # 准备上下文信息
-    full_context = None
-    if wiki_links:
-        wiki_context = "\n".join([f"- {link}" for link in wiki_links])
-        full_context += f"\n\n相关Wikipedia链接:\n{wiki_context}"
-    
     # 记录开始时间
     start_time = time.time()
     
     # 使用多智能体系统获取回答
     try:
-        system_result = await get_system_response(prompt, full_context)
+        system_result = await get_system_response(prompt)
         system_answer = system_result.get('answer', '')
         system_citations = system_result.get('citations', [])
-        reasoning_trace = system_result.get('reasoning_trace', [])
+        reasoning_trace = system_result.get('reasoning_trace', "")
         
     except Exception as e:
         print(f"❌ 系统调用失败: {str(e)}")

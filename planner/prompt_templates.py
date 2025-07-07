@@ -1,38 +1,3 @@
-"""
-ReAct Prompt模版：思考-行动-观察结构
-"""
-
-# ReAct主提示模板
-REACT_SYSTEM_PROMPT = """你是一个专业的研究助手，使用ReAct（Reasoning and Acting）方法来解决复杂的研究问题。
-
-你的任务是通过以下循环过程来回答用户问题：
-1. Thought (思考): 分析当前情况，思考下一步应该做什么
-2. Action (行动): 选择并执行一个工具来获取信息
-3. Observation (观察): 观察工具返回的结果
-4. 重复上述过程，直到有足够信息回答问题
-
-可用工具：
-- search_knowledge_base: 在知识库中搜索相关文档
-- web_search: 在互联网上搜索信息
-- summarize_text: 对长文本进行摘要
-
-输出格式：
-Thought: [你的思考过程]
-Action: [工具名称]
-Action Input: [工具输入]
-Observation: [工具返回结果]
-... (重复上述过程)
-Thought: [最终思考]
-Final Answer: [最终答案]
-
-重要规则：
-1. 每次只能执行一个Action
-2. 必须基于Observation的结果进行下一步思考
-3. 如果信息不够，继续搜索更多相关信息
-4. 最终答案必须基于检索到的证据，并提供引用
-5. 如果无法找到答案，请诚实说明
-"""
-
 # 查询分解提示
 QUERY_DECOMPOSITION_PROMPT = """请分析以下查询，如果包含Web链接则直接提取，否则分解为子问题：
 
@@ -42,13 +7,12 @@ QUERY_DECOMPOSITION_PROMPT = """请分析以下查询，如果包含Web链接则
 - 直接提取所有Web链接
 
 如果查询中没有Web链接：
-- 将复杂查询分解为3-5个可以在Wikipedia上直接搜索的子问题
+- 将复杂查询分解为3-5个子问题
 - 每个子问题应该是简洁的英文短语或关键词组合
 - 子问题应该覆盖原始查询的所有重要方面
-- 使用Wikipedia上常见的条目名称和术语
 
 严格按照以下输出格式输出，不要输出其它无关内容：
-如果有Web链接：
+如果有Web链接（要将所有的链接都列出来）：
 链接1: [完整的Web URL]
 链接2: [完整的Web URL]
 ...
@@ -73,81 +37,64 @@ QUERY_DECOMPOSITION_PROMPT = """请分析以下查询，如果包含Web链接则
 """
 
 # 反思提示模板
-REFLECTION_PROMPT = """基于当前的搜索结果和推理过程，请评估：
+REFLECTION_PROMPT = """基于以下信息，判断是否能够回答用户问题：
 
-当前查询: {query}
+原始问题: {query}
 已获得的信息: {current_info}
-推理轨迹: {reasoning_trace}
 
 请回答：
-1. 当前信息是否足够回答原始问题？(是/否)
-2. 如果不够，还需要搜索什么信息？
-3. 当前推理是否存在逻辑漏洞？
-4. 建议的下一步行动是什么？
+1. 结合你自身知识以及当前收集的信息是否足够回答原始问题？(是/否)
+2. 如果可以，请提供简洁的答案，并给出推理过程以及相关的参考链接
+3. 如果不能，还需要搜索什么信息？给出下一步的查询建议
 
-输出格式：
-评估结果: [足够/不足够]
-缺失信息: [具体描述需要的信息，如果足够则写"无"]
-推理评价: [对当前推理的评价]
-建议行动: [具体的下一步建议]
+严格按照以下输出格式输出，不要输出其它无关内容：
+判断: 是/否
+答案: [如果能回答则提供答案，否则写"信息不足"]
+推理过程：[如果能回答则给出推理过程，否则留空]
+参考链接：[如果能回答则给出相关链接，用分号分隔多个，链接只能使用已获得的信息中出现的链接]
+建议查询: [如果不能回答，给出建议的新查询，用分号分隔多个，新查询应该是简洁的英文短语或关键词组合]
+
+示例1：
+输入: "What is the capital of France?"
+已获得的信息: "France is a country in Europe with a population of 67 million people. Paris is the largest city and capital of France. 参考链接：https://en.wikipedia.org/wiki/France"
+输出:
+判断: 是
+答案: 巴黎是法国的首都
+推理过程：根据已获得的信息，巴黎是法国的首都。
+参考链接：https://en.wikipedia.org/wiki/France
+建议查询: 无
+
+示例2：
+输入: "How does machine learning work in autonomous vehicles?"
+已获得的信息: "Machine learning is a subset of artificial intelligence that enables computers to learn from data."
+输出:
+判断: 否
+答案: 信息不足
+推理过程：无
+参考链接：无
+建议查询: autonomous vehicle technology; machine learning algorithms in cars; self-driving car sensors
 """
 
 # 最终答案整合提示
-FINAL_ANSWER_PROMPT = """基于以下搜索结果和推理过程，请生成最终答案：
+FINAL_ANSWER_PROMPT = """基于以下信息，请生成你最有把握的最终答案，并给出推理过程以及相关的参考链接：
 
 原始问题: {query}
-搜索结果: 
-{search_results}
+已获得的信息: {context}
 
-推理轨迹:
-{reasoning_trace}
-
-请按以下格式输出最终答案：
+严格按照以下输出格式输出，不要输出其它无关内容：
 答案: [简洁明确的答案]
-解释: [详细的解释和推理过程]
-引用: [相关的来源和证据]
-置信度: [高/中/低，基于证据质量]
+推理过程：[详细的解释和推理过程]
+参考链接: [用分号分隔多个，链接只能使用已获得的信息中出现的链接]
 
 要求：
 1. 答案必须基于提供的证据
 2. 如果证据不足，请说明限制
-3. 引用具体的来源信息
-4. 保持客观和准确
-"""
 
-# 工具调用提示
-TOOL_SELECTION_PROMPT = """根据当前需求选择最合适的工具：
-
-当前任务: {task}
-可用工具: {available_tools}
-
-工具说明：
-- search_knowledge_base: 适合查找已知的、权威的信息
-- web_search: 适合查找最新的、实时的信息
-- calculator: 适合数学计算和数值分析
-- summarize_text: 适合处理长文档和提取关键信息
-
-请选择最合适的工具并说明理由：
-选择工具: [工具名称]
-选择理由: [为什么选择这个工具]
-输入内容: [具体的输入参数]
-"""
-
-# 错误处理提示
-ERROR_HANDLING_PROMPT = """在执行过程中遇到错误：
-
-错误类型: {error_type}
-错误信息: {error_message}
-当前上下文: {context}
-
-请选择最佳的恢复策略：
-1. 重试当前操作
-2. 尝试不同的工具
-3. 修改查询参数
-4. 跳过当前步骤
-5. 终止并报告问题
-
-选择策略: [1-5]
-策略说明: [具体的恢复计划]
-修改后的操作: [如果需要修改，描述新的操作]
+示例：
+输入: "What is the capital of France?"
+已获得的信息: "France is a country in Europe with a population of 67 million people. Paris is the largest city and capital of France. 参考链接：https://en.wikipedia.org/wiki/France"
+输出:
+答案: 巴黎是法国的首都
+推理过程：根据已获得的信息，巴黎是法国的首都。
+参考链接: https://en.wikipedia.org/wiki/France
 """

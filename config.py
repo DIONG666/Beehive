@@ -34,10 +34,10 @@ class Config:
     RERANK_TOP_K = 5
     
     # Agent配置
-    MAX_ITERATIONS = 20
+    MAX_ITERATIONS = 3
     MAX_CONTEXT_LENGTH = 8192
     TEMPERATURE = 0.7
-    RECENT_CONTEXT = 3
+    RECENT_CONTEXT = 1
     
     # 工具启用配置
     ENABLE_WEB_SEARCH = True

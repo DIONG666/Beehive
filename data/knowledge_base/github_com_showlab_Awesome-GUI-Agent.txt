@@ -1,0 +1,801 @@
+Title: GitHub - showlab/Awesome-GUI-Agent: 💻 A curated list of papers and resources for multi-modal Graphical User Interface (GUI) agents.
+
+URL Source: https://github.com/showlab/Awesome-GUI-Agent
+
+Markdown Content:
+[Skip to content](https://github.com/showlab/Awesome-GUI-Agent#start-of-content)
+
+Navigation Menu
+---------------
+
+*   
+    *   [GitHub Copilot Write better code with AI](https://github.com/features/copilot)
+    *   [GitHub Models New Manage and compare prompts](https://github.com/features/models)
+    *   [GitHub Advanced Security Find and fix vulnerabilities](https://github.com/security/advanced-security)
+    *   [Actions Automate any workflow](https://github.com/features/actions)
+    *   [Codespaces Instant dev environments](https://github.com/features/codespaces)
+
+    *   [Issues Plan and track work](https://github.com/features/issues)
+    *   [Code Review Manage code changes](https://github.com/features/code-review)
+    *   [Discussions Collaborate outside of code](https://github.com/features/discussions)
+    *   [Code Search Find more, search less](https://github.com/features/code-search)
+
+*   
+Explore
+
+    *   [Learning Pathways](https://resources.github.com/learn/pathways)
+    *   [Events & Webinars](https://resources.github.com/)
+    *   [Ebooks & Whitepapers](https://github.com/resources/whitepapers)
+    *   [Customer Stories](https://github.com/customer-stories)
+    *   [Partners](https://partner.github.com/)
+    *   [Executive Insights](https://github.com/solutions/executive-insights)
+
+*   
+    *   [GitHub Sponsors Fund open source developers](https://github.com/sponsors)
+
+    *   [The ReadME Project GitHub community articles](https://github.com/readme)
+
+*   
+    *   [Enterprise platform AI-powered developer platform](https://github.com/enterprise)
+
+*   [Pricing](https://github.com/pricing)
+
+Provide feedback
+----------------
+
+Saved searches
+--------------
+
+Use saved searches to filter your results more quickly
+------------------------------------------------------
+
+[Sign up](https://github.com/signup?ref_cta=Sign+up&ref_loc=header+logged+out&ref_page=%2F%3Cuser-name%3E%2F%3Crepo-name%3E&source=header-repo&source_repo=showlab%2FAwesome-GUI-Agent)
+
+*   [Notifications](https://github.com/login?return_to=%2Fshowlab%2FAwesome-GUI-Agent)You must be signed in to change notification settings
+*   [Fork 48](https://github.com/login?return_to=%2Fshowlab%2FAwesome-GUI-Agent)
+*   [Star 769](https://github.com/login?return_to=%2Fshowlab%2FAwesome-GUI-Agent)
+
+Folders and files
+-----------------
+
+| Name | Name | Last commit message | Last commit date |
+| --- | --- | --- | --- |
+| Latest commit ------------- [![Image 1: QinghongLin](https://avatars.githubusercontent.com/u/103281027?v=4&size=40)](https://github.com/QinghongLin)[QinghongLin](https://github.com/showlab/Awesome-GUI-Agent/commits?author=QinghongLin) [Merge pull request](https://github.com/showlab/Awesome-GUI-Agent/commit/3c5891a98bb1d3e8055fbb6a4dcdf9d9db6377d4)[#43](https://github.com/showlab/Awesome-GUI-Agent/pull/43)[from lgy0404/add-new-paper](https://github.com/showlab/Awesome-GUI-Agent/commit/3c5891a98bb1d3e8055fbb6a4dcdf9d9db6377d4) Jun 1, 2025 [3c5891a](https://github.com/showlab/Awesome-GUI-Agent/commit/3c5891a98bb1d3e8055fbb6a4dcdf9d9db6377d4)·Jun 1, 2025 History ------- [173 Commits](https://github.com/showlab/Awesome-GUI-Agent/commits/main/) |
+| [assets](https://github.com/showlab/Awesome-GUI-Agent/tree/main/assets "assets") | [assets](https://github.com/showlab/Awesome-GUI-Agent/tree/main/assets "assets") | [Add files via upload](https://github.com/showlab/Awesome-GUI-Agent/commit/e513412a95a9652512fc526b043c8aab25f48a07 "Add files via upload") | Jul 3, 2024 |
+| [README.md](https://github.com/showlab/Awesome-GUI-Agent/blob/main/README.md "README.md") | [README.md](https://github.com/showlab/Awesome-GUI-Agent/blob/main/README.md "README.md") | [Merge pull request](https://github.com/showlab/Awesome-GUI-Agent/commit/3c5891a98bb1d3e8055fbb6a4dcdf9d9db6377d4 "Merge pull request #43 from lgy0404/add-new-paper Add LearnAct paper and associated badges to README.md")[#43](https://github.com/showlab/Awesome-GUI-Agent/pull/43)[from lgy0404/add-new-paper](https://github.com/showlab/Awesome-GUI-Agent/commit/3c5891a98bb1d3e8055fbb6a4dcdf9d9db6377d4 "Merge pull request #43 from lgy0404/add-new-paper Add LearnAct paper and associated badges to README.md") | Jun 1, 2025 |
+|  |
+
+*   [README](https://github.com/showlab/Awesome-GUI-Agent#)
+
+Awesome GUI Agent [![Image 2: Awesome](https://camo.githubusercontent.com/8693bde04030b1670d5097703441005eba34240c32d1df1eb82a5f0d6716518e/68747470733a2f2f63646e2e7261776769742e636f6d2f73696e647265736f726875732f617765736f6d652f643733303566333864323966656437386661383536353265336136336531353464643865383832392f6d656469612f62616467652e737667)](https://github.com/sindresorhus/awesome)
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+[](https://github.com/showlab/Awesome-GUI-Agent#awesome-gui-agent--)
+
+A curated list of papers, projects, and resources for multi-modal Graphical User Interface (GUI) agents.
+
+[![Image 3](https://github.com/showlab/Awesome-GUI-Agent/raw/main/assets/teaser.webp)](https://github.com/showlab/Awesome-GUI-Agent/blob/main/assets/teaser.webp)
+
+Build a digital assistant on your screen. Generated by [DALL-E-3](https://openai.com/index/dall-e-3/).
+
+**WELCOME CONTRIBUTE!**
+
+🔥 This project is actively maintained, and we welcome your contributions. If you have any suggestions, such as missing papers or information, please feel free to open an issue or submit a pull request.
+
+🤖 Try our [Awesome-Paper-Agent](https://chatgpt.com/g/g-qqs9km6wi-awesome-paper-agent). Just provide an arXiv URL link, and it will automatically return formatted information, like this:
+
+```
+User:
+https://arxiv.org/abs/2312.13108
+
+GPT:
++ [AssistGUI: Task-Oriented Desktop Graphical User Interface Automation](https://arxiv.org/abs/2312.13108) (Dec. 2023)
+
+  [![Star](https://img.shields.io/github/stars/showlab/assistgui.svg?style=social&label=Star)](https://github.com/showlab/assistgui)
+  [![arXiv](https://img.shields.io/badge/arXiv-b31b1b.svg)](https://arxiv.org/abs/2312.13108)
+  [![Website](https://img.shields.io/badge/Website-9cf)](https://showlab.github.io/assistgui/)
+```
+
+So then you can easily copy and use this information in your pull requests.
+
+⭐ If you find this repository useful, please give it a star.
+
+* * *
+
+**Quick Navigation**: [[Datasets / Benchmarks]](https://github.com/showlab/Awesome-GUI-Agent#datasets--benchmarks)[[Models / Agents]](https://github.com/showlab/Awesome-GUI-Agent#models--agents)[[Surveys]](https://github.com/showlab/Awesome-GUI-Agent#surveys)[[Projects]](https://github.com/showlab/Awesome-GUI-Agent#projects)
+
+Datasets / Benchmarks
+---------------------
+
+[](https://github.com/showlab/Awesome-GUI-Agent#datasets--benchmarks)
+*   [World of Bits: An Open-Domain Platform for Web-Based Agents](https://proceedings.mlr.press/v70/shi17a.html) (Aug. 2017, ICML 2017)
+
+[![Image 4: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://proceedings.mlr.press/v70/shi17a/shi17a.pdf)
+
+*   [A Unified Solution for Structured Web Data Extraction](https://dl.acm.org/doi/10.1145/2009916.2010020) (Jul. 2011, SIGIR 2011)
+
+[![Image 5: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://dl.acm.org/doi/10.1145/2009916.2010020)
+
+*   [Rico: A Mobile App Dataset for Building Data-Driven Design Applications](https://dl.acm.org/doi/10.1145/3126594.3126651) (Oct. 2017)
+
+[![Image 6: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://dl.acm.org/doi/10.1145/3126594.3126651)
+
+*   [Reinforcement Learning on Web Interfaces using Workflow-Guided Exploration](https://arxiv.org/abs/1802.08802) (Feb. 2018, ICLR 2018)
+
+[![Image 7: Star](https://camo.githubusercontent.com/b84f34e5efe0fc1771ae2fc303b57f3eb215d132de3aa7f05f39bf1a20d612af/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f7374616e666f72646e6c702f7767652e7376673f7374796c653d736f6369616c266c6162656c3d53746172)](https://github.com/stanfordnlp/wge)[![Image 8: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://arxiv.org/abs/1802.08802)
+
+*   [Mapping Natural Language Instructions to Mobile UI Action Sequences](https://arxiv.org/abs/2005.03776) (May. 2020, ACL 2020)
+
+[![Image 9: Star](https://camo.githubusercontent.com/afef09dcf13dc39bc9337442b3f5a550b154afbee342a6014acb40fc2b9db30d/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f646565706e657572616c6d616368696e652f736571326163742d74656e736f72666c6f772e7376673f7374796c653d736f6369616c266c6162656c3d53746172)](https://github.com/deepneuralmachine/seq2act-tensorflow)[![Image 10: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://arxiv.org/abs/2005.03776)
+
+*   [WebSRC: A Dataset for Web-Based Structural Reading Comprehension](https://arxiv.org/abs/2101.09465) (Jan. 2021, EMNLP 2021)
+
+[![Image 11: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://arxiv.org/abs/2101.09465)[![Image 12: Website](https://camo.githubusercontent.com/fbcf70fc3c9c3e9b349e31bdcd7b3efdd9407574fcb31fc74732cfcd946788fd/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f576562736974652d396366)](https://x-lance.github.io/WebSRC/)
+
+*   [AndroidEnv: A Reinforcement Learning Platform for Android](https://arxiv.org/abs/2105.13231) (May. 2021)
+
+[![Image 13: Star](https://camo.githubusercontent.com/0262998e07a76d52176e41ee4fa0d049ec2700f8ee86ffe41bb08ca4c2ea4dd9/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f646565706d696e642f616e64726f69645f656e762e7376673f7374796c653d736f6369616c266c6162656c3d53746172)](https://github.com/deepmind/android_env)[![Image 14: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://arxiv.org/abs/2105.13231)[![Image 15: Website](https://camo.githubusercontent.com/fbcf70fc3c9c3e9b349e31bdcd7b3efdd9407574fcb31fc74732cfcd946788fd/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f576562736974652d396366)](https://github.com/deepmind/android_env)
+
+*   [A Dataset for Interactive Vision-Language Navigation with Unknown Command Feasibility](https://arxiv.org/abs/2202.02312) (Feb. 2022)
+
+[![Image 16: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://arxiv.org/abs/2202.02312)
+
+*   [META-GUI: Towards Multi-modal Conversational Agents on Mobile GUI](https://arxiv.org/abs/2205.11029) (May. 2022)
+
+[![Image 17: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://arxiv.org/abs/2205.11029)[![Image 18: Website](https://camo.githubusercontent.com/fbcf70fc3c9c3e9b349e31bdcd7b3efdd9407574fcb31fc74732cfcd946788fd/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f576562736974652d396366)](https://x-lance.github.io/META-GUI-Leaderboard/)
+
+*   [WebShop: Towards Scalable Real-World Web Interaction with Grounded Language Agents](https://arxiv.org/abs/2207.01206) (Jul. 2022)
+
+[![Image 19: Star](https://camo.githubusercontent.com/7ec73e4186ea3a4f8441deed749c9e5edd5c84e13383f912d1c361f9be31300a/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f7072696e6365746f6e2d6e6c702f57656253686f702e7376673f7374796c653d736f6369616c266c6162656c3d53746172)](https://github.com/princeton-nlp/WebShop)[![Image 20: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://arxiv.org/abs/2207.01206)[![Image 21: Website](https://camo.githubusercontent.com/fbcf70fc3c9c3e9b349e31bdcd7b3efdd9407574fcb31fc74732cfcd946788fd/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f576562736974652d396366)](https://webshop-pnlp.github.io/)
+
+*   [Language Models can Solve Computer Tasks](https://arxiv.org/abs/2303.17491) (Mar. 2023)
+
+[![Image 22: Star](https://camo.githubusercontent.com/0b1f157f8892b6efe659acd745a20ded19ab0c18a698daa4e894618986ccb75d/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f706f73676e752f7263692d6167656e742e7376673f7374796c653d736f6369616c266c6162656c3d53746172)](https://github.com/posgnu/rci-agent)[![Image 23: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://arxiv.org/abs/2303.17491)[![Image 24: Website](https://camo.githubusercontent.com/fbcf70fc3c9c3e9b349e31bdcd7b3efdd9407574fcb31fc74732cfcd946788fd/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f576562736974652d396366)](https://posgnu.github.io/rci-web/)
+
+*   [Mobile-Env: Building Qualified Evaluation Benchmarks for LLM-GUI Interaction](https://arxiv.org/abs/2305.08144) (May. 2023)
+
+[![Image 25: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://arxiv.org/abs/2305.08144)[![Image 26: GitHub](https://camo.githubusercontent.com/cff99aae44bb65b7ec7ae7df77ae977fa903fed5c2818ab2deed3d9b6c109304/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4769744875622d3138313731372e7376673f7374796c653d736f6369616c266c6f676f3d676974687562)](https://github.com/X-LANCE/Mobile-Env)
+
+*   [Mind2Web: Towards a Generalist Agent for the Web](https://arxiv.org/abs/2306.06070) (Jun. 2023)
+
+[![Image 27: Star](https://camo.githubusercontent.com/52477a346e6c2db28649d14df556e9498e910658524ae0a7a6ee8026c76ecd18/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f6f73752d6e6c702d67726f75702f6d696e64327765622e7376673f7374796c653d736f6369616c266c6162656c3d53746172)](https://github.com/osu-nlp-group/mind2web)[![Image 28: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://arxiv.org/abs/2306.06070)[![Image 29: Website](https://camo.githubusercontent.com/fbcf70fc3c9c3e9b349e31bdcd7b3efdd9407574fcb31fc74732cfcd946788fd/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f576562736974652d396366)](https://osu-nlp-group.github.io/Mind2Web/)
+
+*   [Android in the Wild: A Large-Scale Dataset for Android Device Control](https://arxiv.org/abs/2307.10088) (Jul. 2023)
+
+[![Image 30: Star](https://camo.githubusercontent.com/70b112968ff7a051181737d9bb3a7aeadbe25fd353d30294c779784489340abc/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f676f6f676c652d72657365617263682f676f6f676c652d72657365617263682e7376673f7374796c653d736f6369616c266c6162656c3d53746172)](https://github.com/google-research/google-research/tree/master/android_in_the_wild)[![Image 31: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://arxiv.org/abs/2307.10088)
+
+*   [WebArena: A Realistic Web Environment for Building Autonomous Agents](https://arxiv.org/abs/2307.13854) (Jul. 2023)
+
+[![Image 32: Star](https://camo.githubusercontent.com/a12af0648a6f59d5665f1a8f1d62a2b8b9925e7031f33b6c513c6f1b0527aa9a/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f7765622d6172656e612d782f7765626172656e612e7376673f7374796c653d736f6369616c266c6162656c3d53746172)](https://github.com/web-arena-x/webarena)[![Image 33: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://arxiv.org/abs/2307.13854)[![Image 34: Website](https://camo.githubusercontent.com/fbcf70fc3c9c3e9b349e31bdcd7b3efdd9407574fcb31fc74732cfcd946788fd/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f576562736974652d396366)](https://webarena.dev/)
+
+*   [Interactive Evolution: A Neural-Symbolic Self-Training Framework For Large Language Models](https://arxiv.org/abs/2311.09278) (Nov. 2023)
+
+[![Image 35: Star](https://camo.githubusercontent.com/283ffb498a4741d8285e022f3dbdb116d0a7b9326824d5b0c776e94adb791696/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f787566616e677a68692f454e564953494f4e532e7376673f7374796c653d736f6369616c266c6162656c3d53746172)](https://github.com/xufangzhi/ENVISIONS)[![Image 36: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://arxiv.org/abs/2311.09278)[![Image 37: Website](https://camo.githubusercontent.com/fbcf70fc3c9c3e9b349e31bdcd7b3efdd9407574fcb31fc74732cfcd946788fd/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f576562736974652d396366)](https://xufangzhi.github.io/symbol-llm-page/)
+
+*   [AssistGUI: Task-Oriented Desktop Graphical User Interface Automation](https://arxiv.org/abs/2401.07781) (Dec. 2023, CVPR 2024)
+
+[![Image 38: Star](https://camo.githubusercontent.com/eaac961fe769e71823ba327fd527c07f48975f92838d891262d15fcf48fcf1b1/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f73686f776c61622f6173736973746775692e7376673f7374796c653d736f6369616c266c6162656c3d53746172)](https://github.com/showlab/assistgui)[![Image 39: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://arxiv.org/abs/2401.07781)[![Image 40: Website](https://camo.githubusercontent.com/fbcf70fc3c9c3e9b349e31bdcd7b3efdd9407574fcb31fc74732cfcd946788fd/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f576562736974652d396366)](https://showlab.github.io/assistgui/)
+
+*   [VisualWebArena: Evaluating Multimodal Agents on Realistic Visual Web Tasks](https://arxiv.org/abs/2401.13649) (Jan. 2024, ACL 2024)
+
+[![Image 41: Star](https://camo.githubusercontent.com/36e249c09838b9b51d0d68921da5334b7aaafb11dc5a582525ff48099c4d776f/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f7765622d6172656e612d782f76697375616c7765626172656e612e7376673f7374796c653d736f6369616c266c6162656c3d53746172)](https://github.com/jykoh/visualwebarena)[![Image 42: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://arxiv.org/abs/2401.13649)[![Image 43: Website](https://camo.githubusercontent.com/fbcf70fc3c9c3e9b349e31bdcd7b3efdd9407574fcb31fc74732cfcd946788fd/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f576562736974652d396366)](https://jykoh.com/vwa)
+
+*   [OmniACT: A Dataset and Benchmark for Enabling Multimodal Generalist Autonomous Agents for Desktop and Web](https://arxiv.org/abs/2402.17553) (Feb. 2024)
+
+[![Image 44: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://arxiv.org/abs/2402.17553)
+
+*   [WebLINX: Real-World Website Navigation with Multi-Turn Dialogue](https://arxiv.org/abs/2402.05930) (Feb. 2024)
+
+[![Image 45: Star](https://camo.githubusercontent.com/eacc2889a24af00153682763442c8359a08b5dc7e4b78fe79f19f2b79c5f0cc3/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f6d6367696c6c2d6e6c702f7765626c696e782e7376673f7374796c653d736f6369616c266c6162656c3d53746172)](https://github.com/mcgill-nlp/weblinx)[![Image 46: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://arxiv.org/abs/2402.05930)[![Image 47: Website](https://camo.githubusercontent.com/fbcf70fc3c9c3e9b349e31bdcd7b3efdd9407574fcb31fc74732cfcd946788fd/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f576562736974652d396366)](https://mcgill-nlp.github.io/weblinx/)
+
+*   [On the Multi-turn Instruction Following for Conversational Web Agents](https://arxiv.org/abs/2402.15057) (Feb. 2024)
+
+[![Image 48: Star](https://camo.githubusercontent.com/6c01d0adb645196a5563d3e66c00cf6912c62640068653550b06075407565980/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f6d6167696367682f73656c662d6d61702e7376673f7374796c653d736f6369616c266c6162656c3d53746172)](https://github.com/magicgh/self-map)[![Image 49: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://arxiv.org/abs/2402.15057)
+
+*   [AgentStudio: A Toolkit for Building General Virtual Agents](https://arxiv.org/abs/2403.17918) (Mar. 2024)
+
+[![Image 50: Star](https://camo.githubusercontent.com/09c0cdd6e3c5354ba3cc772120ed519f140052bd139a284c731e6100dc3e5f3e/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f736b79776f726b61692f6167656e742d73747564696f2e7376673f7374796c653d736f6369616c266c6162656c3d53746172)](https://github.com/skyworkai/agent-studio)[![Image 51: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://arxiv.org/abs/2403.17918)[![Image 52: Website](https://camo.githubusercontent.com/fbcf70fc3c9c3e9b349e31bdcd7b3efdd9407574fcb31fc74732cfcd946788fd/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f576562736974652d396366)](https://skyworkai.github.io/agent-studio/)
+
+*   [OSWorld: Benchmarking Multimodal Agents for Open-Ended Tasks in Real Computer Environments](https://arxiv.org/abs/2404.07972) (Apr. 2024)
+
+[![Image 53: Star](https://camo.githubusercontent.com/e976b6c7c61988036b6c8ceefd30d6ca729b3bc6993a9ad9dd759c792faa38eb/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f786c616e672d61692f4f53576f726c642e7376673f7374796c653d736f6369616c266c6162656c3d53746172)](https://github.com/xlang-ai/OSWorld)[![Image 54: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://arxiv.org/abs/2404.07972)[![Image 55: Website](https://camo.githubusercontent.com/fbcf70fc3c9c3e9b349e31bdcd7b3efdd9407574fcb31fc74732cfcd946788fd/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f576562736974652d396366)](https://os-world.github.io/)
+
+*   [Benchmarking Mobile Device Control Agents across Diverse Configurations](https://arxiv.org/abs/2404.16660) (Apr. 2024, ICLR 2024)
+
+[![Image 56: Star](https://camo.githubusercontent.com/17acf311c33b7c562cbf1d86331a9c1ca1e4bad95d7f32eeea07da68dd8f2795/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f67696d6d6531646f6c6c61722f622d6d6f63612e7376673f7374796c653d736f6369616c266c6162656c3d53746172)](https://github.com/gimme1dollar/b-moca)[![Image 57: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://arxiv.org/abs/2404.16660)
+
+*   [MMInA: Benchmarking Multihop Multimodal Internet Agents](https://arxiv.org/abs/2404.09992) (Apr. 2024)
+
+[![Image 58: Star](https://camo.githubusercontent.com/9e4bd6b84f83bcea9fa1e08565a442655ab40cd1063580a39a69fc4bafc898e6/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f7368756c696e31362f4d4d496e412e7376673f7374796c653d736f6369616c266c6162656c3d53746172)](https://github.com/shulin16/MMInA)[![Image 59: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://arxiv.org/abs/2404.09992)[![Image 60: Website](https://camo.githubusercontent.com/fbcf70fc3c9c3e9b349e31bdcd7b3efdd9407574fcb31fc74732cfcd946788fd/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f576562736974652d396366)](https://mmina.cliangyu.com/)
+
+*   [Autonomous Evaluation and Refinement of Digital Agents](https://arxiv.org/abs/2404.06474) (Apr. 2024)
+
+[![Image 61: Star](https://camo.githubusercontent.com/d2cd89ee20b3cf6e8b51e57497b4a2cab323994d41a62529cf534a5135a5cf8b/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f4265726b656c65792d4e4c502f4167656e742d4576616c2d526566696e652e7376673f7374796c653d736f6369616c266c6162656c3d53746172)](https://github.com/Berkeley-NLP/Agent-Eval-Refine)[![Image 62: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://arxiv.org/abs/2404.06474)
+
+*   [LlamaTouch: A Faithful and Scalable Testbed for Mobile UI Automation Task Evaluation](https://arxiv.org/abs/2404.16054) (Apr. 2024)
+
+[![Image 63: Star](https://camo.githubusercontent.com/800c61b316df6a00a8eccc94574c8ef9f35e3480674c7c5ab0577bd1685811b3/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f4c6c616d61546f7563682f4c6c616d61546f7563682e7376673f7374796c653d736f6369616c266c6162656c3d53746172)](https://github.com/LlamaTouch/LlamaTouch)[![Image 64: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://arxiv.org/abs/2404.16054)
+
+*   [VisualWebBench: How Far Have Multimodal LLMs Evolved in Web Page Understanding and Grounding?](https://arxiv.org/abs/2404.05955) (Apr. 2024)
+
+[![Image 65: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://arxiv.org/abs/2404.05955)
+
+*   [GUICourse: From General Vision Language Models to Versatile GUI Agents](https://arxiv.org/abs/2406.11317) (Jun. 2024)
+
+[![Image 66: Star](https://camo.githubusercontent.com/8ac544c044543e3671a2ddba982153d1a684d298357f654ab644105380896cfc/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f79697965332f475549436f757273652e7376673f7374796c653d736f6369616c266c6162656c3d53746172)](https://github.com/yiye3/GUICourse)[![Image 67: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://arxiv.org/abs/2406.11317)
+
+*   [GUI-WORLD: A Dataset for GUI-oriented Multimodal LLM-based Agents](https://arxiv.org/abs/2406.10819) (Jun. 2024)
+
+[![Image 68: Star](https://camo.githubusercontent.com/57b545a491cea8ac469d90fd65269139840968d10d767765d05e2db24706a3d2/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f446f6e6770696e672d4368656e2f4755492d576f726c642e7376673f7374796c653d736f6369616c266c6162656c3d53746172)](https://github.com/Dongping-Chen/GUI-World)[![Image 69: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://arxiv.org/abs/2406.10819)[![Image 70: Website](https://camo.githubusercontent.com/fbcf70fc3c9c3e9b349e31bdcd7b3efdd9407574fcb31fc74732cfcd946788fd/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f576562736974652d396366)](https://gui-world.github.io/)
+
+*   [GUI Odyssey: A Comprehensive Dataset for Cross-App GUI Navigation on Mobile Devices](https://arxiv.org/abs/2406.08451) (Jun. 2024)
+
+[![Image 71: Star](https://camo.githubusercontent.com/2ef4dbc62273ee18b59fc18716ae01bd40ebe82860d373da275e4d91a29e4bfe/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f4f70656e47564c61622f4755492d4f6479737365792e7376673f7374796c653d736f6369616c266c6162656c3d53746172)](https://github.com/OpenGVLab/GUI-Odyssey)[![Image 72: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://arxiv.org/abs/2406.08451)
+
+*   [VideoGUI: A Benchmark for GUI Automation from Instructional Videos](https://arxiv.org/abs/2406.10227) (Jun. 2024)
+
+[![Image 73: Star](https://camo.githubusercontent.com/9df402bd9c2f81906cd4e16da8e1393098764f8c5b63f5cfe61c56ac2aab57ce/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f73686f776c61622f766964656f6775692e7376673f7374796c653d736f6369616c266c6162656c3d53746172)](https://github.com/showlab/videogui)[![Image 74: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://arxiv.org/abs/2406.10227)[![Image 75: Website](https://camo.githubusercontent.com/fbcf70fc3c9c3e9b349e31bdcd7b3efdd9407574fcb31fc74732cfcd946788fd/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f576562736974652d396366)](https://showlab.github.io/videogui/)
+
+*   [Read Anywhere Pointed: Layout-aware GUI Screen Reading with Tree-of-Lens Grounding](https://arxiv.org/abs/2406.19263) (Jun. 2024)
+
+[![Image 76: Star](https://camo.githubusercontent.com/bba46aa3506734dc5c0b9667d3df4b9b791debe9f88a755c6f36f1553820b182/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f657269632d61692d6c61622f53637265656e2d506f696e742d616e642d526561642e7376673f7374796c653d736f6369616c266c6162656c3d53746172)](https://github.com/eric-ai-lab/Screen-Point-and-Read)[![Image 77: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://arxiv.org/abs/2406.19263)[![Image 78: Website](https://camo.githubusercontent.com/fbcf70fc3c9c3e9b349e31bdcd7b3efdd9407574fcb31fc74732cfcd946788fd/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f576562736974652d396366)](https://screen-point-and-read.github.io/)
+
+*   [MobileAgentBench: An Efficient and User-Friendly Benchmark for Mobile LLM Agents](https://arxiv.org/abs/2406.08184) (Jun. 2024)
+
+[![Image 79: Star](https://camo.githubusercontent.com/dfc854d18dd482802013a41386b3ef4c7fb0db2c051e18f6ae9ce3fd5e32f6e5/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f4d6f62696c654167656e7442656e63682f6d6f62696c652d6167656e742d62656e63682e7376673f7374796c653d736f6369616c266c6162656c3d53746172)](https://github.com/MobileAgentBench/mobile-agent-bench)[![Image 80: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://arxiv.org/abs/2406.08184)[![Image 81: Website](https://camo.githubusercontent.com/fbcf70fc3c9c3e9b349e31bdcd7b3efdd9407574fcb31fc74732cfcd946788fd/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f576562736974652d396366)](https://mobileagentbench.github.io/)
+
+*   [AndroidWorld: A Dynamic Benchmarking Environment for Autonomous Agents](https://arxiv.org/abs/2405.14573) (Jun. 2024)
+
+[![Image 82: Star](https://camo.githubusercontent.com/7f5ea02652a1eba27a7c9fa5344a558e278bf899edf5758f6dce945defef85d8/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f676f6f676c652d72657365617263682f616e64726f69645f776f726c642e7376673f7374796c653d736f6369616c266c6162656c3d53746172)](https://github.com/google-research/android_world)[![Image 83: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://arxiv.org/abs/2405.14573)
+
+*   [Practical, Automated Scenario-based Mobile App Testing](https://arxiv.org/abs/2406.08340) (Jun. 2024)
+
+[![Image 84: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://arxiv.org/abs/2406.08340)
+
+*   [WebCanvas: Benchmarking Web Agents in Online Environments](https://arxiv.org/abs/2406.12373) (Jun. 2024)
+
+[![Image 85: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://arxiv.org/abs/2406.12373)[![Image 86: Website](https://camo.githubusercontent.com/fbcf70fc3c9c3e9b349e31bdcd7b3efdd9407574fcb31fc74732cfcd946788fd/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f576562736974652d396366)](https://www.imean.ai/web-canvas)
+
+*   [On the Effects of Data Scale on Computer Control Agents](https://arxiv.org/abs/2406.03679) (Jun. 2024)
+
+[![Image 87: Star](https://camo.githubusercontent.com/ccd204dc5b37389860005e2a8f3d820fb7a312c4488d9342887a5ce5779de926/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f676f6f676c652d72657365617263682f676f6f676c652d7265736561726368)](https://github.com/google-research/google-research/tree/master/android_control)[![Image 88: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://arxiv.org/abs/2406.03679)
+
+*   [CRAB: Cross-environment Agent Benchmark for Multimodal Language Model Agents](https://arxiv.org/abs/2407.01511) (Jul. 2024)
+
+[![Image 89: Star](https://camo.githubusercontent.com/fb252adb317809470be05af704a30b4b1534b72df7af6e44ed043875fc6b4c8c/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f63616d656c2d61692f637261622e7376673f7374796c653d736f6369616c266c6162656c3d53746172)](https://github.com/camel-ai/crab)[![Image 90: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://arxiv.org/abs/2407.01511)
+
+*   [WebVLN: Vision-and-Language Navigation on Websites](https://ojs.aaai.org/index.php/AAAI/article/view/27878) (AAAI 2024)
+
+[![Image 91: Star](https://camo.githubusercontent.com/2974e292cac49d55189d4dc3c541d182c1c3f5f140887455cc854cddb20e3ee7/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f576562564c4e2f576562564c4e2e7376673f7374796c653d736f6369616c266c6162656c3d53746172)](https://github.com/WebVLN/WebVLN)[![Image 92: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://ojs.aaai.org/index.php/AAAI/article/view/27878)
+
+*   [Spider2-V: How Far Are Multimodal Agents From Automating Data Science and Engineering Workflows?](https://arxiv.org/abs/2407.10956) (Jul. 2024)
+
+[![Image 93: Star](https://camo.githubusercontent.com/f5af5f67beb2e82c413d213061f90bf81db94a88d1317fe9061da67e28745a98/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f786c616e672d61692f537069646572322d562e7376673f7374796c653d736f6369616c266c6162656c3d53746172)](https://github.com/xlang-ai/Spider2-V)[![Image 94: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://arxiv.org/abs/2407.10956)[![Image 95: Website](https://camo.githubusercontent.com/fbcf70fc3c9c3e9b349e31bdcd7b3efdd9407574fcb31fc74732cfcd946788fd/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f576562736974652d396366)](https://spider2-v.github.io/)
+
+*   [AMEX: Android Multi-annotation Expo Dataset for Mobile GUI Agents](https://arxiv.org/abs/2407.17490)
+
+[![Image 96: Star](https://camo.githubusercontent.com/e2c756c8d0b5a233acb88c2f141ac1a9ea3c4d7aceb5b401d47894d16c3e7a3f/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f59757869616e67436861692f414d45582d636f6465626173652e7376673f7374796c653d736f6369616c266c6162656c3d53746172)](https://github.com/YuxiangChai/AMEX-codebase)[![Image 97: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://arxiv.org/abs/2407.17490)[![Image 98: Website](https://camo.githubusercontent.com/fbcf70fc3c9c3e9b349e31bdcd7b3efdd9407574fcb31fc74732cfcd946788fd/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f576562736974652d396366)](https://yuxiangchai.github.io/AMEX/)
+
+*   [Windows Agent Arena](https://raw.githubusercontent.com/microsoft/WindowsAgentArena/website/static/files/windows_agent_arena.pdf)
+
+[![Image 99: Star](https://camo.githubusercontent.com/180730fb02113429191a1d76613685bcd4abb7d954ad54bf42f3acb24006be75/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f6d6963726f736f66742f57696e646f77734167656e744172656e612e7376673f7374796c653d736f6369616c266c6162656c3d53746172)](https://github.com/microsoft/WindowsAgentArena)[![Image 100: Website](https://camo.githubusercontent.com/fbcf70fc3c9c3e9b349e31bdcd7b3efdd9407574fcb31fc74732cfcd946788fd/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f576562736974652d396366)](https://microsoft.github.io/WindowsAgentArena/)[![Image 101: PDF](https://camo.githubusercontent.com/ca7b8ae7d3e8665e1cee22e6e3040e39358297e8e0ed749d8a3eb5e06b5577a4/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f5044462d3432383566342e737667)](https://raw.githubusercontent.com/microsoft/WindowsAgentArena/website/static/files/windows_agent_arena.pdf)
+
+*   [Harnessing Webpage UIs for Text-Rich Visual Understanding](https://arxiv.org/abs/2410.13824) (Oct, 2024)
+
+[![Image 102: Star](https://camo.githubusercontent.com/19f6c39260579fbb3d44f3082ae594aea2151be5a726cea2ac288ee287ab9bc3/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f6e65756c61622f6d756c746975692e7376673f7374796c653d736f6369616c266c6162656c3d53746172)](https://github.com/neulab/multiui)[![Image 103: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://neulab.github.io/MultiUI/)[![Image 104: Website](https://camo.githubusercontent.com/fbcf70fc3c9c3e9b349e31bdcd7b3efdd9407574fcb31fc74732cfcd946788fd/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f576562736974652d396366)](https://neulab.github.io/MultiUI/)
+
+*   [GUI Testing Arena: A Unified Benchmark for Advancing Autonomous GUI Testing Agent](https://arxiv.org/abs/2412.18426) (Dec, 2024)
+
+[![Image 105: Star](https://camo.githubusercontent.com/697be0e3570ac37485d5776b87161e2595fd4432eeab0e920ce51d039d14a67e/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f5a4a552d414345532d4953452f436861745549546573742e7376673f7374796c653d736f6369616c266c6162656c3d53746172)](https://github.com/ZJU-ACES-ISE/ChatUITest)[![Image 106: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://arxiv.org/abs/2412.18426)
+
+*   [A3: Android Agent Arena for Mobile GUI Agents](https://arxiv.org/abs/2501.01149) (Jan. 2025)
+
+[![Image 107: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://arxiv.org/abs/2501.01149)[![Image 108: Website](https://camo.githubusercontent.com/fbcf70fc3c9c3e9b349e31bdcd7b3efdd9407574fcb31fc74732cfcd946788fd/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f576562736974652d396366)](https://yuxiangchai.github.io/Android-Agent-Arena/)
+
+*   [ScreenSpot-Pro: GUI Grounding for Professional High-Resolution Computer Use](https://likaixin2000.github.io/papers/ScreenSpot_Pro.pdf)
+
+[![Image 109: Star](https://camo.githubusercontent.com/39ad9b5951e27ac4beaaa7cc70d30e3ec3590eaa1faa3beab8c21577ada63b97/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f6c696b616978696e323030302f53637265656e53706f742d50726f2d4755492d47726f756e64696e672e7376673f7374796c653d736f6369616c266c6162656c3d53746172)](https://github.com/likaixin2000/ScreenSpot-Pro-GUI-Grounding)[![Image 110: Website](https://camo.githubusercontent.com/fbcf70fc3c9c3e9b349e31bdcd7b3efdd9407574fcb31fc74732cfcd946788fd/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f576562736974652d396366)](https://gui-agent.github.io/grounding-leaderboard/)[![Image 111: PDF](https://camo.githubusercontent.com/268cfbc44a937ee58109c938c13e3c1c545bd0a17ec2adaaade6e4b0b72abeb1/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f50617065722d5044462d726564)](https://likaixin2000.github.io/papers/ScreenSpot_Pro.pdf)
+
+*   [WebWalker: Benchmarking LLMs in Web Traversal](https://github.com/Alibaba-nlp/WebWalker)
+
+[![Image 112: Star](https://camo.githubusercontent.com/6880f94b032ef4d3a0b9bb1f98300fd2296edff14b8df6e265769172964cc71a/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f416c69626162612d6e6c702f57656257616c6b65722e7376673f7374796c653d736f6369616c266c6162656c3d53746172)](https://github.com/Alibaba-nlp/WebWalker)[![Image 113: Website](https://camo.githubusercontent.com/fbcf70fc3c9c3e9b349e31bdcd7b3efdd9407574fcb31fc74732cfcd946788fd/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f576562736974652d396366)](https://alibaba-nlp.github.io/WebWalker/)[![Image 114: PDF](https://camo.githubusercontent.com/268cfbc44a937ee58109c938c13e3c1c545bd0a17ec2adaaade6e4b0b72abeb1/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f50617065722d5044462d726564)](https://arxiv.org/pdf/2501.07572)
+
+*   [SPA-Bench: A Comprehensive Benchmark for SmartPhone Agent Evaluation](https://ai-agents-2030.github.io/SPA-Bench/) (ICLR 2025)
+
+[![Image 115: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://arxiv.org/abs/2410.15164)[![Image 116: Website](https://camo.githubusercontent.com/fbcf70fc3c9c3e9b349e31bdcd7b3efdd9407574fcb31fc74732cfcd946788fd/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f576562736974652d396366)](https://ai-agents-2030.github.io/SPA-Bench/)
+
+*   [WorldGUI: Dynamic Testing for Comprehensive Desktop GUI Automation](https://arxiv.org/abs/2502.08047) (Feb. 2025)
+
+[![Image 117: Star](https://camo.githubusercontent.com/e7ec75acba2993b595e9913547689b8cfe2e1f2bdaafbe61ff10fc1c020967ae/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f73686f776c61622f576f726c644755492e7376673f7374796c653d736f6369616c266c6162656c3d53746172)](https://github.com/showlab/GUI-Thinker)[![Image 118: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://arxiv.org/abs/2502.08047)[![Image 119: Website](https://camo.githubusercontent.com/fbcf70fc3c9c3e9b349e31bdcd7b3efdd9407574fcb31fc74732cfcd946788fd/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f576562736974652d396366)](https://showlab.github.io/GUI-Thinker/)
+
+*   [LearnAct: Few-Shot Mobile GUI Agent with a Unified Demonstration Benchmark](https://arxiv.org/abs/2504.13805) (Apr. 2025)
+
+[![Image 120: Star](https://camo.githubusercontent.com/eea88fd1a7d212306ea72381e3a68c71a6dcbc7ff4708b3bd1366e19ce8d1714/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f6c6779303430342f4c6561726e4163742e7376673f7374796c653d736f6369616c266c6162656c3d53746172)](https://github.com/lgy0404/LearnAct)[![Image 121: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://arxiv.org/abs/2504.13805)[![Image 122: Website](https://camo.githubusercontent.com/fbcf70fc3c9c3e9b349e31bdcd7b3efdd9407574fcb31fc74732cfcd946788fd/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f576562736974652d396366)](https://lgy0404.github.io/LearnAct/)
+
+Models / Agents
+---------------
+
+[](https://github.com/showlab/Awesome-GUI-Agent#models--agents)
+*   [Grounding Open-Domain Instructions to Automate Web Support Tasks](https://web3.arxiv.org/abs/2103.16057) (Mar. 2021)
+
+[![Image 123: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://web3.arxiv.org/abs/2103.16057)
+
+*   [Screen2Words: Automatic Mobile UI Summarization with Multimodal Learning](https://arxiv.org/abs/2108.03353) (Aug. 2021)
+
+[![Image 124: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](http://arxiv.org/abs/2108.03353)
+
+*   [A Data-Driven Approach for Learning to Control Computers](https://arxiv.org/abs/2202.08137) (Feb. 2022)
+
+[![Image 125: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://arxiv.org/abs/2202.08137)
+
+*   [Augmenting Autotelic Agents with Large Language Models](https://arxiv.org/pdf/2305.12487) (May. 2023)
+
+[![Image 126: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://arxiv.org/pdf/2305.12487)
+
+*   [Synapse: Trajectory-as-Exemplar Prompting with Memory for Computer Control](https://arxiv.org/abs/2306.07863) (Jun. 2023, ICLR 2024)
+
+[![Image 127: Star](https://camo.githubusercontent.com/836f3513a123c146cde83f098f25fe6ed7a243b97af679c186fadabd0a1840d7/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f6c747a68656e672f73796e617073652e7376673f7374796c653d736f6369616c266c6162656c3d53746172)](https://github.com/ltzheng/synapse)[![Image 128: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://arxiv.org/abs/2306.07863)
+
+*   [A Real-World WebAgent with Planning, Long Context Understanding, and Program Synthesis](https://arxiv.org/abs/2307.12856) (Jul. 2023, ICLR 2024)
+
+[![Image 129: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](http://arxiv.org/abs/2307.12856)
+
+*   [LASER: LLM Agent with State-Space Exploration for Web Navigation](https://arxiv.org/abs/2309.08172) (Sep. 2023)
+
+[![Image 130: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://arxiv.org/abs/2309.08172)
+
+*   [CogAgent: A Visual Language Model for GUI Agents](https://arxiv.org/abs/2312.08914) (Dec. 2023, CVPR 2024)
+
+[![Image 131: Star](https://camo.githubusercontent.com/af40868e6b0a287ed884014b474201e581e6b04ecfcd52b30f02a82270a9219f/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f544855444d2f436f67564c4d2e7376673f7374796c653d736f6369616c266c6162656c3d53746172)](https://github.com/THUDM/CogVLM)[![Image 132: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://arxiv.org/abs/2312.08914)
+
+*   [WebVoyager: Building an End-to-End Web Agent with Large Multimodal Models](https://arxiv.org/abs/2401.13919)
+
+[![Image 133: Star](https://camo.githubusercontent.com/3947e85388bda6832b1fa49513125d6948ff45cdd7ec6334dc8e6775c9f46f13/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f4d696e6f724a657272792f576562566f79616765722e7376673f7374796c653d736f6369616c266c6162656c3d53746172)](https://github.com/MinorJerry/WebVoyager)[![Image 134: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://arxiv.org/abs/2401.13919)
+
+*   [OS-Copilot: Towards Generalist Computer Agents with Self-Improvement](https://arxiv.org/abs/2402.07456) (Feb. 2024)
+
+[![Image 135: Star](https://camo.githubusercontent.com/862f040edbb6ec7a134c63cc1536d88b21557f79737af5ef5dcf02e4e04c17b2/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f4f532d436f70696c6f742f4f532d436f70696c6f742e7376673f7374796c653d736f6369616c266c6162656c3d53746172)](https://github.com/OS-Copilot/OS-Copilot)[![Image 136: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://arxiv.org/abs/2402.07456)[![Image 137: Website](https://camo.githubusercontent.com/fbcf70fc3c9c3e9b349e31bdcd7b3efdd9407574fcb31fc74732cfcd946788fd/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f576562736974652d396366)](https://os-copilot.github.io/)
+
+*   [UFO: A UI-Focused Agent for Windows OS Interaction](https://arxiv.org/abs/2402.07939) (Feb. 2024)
+
+[![Image 138: Star](https://camo.githubusercontent.com/f2aa19ef1437d7938e805844660592deea3a0df7eca4f2b1bf08389f4382e443/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f6d6963726f736f66742f55464f2e7376673f7374796c653d736f6369616c266c6162656c3d53746172)](https://github.com/microsoft/UFO)[![Image 139: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://arxiv.org/abs/2402.07939)[![Image 140: Website](https://camo.githubusercontent.com/fbcf70fc3c9c3e9b349e31bdcd7b3efdd9407574fcb31fc74732cfcd946788fd/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f576562736974652d396366)](https://microsoft.github.io/UFO/)
+
+*   [Comprehensive Cognitive LLM Agent for Smartphone GUI Automation](https://arxiv.org/abs/2402.11941) (Feb. 2024)
+
+[![Image 141: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://arxiv.org/abs/2402.11941)
+
+*   [Improving Language Understanding from Screenshots](https://arxiv.org/abs/2402.14073) (Feb. 2024)
+
+[![Image 142: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://arxiv.org/abs/2402.14073)
+
+*   [AutoWebGLM: Bootstrap And Reinforce A Large Language Model-based Web Navigating Agent](https://arxiv.org/abs/2404.03648) (Apr. 2024, KDD 2024)
+
+[![Image 143: Star](https://camo.githubusercontent.com/a3d2eba4684876d8df9614b374a613d4223c30a2450339a4956bf373f9cc6015/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f544855444d2f4175746f576562474c4d2e7376673f7374796c653d736f6369616c266c6162656c3d53746172)](https://github.com/THUDM/AutoWebGLM)[![Image 144: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://arxiv.org/abs/2404.03648)
+
+*   [SheetCopilot: Bringing Software Productivity to the Next Level through Large Language Models](https://arxiv.org/abs/2305.19308) (May. 2023, NeurIPS 2023)
+
+[![Image 145: Star](https://camo.githubusercontent.com/042ed3d2479a032f995568cbc540dbe57f52867d7124db9713d70d8c32c0316d/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f427261766547726f75702f5368656574436f70696c6f742e7376673f7374796c653d736f6369616c266c6162656c3d53746172)](https://github.com/BraveGroup/SheetCopilot)[![Image 146: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://arxiv.org/abs/2305.19308)[![Image 147: Website](https://camo.githubusercontent.com/fbcf70fc3c9c3e9b349e31bdcd7b3efdd9407574fcb31fc74732cfcd946788fd/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f576562736974652d396366)](https://sheetcopilot.github.io/)
+
+*   [You Only Look at Screens: Multimodal Chain-of-Action Agents](https://arxiv.org/abs/2309.11436) (Sep. 2023)
+
+[![Image 148: Star](https://camo.githubusercontent.com/b49be9c168676f79018a6b38e0ddf19c8d3e250774d0249340c0d9cc366ad7e8/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f636f6f656c662f4175746f2d55492e7376673f7374796c653d736f6369616c266c6162656c3d53746172)](https://github.com/cooelf/Auto-UI)[![Image 149: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://arxiv.org/abs/2309.11436)
+
+*   [Reinforced UI Instruction Grounding: Towards a Generic UI Task Automation API](https://arxiv.org/abs/2310.04716) (Oct. 2023)
+
+[![Image 150: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://arxiv.org/abs/2310.04716)
+
+*   [OpenAgents: AN OPEN PLATFORM FOR LANGUAGE AGENTS IN THE WILD](https://arxiv.org/pdf/2310.10634) (Oct. 2023)
+
+[![Image 151: Star](https://camo.githubusercontent.com/582f61080d3332f748ce31fd752d2328736499094db1aeb6247001a3ad358e0f/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f786c616e672d61692f4f70656e4167656e74732e7376673f7374796c653d736f6369616c266c6162656c3d53746172)](https://github.com/xlang-ai/OpenAgents)[![Image 152: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://arxiv.org/pdf/2310.10634)
+
+*   [AgentStore: Scalable Integration of Heterogeneous Agents As Specialized Generalist Computer Assistant](https://arxiv.org/abs/2410.18603) (Oct. 2024)
+
+[![Image 153: Star](https://camo.githubusercontent.com/c766b7d57822d876ea356a37b1f385b82f2ab9618a5db6d63c80dace823f6119/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f6368656e67796f752d6a69612f4167656e7453746f72652e7376673f7374796c653d736f6369616c266c6162656c3d53746172)](https://github.com/chengyou-jia/AgentStore)[![Image 154: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://arxiv.org/abs/2410.18603)[![Image 155: Website](https://camo.githubusercontent.com/fbcf70fc3c9c3e9b349e31bdcd7b3efdd9407574fcb31fc74732cfcd946788fd/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f576562736974652d396366)](https://chengyou-jia.github.io/AgentStore-Home/)
+
+*   [GPT-4V in Wonderland: Large Multimodal Models for Zero-Shot Smartphone GUI Navigation](https://arxiv.org/abs/2311.07562) (Nov. 2023)
+
+[![Image 156: Star](https://camo.githubusercontent.com/fca7700db8d5ad7968161a45649c6efb95c99c8230d80c5d615d1e26636e3122/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f7a7a78736c702f4d4d2d4e6176696761746f722e7376673f7374796c653d736f6369616c266c6162656c3d53746172)](https://github.com/zzxslp/MM-Navigator)[![Image 157: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://arxiv.org/abs/2311.07562)
+
+*   [AppAgent: Multimodal Agents as Smartphone Users](https://arxiv.org/abs/2312.13771) (Dec. 2023)
+
+[![Image 158: Star](https://camo.githubusercontent.com/d1fdf2a17a8ff2e2b4e0fbc6ea09f8fdf9aeb8f6deec662db727eafb934738bb/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f6d6e6f74676f6439362f4170704167656e742e7376673f7374796c653d736f6369616c266c6162656c3d53746172)](https://github.com/mnotgod96/AppAgent)[![Image 159: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://arxiv.org/abs/2312.13771)[![Image 160: Website](https://camo.githubusercontent.com/fbcf70fc3c9c3e9b349e31bdcd7b3efdd9407574fcb31fc74732cfcd946788fd/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f576562736974652d396366)](https://appagent-official.github.io/)
+
+*   [SeeClick: Harnessing GUI Grounding for Advanced Visual GUI Agents](https://arxiv.org/abs/2401.10935) (Jan. 2024, ACL 2024)
+
+[![Image 161: Star](https://camo.githubusercontent.com/8e0fb89760dc935ad737f417ae72ecd652a264f01332f249ac70cb921904567c/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f6e6a7563636b6576696e2f536565436c69636b2e7376673f7374796c653d736f6369616c266c6162656c3d53746172)](https://github.com/njucckevin/SeeClick)[![Image 162: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://arxiv.org/abs/2401.10935)
+
+*   [GPT-4V(ision) is a Generalist Web Agent, if Grounded](https://arxiv.org/abs/2401.01614) (Jan. 2024, ICML 2024)
+
+[![Image 163: Star](https://camo.githubusercontent.com/1077829b1342e6ff1bf54e36a493d520ded24ebd6e9578368c9e451dbf398d23/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f4f53552d4e4c502d47726f75702f5365654163742e7376673f7374796c653d736f6369616c266c6162656c3d53746172)](https://github.com/OSU-NLP-Group/SeeAct)[![Image 164: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://arxiv.org/abs/2401.01614)[![Image 165: Website](https://camo.githubusercontent.com/fbcf70fc3c9c3e9b349e31bdcd7b3efdd9407574fcb31fc74732cfcd946788fd/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f576562736974652d396366)](https://osu-nlp-group.github.io/SeeAct/)
+
+*   [Mobile-Agent: Autonomous Multi-Modal Mobile Device Agent with Visual Perception](http://arxiv.org/abs/2401.16158) (Jan. 2024)
+
+[![Image 166: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](http://arxiv.org/abs/2401.16158)
+
+*   [Dual-View Visual Contextualization for Web Navigation](https://arxiv.org/abs/2402.04476) (Feb. 2024, CVPR 2024)
+
+[![Image 167: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://arxiv.org/abs/2402.04476)
+
+*   [DigiRL: Training In-The-Wild Device-Control Agents with Autonomous Reinforcement Learning](https://arxiv.org/abs/2406.11896) (Jun. 2024)
+
+[![Image 168: Star](https://camo.githubusercontent.com/4dde6d3d45616e67df08e22b9fc8c9a31501556a0b6727b3ed4d4016692ad4b5/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f44696769524c2d6167656e742f64696769726c2e7376673f7374796c653d736f6369616c266c6162656c3d53746172)](https://github.com/DigiRL-agent/digirl)[![Image 169: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://arxiv.org/abs/2406.11896)[![Image 170: Website](https://camo.githubusercontent.com/fbcf70fc3c9c3e9b349e31bdcd7b3efdd9407574fcb31fc74732cfcd946788fd/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f576562736974652d396366)](https://digirl-agent.github.io/)
+
+*   [Visual Grounding for User Interfaces](https://aclanthology.org/2024.naacl-industry.9.pdf) (NAACL 2024)
+
+[![Image 171: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://aclanthology.org/2024.naacl-industry.9.pdf)
+
+*   [ScreenAgent: A Computer Control Agent Driven by Visual Language Large Model](https://arxiv.org/abs/2402.07945) (Feb. 2024)
+
+[![Image 172: Star](https://camo.githubusercontent.com/6191063a35c2322eccd543fd8aaea0207d53a82adf5aa5cb3ade7b2946129f03/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f6e69757a61697368656e672f53637265656e4167656e742e7376673f7374796c653d736f6369616c266c6162656c3d53746172)](https://github.com/niuzaisheng/ScreenAgent)[![Image 173: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://arxiv.org/abs/2402.07945)[![Image 174: Website](https://camo.githubusercontent.com/fbcf70fc3c9c3e9b349e31bdcd7b3efdd9407574fcb31fc74732cfcd946788fd/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f576562736974652d396366)](https://screenagent.pages.dev/)
+
+*   [ScreenAI: A Vision-Language Model for UI and Infographics Understanding](https://arxiv.org/abs/2402.04615) (Feb. 2024)
+
+[![Image 175: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://arxiv.org/abs/2402.04615)
+
+*   [Ferret-UI: Grounded Mobile UI Understanding with Multimodal LLMs](https://arxiv.org/abs/2404.05719) (Apr. 2024)
+
+[![Image 176: Star](https://camo.githubusercontent.com/089dcd2fdd52bc85624e9b8d7d8824f87546cf08dfd22125c7f6d3ef1172197a/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f6170706c652f6d6c2d6665727265742e7376673f7374796c653d736f6369616c266c6162656c3d53746172)](https://github.com/apple/ml-ferret)[![Image 177: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://arxiv.org/abs/2404.05719)
+
+*   [Octopus: On-device language model for function calling of software APIs](https://arxiv.org/abs/2404.01549) (Apr., 2024)
+
+[![Image 178: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://arxiv.org/abs/2404.01549)
+
+*   [Octopus v2: On-device language model for super agent](https://arxiv.org/abs/2404.01744) (Apr., 2024)
+
+[![Image 179: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://arxiv.org/abs/2404.01744)
+
+*   [Octopus v3: Technical Report for On-device Sub-billion Multimodal AI Agent](https://arxiv.org/abs/2404.11459) (Apr., 2024)
+
+[![Image 180: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://arxiv.org/abs/2404.11459)[![Image 181: Website](https://camo.githubusercontent.com/fbcf70fc3c9c3e9b349e31bdcd7b3efdd9407574fcb31fc74732cfcd946788fd/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f576562736974652d396366)](https://www.nexa4ai.com/octopus-v3)
+
+*   [Octopus v4: Graph of language models](https://arxiv.org/abs/2404.19296) (Apr., 2024)
+
+[![Image 182: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://arxiv.org/abs/2404.19296)
+
+*   [AutoWebGLM: Bootstrap and Reinforce a Large Language Model-based Web Navigating Agent](https://arxiv.org/abs/2404.03648) (Apr. 2024)
+
+[![Image 183: Star](https://camo.githubusercontent.com/a3d2eba4684876d8df9614b374a613d4223c30a2450339a4956bf373f9cc6015/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f544855444d2f4175746f576562474c4d2e7376673f7374796c653d736f6369616c266c6162656c3d53746172)](https://github.com/THUDM/AutoWebGLM)[![Image 184: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://arxiv.org/abs/2404.03648)
+
+*   [Search Beyond Queries: Training Smaller Language Models for Web Interactions via Reinforcement Learning](https://arxiv.org/abs/2404.10887) (Apr. 2024)
+
+[![Image 185: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://arxiv.org/abs/2404.10887)
+
+*   [Enhancing Mobile "How-to" Queries with Automated Search Results Verification and Reranking](https://arxiv.org/pdf/2404.08860v3) (Apr. 2024, SIGIR 2024)
+
+[![Image 186: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://arxiv.org/pdf/2404.08860v3)
+
+*   [AutoDroid: LLM-powered Task Automation in Android](https://arxiv.org/abs/2308.15272)
+
+[![Image 187: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://arxiv.org/abs/2308.15272)
+
+*   [Explore, Select, Derive, and Recall: Augmenting LLM with Human-like Memory for Mobile Task Automation](https://arxiv.org/abs/2312.03003) (Dec. 2023, MobiCom 2024)
+
+[![Image 188: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://arxiv.org/abs/2312.03003)[![Image 189: Website](https://camo.githubusercontent.com/fbcf70fc3c9c3e9b349e31bdcd7b3efdd9407574fcb31fc74732cfcd946788fd/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f576562736974652d396366)](https://mobile-gpt.github.io/)
+
+*   [Towards General Computer Control: A Multimodal Agent for Red Dead Redemption II as a Case Study](https://arxiv.org/abs/2403.03186) (Mar. 2024)
+
+[![Image 190: Star](https://camo.githubusercontent.com/6cd7e564e20ce71c5d3ef692ca49a61ba7381e77fdb1424a9a0b7fc9cf4fd6ff/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f424141492d4167656e74732f437261646c652e7376673f7374796c653d736f6369616c266c6162656c3d53746172)](https://github.com/BAAI-Agents/Cradle)[![Image 191: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://arxiv.org/abs/2403.03186)[![Image 192: Website](https://camo.githubusercontent.com/fbcf70fc3c9c3e9b349e31bdcd7b3efdd9407574fcb31fc74732cfcd946788fd/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f576562736974652d396366)](https://baai-agents.github.io/Cradle/)
+
+*   [Android in the Zoo: Chain-of-Action-Thought for GUI Agents](https://arxiv.org/abs/2403.02713) (Mar. 2024)
+
+[![Image 193: Star](https://camo.githubusercontent.com/972939542939b729f22e9092e3cbdf20f46ce0208b66116d7e5d3abdf1d12366/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f494d4e65617274682f436f41542e7376673f7374796c653d736f6369616c266c6162656c3d53746172)](https://github.com/IMNearth/CoAT)[![Image 194: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://arxiv.org/abs/2403.02713)
+
+*   [Navigating WebAI: Training Agents to Complete Web Tasks with Large Language Models and Reinforcement Learning](https://arxiv.org/abs/2405.00516v1) (May 2024)
+
+[![Image 195: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://arxiv.org/abs/2405.00516v1)
+
+*   [GUI Action Narrator: Where and When Did That Action Take Place?](https://arxiv.org/abs/2406.13719) (Jun. 2024)
+
+[![Image 196: Star](https://camo.githubusercontent.com/9ec40a699dc2c5f6a1c4481cae9d0cdedaf33b5b0c7832288c39fe34a280306b/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f73686f776c61622f4755492d416374696f6e2d4e61727261746f722e7376673f7374796c653d736f6369616c266c6162656c3d53746172)](https://github.com/showlab/GUI-Action-Narrator)[![Image 197: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://arxiv.org/abs/2406.13719)[![Image 198: Website](https://camo.githubusercontent.com/fbcf70fc3c9c3e9b349e31bdcd7b3efdd9407574fcb31fc74732cfcd946788fd/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f576562736974652d396366)](https://showlab.github.io/GUI-Narrator)
+
+*   [Identifying User Goals from UI Trajectories](https://arxiv.org/abs/2406.14314) (Jun. 2024)
+
+[![Image 199: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://arxiv.org/abs/2406.14314)
+
+*   [VGA: Vision GUI Assistant -- Minimizing Hallucinations through Image-Centric Fine-Tuning](https://arxiv.org/abs/2406.14056) (Jun. 2024)
+
+[![Image 200: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://arxiv.org/abs/2406.14056)
+
+*   [Octo-planner: On-device Language Model for Planner-Action Agents](https://arxiv.org/abs/2406.18082) (Jun. 2024)
+
+[![Image 201: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://arxiv.org/abs/2406.18082)[![Image 202: Website](https://camo.githubusercontent.com/fbcf70fc3c9c3e9b349e31bdcd7b3efdd9407574fcb31fc74732cfcd946788fd/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f576562736974652d396366)](https://www.nexa4ai.com/octo-planner#video)
+
+*   [E-ANT: A Large-Scale Dataset for Efficient Automatic GUI NavigaTion](https://arxiv.org/abs/2406.14250) (Jun. 2024)
+
+[![Image 203: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://arxiv.org/abs/2406.14250)
+
+*   [Mobile-Agent-v2: Mobile Device Operation Assistant with Effective Navigation via Multi-Agent Collaboration](https://arxiv.org/abs/2406.01014) (Jun. 2024)
+
+[![Image 204: Star](https://camo.githubusercontent.com/16b9cfa0b80a195942cd4c9cc538d29e6d524aa763813d45755f1bc184ebb01f/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f582d504c55472f4d6f62696c654167656e742e7376673f7374796c653d736f6369616c266c6162656c3d53746172)](https://github.com/X-PLUG/MobileAgent)[![Image 205: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://arxiv.org/abs/2406.01014)
+
+*   [MobileFlow: A Multimodal LLM For Mobile GUI Agent](https://arxiv.org/abs/2407.04346) (Jul. 2024)
+
+[![Image 206: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://arxiv.org/abs/2407.04346)
+
+*   [Vision-driven Automated Mobile GUI Testing via Multimodal Large Language Model](https://arxiv.org/abs/2407.03037) (Jul. 2024)
+
+[![Image 207: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://arxiv.org/abs/2407.03037)
+
+*   [Internet of Agents: Weaving a Web of Heterogeneous Agents for Collaborative Intelligence](https://arxiv.org/abs/2407.07061) (Jul. 2024)
+
+[![Image 208: Star](https://camo.githubusercontent.com/6c73b1e4f145247330b0f31d13fa73dc24fa5f4d6721d8c9acfbbb0d3dabe06b/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f4f70656e424d422f496f412e7376673f7374796c653d736f6369616c266c6162656c3d53746172)](https://github.com/OpenBMB/IoA)[![Image 209: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://arxiv.org/abs/2407.07061)
+
+*   [MobileExperts: A Dynamic Tool-Enabled Agent Team in Mobile Devices](https://arxiv.org/abs/2407.03913) (Jul. 2024)
+
+[![Image 210: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://arxiv.org/abs/2407.03913)
+
+*   [AUITestAgent: Automatic Requirements Oriented GUI Function Testing](https://arxiv.org/abs/2407.09018) (Jul. 2024)
+
+[![Image 211: Star](https://camo.githubusercontent.com/085120c6c3f51180162fc3a11e81ebc4fd431fcd108707b2dc5350b3c822be82/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f627a2d6c61622f415549546573744167656e742e7376673f7374796c653d736f6369616c266c6162656c3d53746172)](https://github.com/bz-lab/AUITestAgent)[![Image 212: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://arxiv.org/abs/2407.09018)
+
+*   [Agent-E: From Autonomous Web Navigation to Foundational Design Principles in Agentic Systems](https://arxiv.org/abs/2407.13032) (Jul. 2024)
+
+[![Image 213: Star](https://camo.githubusercontent.com/01b7690edbdfd90a3145e81022a157188866f62ee3352ffc616f8b42009a0bc4/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f456d657267656e636541492f4167656e742d452e7376673f7374796c653d736f6369616c266c6162656c3d53746172)](https://github.com/EmergenceAI/Agent-E)[![Image 214: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://arxiv.org/abs/2407.13032)
+
+*   [OmniParser for Pure Vision Based GUI Agent](https://arxiv.org/pdf/2408.00203) (Aug. 2024)
+
+[![Image 215: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://arxiv.org/pdf/2408.00203)
+
+*   [VisualAgentBench: Towards Large Multimodal Models as Visual Foundation Agents](https://arxiv.org/abs/2408.06327) (Aug. 2024)
+
+[![Image 216: Star](https://camo.githubusercontent.com/ba656e4f7e37bbcf6b87cdf11facb9ef4154aeb7fa20998d5f0c9c6ef01e14ea/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f544855444d2f56697375616c4167656e7442656e63682e7376673f7374796c653d736f6369616c266c6162656c3d53746172)](https://github.com/THUDM/VisualAgentBench)[![Image 217: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://arxiv.org/abs/2408.06327)[![Image 218: Website](https://camo.githubusercontent.com/fbcf70fc3c9c3e9b349e31bdcd7b3efdd9407574fcb31fc74732cfcd946788fd/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f576562736974652d396366)](https://github.com/THUDM/VisualAgentBench)
+
+*   [Agent Q: Advanced Reasoning and Learning for Autonomous AI Agents](https://web3.arxiv.org/abs/2408.07199v1) (Aug. 2024)
+
+[![Image 219: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://web3.arxiv.org/abs/2408.07199v1)[![Image 220: Website](https://camo.githubusercontent.com/fbcf70fc3c9c3e9b349e31bdcd7b3efdd9407574fcb31fc74732cfcd946788fd/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f576562736974652d396366)](https://www.multion.ai/blog/introducing-agent-q-research-breakthrough-for-the-next-generation-of-ai-agents-with-planning-and-self-healing-capabilities)
+
+*   [MindSearch: Mimicking Human Minds Elicits Deep AI Searcher](https://arxiv.org/abs/2407.20183) (Jul. 2023)
+
+[![Image 221: Star](https://camo.githubusercontent.com/78e6f137d4d15ab1c69b7a59f5603f4c30700903564759011b4f64e45b15fbcf/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f496e7465726e4c4d2f4d696e645365617263682e7376673f7374796c653d736f6369616c266c6162656c3d53746172)](https://github.com/InternLM/MindSearch)[![Image 222: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://arxiv.org/abs/2407.20183)[![Image 223: Website](https://camo.githubusercontent.com/fbcf70fc3c9c3e9b349e31bdcd7b3efdd9407574fcb31fc74732cfcd946788fd/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f576562736974652d396366)](https://mindsearch.netlify.app/)
+
+*   [AppAgent v2: Advanced Agent for Flexible Mobile Interactions](https://arxiv.org/abs/2408.11824) (Aug. 2024)
+
+[![Image 224: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://arxiv.org/abs/2408.11824)
+
+*   [Caution for the Environment: Multimodal Agents are Susceptible to Environmental Distractions](https://arxiv.org/abs/2408.02544) (Aug. 2024)
+
+[![Image 225: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://arxiv.org/pdf/2408.02544)
+
+*   [Agent Workflow Memory](https://arxiv.org/abs/2409.07429) (Sep. 2024)
+
+[![Image 226: Star](https://camo.githubusercontent.com/700bc4cfb2cc02cdb5ea6089081b96595affcbd2572dea702404fa70469a46b8/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f7a6f72617a72772f6167656e742d776f726b666c6f772d6d656d6f72792e7376673f7374796c653d736f6369616c266c6162656c3d53746172)](https://github.com/zorazrw/agent-workflow-memory)[![Image 227: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://arxiv.org/abs/2409.07429)
+
+*   [MobileVLM: A Vision-Language Model for Better Intra- and Inter-UI Understandin](https://arxiv.org/abs/2409.14818) (Sep. 2024)
+
+[![Image 228: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://arxiv.org/abs/2409.14818)
+
+*   [Agent S: An Open Agentic Framework that Uses Computers Like a Human](https://arxiv.org/abs/2410.08164) (Oct. 2024)
+
+[![Image 229: Star](https://camo.githubusercontent.com/0ac280270ad79079caf8c2cf41bbab324cfa9e8e25a396d417a48b81b826fb71/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f73696d756c61722d61692f4167656e742d532e7376673f7374796c653d736f6369616c266c6162656c3d53746172)](https://github.com/simular-ai/Agent-S)[![Image 230: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://arxiv.org/abs/2410.08164)
+
+*   [MobA: A Two-Level Agent System for Efficient Mobile Task Automation](https://arxiv.org/abs/2410.13757) (Oct. 2024)
+
+[![Image 231: Star](https://camo.githubusercontent.com/fe02fae729394d02620371a1c3d416897a691f32eb6d045106a3edf5ca690d7f/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f4f70656e44464d2f4d6f62412e7376673f7374796c653d736f6369616c266c6162656c3d53746172)](https://github.com/OpenDFM/MobA)[![Image 232: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://arxiv.org/abs/2410.13757)[![Image 233: Dataset](https://camo.githubusercontent.com/430f8753b692ebedbf7ca8b5eb1b0f11abcaa316d6823010aa4ce4b4d4ffb765/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f48756767696e67253230466163652d446174617365742d626c7565)](https://huggingface.co/datasets/OpenDFM/MobA-MobBench)
+
+*   [Navigating the Digital World as Humans Do: Universal Visual Grounding for GUI Agents](https://arxiv.org/abs/2410.05243) (Oct. 2024)
+
+[![Image 234: Star](https://camo.githubusercontent.com/8916ac19be46430c07688be4ffde8f7b8038be43b2f1b9c5cbddff876bd3233e/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f4f53552d4e4c502d47726f75702f5547726f756e642e7376673f7374796c653d736f6369616c266c6162656c3d53746172)](https://github.com/OSU-NLP-Group/UGround)[![Image 235: Website](https://camo.githubusercontent.com/fbcf70fc3c9c3e9b349e31bdcd7b3efdd9407574fcb31fc74732cfcd946788fd/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f576562736974652d396366)](https://osu-nlp-group.github.io/UGround/)[![Image 236: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://arxiv.org/abs/2410.05243)
+
+*   [OS-ATLAS: A Foundation Action Model For Generalist GUI Agents](https://arxiv.org/pdf/2410.23218) (Oct. 2024)
+
+[![Image 237: Star](https://camo.githubusercontent.com/9ab03e7dde221e6634ac455a1f6fbf2b774e33badd31148b7c27d3b50d3036fb/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f4f532d436f70696c6f742f4f532d41746c61732e7376673f7374796c653d736f6369616c266c6162656c3d53746172)](https://github.com/OS-Copilot/OS-Atlas)[![Image 238: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://arxiv.org/abs/2410.23218)[![Image 239: Website](https://camo.githubusercontent.com/fbcf70fc3c9c3e9b349e31bdcd7b3efdd9407574fcb31fc74732cfcd946788fd/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f576562736974652d396366)](https://osatlas.github.io/)[![Image 240: Dataset](https://camo.githubusercontent.com/430f8753b692ebedbf7ca8b5eb1b0f11abcaa316d6823010aa4ce4b4d4ffb765/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f48756767696e67253230466163652d446174617365742d626c7565)](https://huggingface.co/datasets/OS-Copilot/OS-Atlas-data)
+
+*   [Attacking Vision-Language Computer Agents via Pop-ups](https://arxiv.org/abs/2411.02391) (Nov. 2024)
+
+[![Image 241: Star](https://camo.githubusercontent.com/11eb51e8b1a7162ef3bff9c82987b66ceffacc32b2412626dfceb46cd84a6995/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f53414c542d4e4c502f506f70757041747461636b2e7376673f7374796c653d736f6369616c266c6162656c3d53746172)](https://github.com/SALT-NLP/PopupAttack)[![Image 242: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://arxiv.org/abs/2411.02391)
+
+*   [AutoGLM: Autonomous Foundation Agents for GUIs](https://arxiv.org/abs/2411.00820) (Nov. 2024)
+
+[![Image 243: Star](https://camo.githubusercontent.com/f597c4981851afde87c51d4b13e0a5e9018731b680ece1ab5a819a0027b7288f/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f544855444d2f4175746f474c4d2e7376673f7374796c653d736f6369616c266c6162656c3d53746172)](https://github.com/THUDM/AutoGLM)[![Image 244: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://arxiv.org/abs/2411.00820)
+
+*   [AdaptAgent: Adapting Multimodal Web Agents with Few-Shot Learning from Human Demonstrations](https://arxiv.org/abs/2411.13451) (Nov. 2024)
+
+[![Image 245: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://arxiv.org/abs/2411.13451)
+
+*   [ShowUI: One Vision-Language-Action Model for Generalist GUI Agent](https://arxiv.org/abs/2411.17465) (Nov. 2024)
+
+[![Image 246: Star](https://camo.githubusercontent.com/91e88b4a77e903d2f7baee273528d7e7e909ab15694a12346fcc61275d6ef8ea/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f73686f776c61622f53686f7755492e7376673f7374796c653d736f6369616c266c6162656c3d53746172)](https://github.com/showlab/ShowUI)[![Image 247: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://arxiv.org/abs/2411.17465)
+
+*   [Aguvis: Unified Pure Vision Agents for Autonomous GUI Interaction](https://arxiv.org/abs/2412.04454) (Dec. 2024)
+
+[![Image 248: Website](https://camo.githubusercontent.com/fbcf70fc3c9c3e9b349e31bdcd7b3efdd9407574fcb31fc74732cfcd946788fd/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f576562736974652d396366)](https://aguvis-project.github.io/)[![Image 249: Star](https://camo.githubusercontent.com/58453b88ba77528bd8bf074a28d834b22f4d39453a1f2478f1af3d82afae6443/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f786c616e672d61692f4167757669732e7376673f7374796c653d736f6369616c266c6162656c3d53746172)](https://github.com/xlang-ai/aguvis)[![Image 250: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://arxiv.org/abs/2412.04454)
+
+*   [Falcon-UI: Understanding GUI Before Following User Instructions](https://arxiv.org/abs/2412.09362) (Dec. 2024)
+
+[![Image 251: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://arxiv.org/abs/2412.09362)
+
+*   [PC Agent: While You Sleep, AI Works - A Cognitive Journey into Digital World](https://arxiv.org/abs/2412.17589) (Dec. 2024)
+
+[![Image 252: Star](https://camo.githubusercontent.com/2e43195fa5acce34937d371d3fb8d21edc14da99177f7536f8764910530a1d2b/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f474149522d4e4c502f50432d4167656e742e7376673f7374796c653d736f6369616c266c6162656c3d53746172)](https://github.com/GAIR-NLP/PC-Agent)[![Image 253: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://arxiv.org/abs/2412.17589)[![Image 254: Website](https://camo.githubusercontent.com/fbcf70fc3c9c3e9b349e31bdcd7b3efdd9407574fcb31fc74732cfcd946788fd/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f576562736974652d396366)](https://gair-nlp.github.io/PC-Agent/)
+
+*   [Iris: Breaking GUI Complexity with Adaptive Focus and Self-Refining](https://arxiv.org/pdf/2412.10342) (Dec. 2024)
+
+[![Image 255: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://arxiv.org/pdf/2412.10342)
+
+*   [Aria-UI: Visual Grounding for GUI Instructions](https://arxiv.org/abs/2412.16256) (Dec. 2024)
+
+[![Image 256: Star](https://camo.githubusercontent.com/9299ca1630710aaf8f3afc6370f34eb0618177b18858b1576e64ddbb975dca27/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f4172696155492f417269612d55492e7376673f7374796c653d736f6369616c266c6162656c3d53746172)](https://github.com/AriaUI/Aria-UI)[![Image 257: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://arxiv.org/abs/2412.16256)[![Image 258: Website](https://camo.githubusercontent.com/fbcf70fc3c9c3e9b349e31bdcd7b3efdd9407574fcb31fc74732cfcd946788fd/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f576562736974652d396366)](https://ariaui.github.io/)[![Image 259: Dataset](https://camo.githubusercontent.com/430f8753b692ebedbf7ca8b5eb1b0f11abcaa316d6823010aa4ce4b4d4ffb765/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f48756767696e67253230466163652d446174617365742d626c7565)](https://huggingface.co/datasets/Aria-UI/Aria-UI_Data)
+
+*   [CogAgent v2](https://github.com/THUDM/CogAgent) (Dec. 2024)
+
+[![Image 260: Star](https://camo.githubusercontent.com/a6b6d39931bcfc72508416725658b09ea8494937e564bc8ad8248fa7540f2835/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f544855444d2f436f674167656e742e7376673f7374796c653d736f6369616c266c6162656c3d53746172)](https://github.com/THUDM/CogAgent)
+
+*   [OS-Genesis: Automating GUI Agent Trajectory Construction via Reverse Task Synthesis](https://arxiv.org/abs/2412.19723) (Dec. 2024)
+
+[![Image 261: Star](https://camo.githubusercontent.com/d87823aa95d1ab7c86958412efa70bf2623b29ebb2a22481cdc6cf7e3560ee14/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f4f532d436f70696c6f742f4f532d47656e657369732e7376673f7374796c653d736f6369616c266c6162656c3d53746172)](https://github.com/OS-Copilot/OS-Genesis)[![Image 262: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://arxiv.org/abs/2412.19723)[![Image 263: Website](https://camo.githubusercontent.com/fbcf70fc3c9c3e9b349e31bdcd7b3efdd9407574fcb31fc74732cfcd946788fd/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f576562736974652d396366)](https://qiushisun.github.io/OS-Genesis-Home/)
+
+*   [InfiGUIAgent: A Multimodal Generalist GUI Agent with Native Reasoning and Reflection](https://arxiv.org/pdf/2501.04575) (Jan. 2025)
+
+[![Image 264: Star](https://camo.githubusercontent.com/35632c6e2bf5b40ae20adf68d20cb579581d0ebc6154bed76baa90d6a58fc5a2/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f5265616c6c6d2d4c6162732f496e66694755494167656e742e7376673f7374796c653d736f6369616c266c6162656c3d53746172)](https://github.com/Reallm-Labs/InfiGUIAgent)[![Image 265: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://arxiv.org/pdf/2501.04575)
+
+*   [GUI-Bee : Align GUI Action Grounding to Novel Environments via Autonomous Exploration](https://arxiv.org/pdf/2501.13896) (Jan. 2025)
+
+[![Image 266: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://arxiv.org/pdf/2501.13896)[![Image 267: Website](https://camo.githubusercontent.com/fbcf70fc3c9c3e9b349e31bdcd7b3efdd9407574fcb31fc74732cfcd946788fd/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f576562736974652d396366)](https://gui-bee.github.io/)
+
+*   [Lightweight Neural App Control](https://arxiv.org/abs/2410.17883) (ICLR 2025)
+
+[![Image 268: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://arxiv.org/abs/2410.17883)
+
+*   [DistRL: An Asynchronous Distributed Reinforcement Learning Framework for On-Device Control Agents](https://arxiv.org/abs/2410.14803) (ICLR 2025)
+
+[![Image 269: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://arxiv.org/abs/2410.14803)[![Image 270: Website](https://camo.githubusercontent.com/fbcf70fc3c9c3e9b349e31bdcd7b3efdd9407574fcb31fc74732cfcd946788fd/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f576562736974652d396366)](https://ai-agents-2030.github.io/DistRL/)
+
+*   [AppVLM: A Lightweight Vision Language Model for Online App Control](https://arxiv.org/abs/2502.06395) (Feb. 2025)
+
+[![Image 271: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://arxiv.org/abs/2502.06395)
+
+*   [VSC-RL: Advancing Autonomous Vision-Language Agents with Variational Subgoal-Conditioned Reinforcement Learning](https://arxiv.org/abs/2502.07949) (Feb. 2025)
+
+[![Image 272: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://arxiv.org/abs/2502.07949)
+
+*   [GUI-Thinker: GUI-Thinker: A Basic yet Comprehensive GUI Agent Developed with Self-Reflection](https://arxiv.org/abs/2502.08047) (Feb. 2025)
+
+[![Image 273: Star](https://camo.githubusercontent.com/e7ec75acba2993b595e9913547689b8cfe2e1f2bdaafbe61ff10fc1c020967ae/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f73686f776c61622f576f726c644755492e7376673f7374796c653d736f6369616c266c6162656c3d53746172)](https://github.com/showlab/GUI-Thinker)[![Image 274: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://arxiv.org/abs/2502.08047)[![Image 275: Website](https://camo.githubusercontent.com/fbcf70fc3c9c3e9b349e31bdcd7b3efdd9407574fcb31fc74732cfcd946788fd/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f576562736974652d396366)](https://showlab.github.io/GUI-Thinker/)
+
+*   [MobileA3gent: Training Mobile GUI Agents Using Decentralized Self-Sourced Data from Diverse Users](https://arxiv.org/abs/2502.02982) (Feb., 2025) [![Image 276: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://arxiv.org/abs/2502.02982)
+
+*   [FedMABench: Benchmarking Mobile Agents on Decentralized Heterogeneous User Data](https://arxiv.org/abs/2503.05143) (Mar., 2025)
+
+[![Image 277: Star](https://camo.githubusercontent.com/2343869e42c9e1c38b7d539edd476f848df9b8b2155651fcf0bf65f54675c115/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f777768303431312f4665644d4142656e63682e7376673f7374796c653d736f6369616c266c6162656c3d53746172)](https://github.com/wwh0411/FedMABench)[![Image 278: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://arxiv.org/abs/2503.05143)[![Image 279: Website](https://camo.githubusercontent.com/fbcf70fc3c9c3e9b349e31bdcd7b3efdd9407574fcb31fc74732cfcd946788fd/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f576562736974652d396366)](https://huggingface.co/datasets/wwh0411/FedMABench)
+
+Surveys
+-------
+
+[](https://github.com/showlab/Awesome-GUI-Agent#surveys)
+*   [OS Agents: A Survey on MLLM-based Agents for General Computing Devices Use](https://github.com/OS-Agent-Survey/OS-Agent-Survey) (Dec. 2024)
+
+[![Image 280: Star](https://camo.githubusercontent.com/03706541b112d20f8b85ac3607e4eef3b961a1efe18e55a8edb898f100723fe9/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f4f532d4167656e742d5375727665792f4f532d4167656e742d5375727665792e7376673f7374796c653d736f6369616c266c6162656c3d53746172)](https://github.com/OS-Agent-Survey/OS-Agent-Survey)[![Image 281: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://github.com/OS-Agent-Survey/OS-Agent-Survey/blob/main/paper.pdf)[![Image 282: Website](https://camo.githubusercontent.com/fbcf70fc3c9c3e9b349e31bdcd7b3efdd9407574fcb31fc74732cfcd946788fd/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f576562736974652d396366)](https://os-agent-survey.github.io/)
+
+*   [GUI Agents with Foundation Models: A Comprehensive Survey](https://arxiv.org/abs/2411.04890) (Nov. 2024)
+
+[![Image 283: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://arxiv.org/abs/2411.04890)
+
+*   [Large Language Model-Brained GUI Agents: A Survey](https://arxiv.org/abs/2411.18279) (Nov. 2024)
+
+[![Image 284: Website](https://camo.githubusercontent.com/fbcf70fc3c9c3e9b349e31bdcd7b3efdd9407574fcb31fc74732cfcd946788fd/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f576562736974652d396366)](https://vyokky.github.io/LLM-Brained-GUI-Agents-Survey/)[![Image 285: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://arxiv.org/abs/2411.18279)
+
+*   [GUI Agents: A Survey](https://arxiv.org/abs/2412.13501) (Dec. 2024)
+
+[![Image 286: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://arxiv.org/abs/2412.13501)
+
+*   [LLM-Powered GUI Agents in Phone Automation: Surveying Progress and Prospects](https://arxiv.org/abs/2504.19838) (Apr. 2025)
+
+[![Image 287: Star](https://camo.githubusercontent.com/19516b1fbe042626dea0a5387ec668e5e8add5f8de884fb39b21526378d4e2fa/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f50686f6e654c4c4d2f417765736f6d652d4c4c4d2d506f77657265642d50686f6e652d4755492d4167656e74732e7376673f7374796c653d736f6369616c266c6162656c3d53746172)](https://github.com/PhoneLLM/Awesome-LLM-Powered-Phone-GUI-Agents)[![Image 288: arXiv](https://camo.githubusercontent.com/80090bebc420309b944d4a05dfa1a55a9785683f4ee5dd7cc7202a5dea3262a0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f61725869762d6233316231622e737667)](https://arxiv.org/abs/2504.19838)
+
+Projects
+--------
+
+[](https://github.com/showlab/Awesome-GUI-Agent#projects)
+*   [PyAutoGUI](https://pyautogui.readthedocs.io/en/latest/index.html)
+
+[![Image 289: Star](https://camo.githubusercontent.com/6d857c4e3935bfdf441503019529c134b54ceed789073b9056df69077a8b5b23/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f6173776569676172742f70796175746f6775692e7376673f7374796c653d736f6369616c266c6162656c3d53746172)](https://github.com/asweigart/pyautogui/tree/master)[![Image 290: Website](https://camo.githubusercontent.com/fbcf70fc3c9c3e9b349e31bdcd7b3efdd9407574fcb31fc74732cfcd946788fd/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f576562736974652d396366)](https://pyautogui.readthedocs.io/en/latest/)
+
+*   [nut.js](https://nutjs.dev/)
+
+[![Image 291: Star](https://camo.githubusercontent.com/5cb3c7e582fbf6e23bca6751c3a81f20d575b4a8cc0d329344def9ae964ea3ea/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f6e75742d747265652f6e75742e6a732e7376673f7374796c653d736f6369616c266c6162656c3d53746172)](https://github.com/nut-tree/nut.js)[![Image 292: Website](https://camo.githubusercontent.com/fbcf70fc3c9c3e9b349e31bdcd7b3efdd9407574fcb31fc74732cfcd946788fd/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f576562736974652d396366)](https://nutjs.dev/)
+
+*   [GPT-4V-Act: AI agent using GPT-4V(ision) for web UI interaction](https://github.com/ddupont808/GPT-4V-Act)
+
+[![Image 293: Star](https://camo.githubusercontent.com/96f5f7cf444ba6eba5aca1f9e7496b9a8129cdba453d9b2ddb8f2019ec1aeef0/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f646475706f6e743830382f4750542d34562d4163742e7376673f7374796c653d736f6369616c266c6162656c3d53746172)](https://github.com/ddupont808/GPT-4V-Act)
+
+*   [gpt-computer-assistant](https://github.com/onuratakan/gpt-computer-assistant)
+
+[![Image 294: Star](https://camo.githubusercontent.com/30a7d7f391d26d6d776df5775f51f205866c94e7ceb8bbbafab24eadd17a9b42/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f6f6e75726174616b616e2f6770742d636f6d70757465722d617373697374616e742e7376673f7374796c653d736f6369616c266c6162656c3d53746172)](https://github.com/onuratakan/gpt-computer-assistant)
+
+*   [Mobile-Agent: The Powerful Mobile Device Operation Assistant Family](https://github.com/X-PLUG/MobileAgent)
+
+[![Image 295: Star](https://camo.githubusercontent.com/16b9cfa0b80a195942cd4c9cc538d29e6d524aa763813d45755f1bc184ebb01f/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f582d504c55472f4d6f62696c654167656e742e7376673f7374796c653d736f6369616c266c6162656c3d53746172)](https://github.com/X-PLUG/MobileAgent)
+
+*   [OpenUI](https://github.com/wandb/openui)
+
+[![Image 296: Star](https://camo.githubusercontent.com/d3a710f2b0ac4eb78c91e37f73017401d536dcf0c17e864f34c5298de3db5be3/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f77616e64622f6f70656e75692e7376673f7374796c653d736f6369616c266c6162656c3d53746172)](https://github.com/wandb/openui)[![Image 297: Website](https://camo.githubusercontent.com/fbcf70fc3c9c3e9b349e31bdcd7b3efdd9407574fcb31fc74732cfcd946788fd/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f576562736974652d396366)](https://openui.fly.dev/)
+
+*   [ACT-1](https://www.adept.ai/blog/act-1)
+
+[![Image 298: Website](https://camo.githubusercontent.com/fbcf70fc3c9c3e9b349e31bdcd7b3efdd9407574fcb31fc74732cfcd946788fd/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f576562736974652d396366)](https://www.adept.ai/blog/act-1)
+
+*   [NatBot](https://github.com/nat/natbot)
+
+[![Image 299: Star](https://camo.githubusercontent.com/cf9890ce48fdd425f2fcd7295293867868e8cdc45c8c4d1c81323c0d9814f3ba/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f6e61742f6e6174626f742e7376673f7374796c653d736f6369616c266c6162656c3d53746172)](https://github.com/nat/natbot)
+
+*   [Multion](https://www.multion.ai/)
+
+[![Image 300: Website](https://camo.githubusercontent.com/fbcf70fc3c9c3e9b349e31bdcd7b3efdd9407574fcb31fc74732cfcd946788fd/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f576562736974652d396366)](https://www.multion.ai/)
+
+*   [Auto-GPT](https://github.com/Significant-Gravitas/Auto-GPT)
+
+[![Image 301: Star](https://camo.githubusercontent.com/96d3ad45e656da20e02a843b201dfc13134f3e8436a987d664a008b19f56f837/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f5369676e69666963616e742d47726176697461732f4175746f2d4750542e7376673f7374796c653d736f6369616c266c6162656c3d53746172)](https://github.com/Significant-Gravitas/Auto-GPT)
+
+*   [WebLlama](https://github.com/McGill-NLP/webllama)
+
+[![Image 302: Star](https://camo.githubusercontent.com/d899d448b3e1066ab7f0b5e54a5d593b5ad20c7c77420fdd66743b7386b118f0/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f4d6347696c6c2d4e4c502f7765626c6c616d612e7376673f7374796c653d736f6369616c266c6162656c3d53746172)](https://github.com/McGill-NLP/webllama)[![Image 303: Website](https://camo.githubusercontent.com/fbcf70fc3c9c3e9b349e31bdcd7b3efdd9407574fcb31fc74732cfcd946788fd/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f576562736974652d396366)](https://webllama.github.io/)
+
+*   [LaVague: Large Action Model Framework to Develop AI Web Agents](https://github.com/lavague-ai/LaVague)
+
+[![Image 304: Star](https://camo.githubusercontent.com/e32cc606a13646618d6fba685f20e7c453a329c474c4e91d9a197333d50b00e9/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f6c6176616775652d61692f4c6156616775652e7376673f7374796c653d736f6369616c266c6162656c3d53746172)](https://github.com/lavague-ai/LaVague)[![Image 305: Website](https://camo.githubusercontent.com/fbcf70fc3c9c3e9b349e31bdcd7b3efdd9407574fcb31fc74732cfcd946788fd/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f576562736974652d396366)](https://docs.lavague.ai/)
+
+*   [OpenAdapt: AI-First Process Automation with Large Multimodal Models](https://github.com/OpenAdaptAI/OpenAdapt)
+
+[![Image 306: Star](https://camo.githubusercontent.com/222d9381c08c4e62b4a45d9956715309e081638d2e6d3c473dd5f28427ff751c/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f4f70656e416461707441492f4f70656e41646170742e7376673f7374796c653d736f6369616c266c6162656c3d53746172)](https://github.com/OpenAdaptAI/OpenAdapt)
+
+*   [Surfkit: A toolkit for building and sharing AI agents that operate on devices](https://github.com/agentsea/surfkit)
+
+[![Image 307: Star](https://camo.githubusercontent.com/582709f917198af10b7271dd688cca68b963a127f26557061d8a8d83c4d999c9/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f6167656e747365612f737572666b69742e7376673f7374796c653d736f6369616c266c6162656c3d53746172)](https://github.com/agentsea/surfkit)
+
+*   [AGI Computer Control](https://github.com/James4Ever0/agi_computer_control)
+
+*   [Open Interpreter](https://github.com/OpenInterpreter/open-interpreter)
+
+[![Image 308: Star](https://camo.githubusercontent.com/6d7475927efb8a3e0da1cbb9dce02e6967117bf3defd0b2130d8883183a5ba47/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f4f70656e496e7465727072657465722f6f70656e2d696e7465727072657465722e7376673f7374796c653d736f6369616c266c6162656c3d53746172)](https://github.com/OpenInterpreter/open-interpreter)[![Image 309: Website](https://camo.githubusercontent.com/fbcf70fc3c9c3e9b349e31bdcd7b3efdd9407574fcb31fc74732cfcd946788fd/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f576562736974652d396366)](https://openinterpreter.com/)
+
+*   [WebMarker: Mark web pages for use with vision-language models](https://github.com/reidbarber/webmarker)
+
+[![Image 310: Star](https://camo.githubusercontent.com/640fafebb675e2ccf8f033d798abbffcd685995635d4b8245986173c32d01294/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f726569646261726265722f7765626d61726b65722e7376673f7374796c653d736f6369616c266c6162656c3d53746172)](https://github.com/reidbarber/webmarker)[![Image 311: Website](https://camo.githubusercontent.com/fbcf70fc3c9c3e9b349e31bdcd7b3efdd9407574fcb31fc74732cfcd946788fd/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f576562736974652d396366)](https://www.webmarkerjs.com/)
+
+*   [Computer Use Out-of-the-box](https://github.com/showlab/computer_use_ootb)
+
+[![Image 312: Star](https://camo.githubusercontent.com/17b8c97bfc011877b6374244e18d397e3dac80f968411e2a7beea533e4b84daa/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f73686f776c61622f636f6d70757465725f7573655f6f6f74622e7376673f7374796c653d736f6369616c266c6162656c3d53746172)](https://github.com/showlab/computer_use_ootb/tree/master)[![Image 313: Website](https://camo.githubusercontent.com/fbcf70fc3c9c3e9b349e31bdcd7b3efdd9407574fcb31fc74732cfcd946788fd/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f576562736974652d396366)](https://computer-use-ootb.github.io/)
+
+Safety
+------
+
+[](https://github.com/showlab/Awesome-GUI-Agent#safety)
+*   [Adversarial Attacks on Multimodal Agents](https://github.com/ChenWu98/agent-attack)
+
+[![Image 314: Star](https://camo.githubusercontent.com/3ab93f0bf23bf6f4acd44708645a39433f40bbc64a5c67df3c1690a2ab5ea974/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f4368656e577539382f6167656e742d61747461636b2e7376673f7374796c653d736f6369616c266c6162656c3d53746172)](https://github.com/ChenWu98/agent-attack)[![Image 315: Website](https://camo.githubusercontent.com/fbcf70fc3c9c3e9b349e31bdcd7b3efdd9407574fcb31fc74732cfcd946788fd/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f576562736974652d396366)](https://chenwu.io/attack-agent/)
+
+*   [AdvWeb: Controllable Black-box Attacks on VLM-powered Web Agents](https://github.com/AI-secure/AdvWeb)
+
+[![Image 316: Star](https://camo.githubusercontent.com/f961faa813c806e08141e6795c693028e8ae84e5b21dead50c475552846bbe46/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f41492d7365637572652f4164765765622e7376673f7374796c653d736f6369616c266c6162656c3d53746172)](https://github.com/AI-secure/AdvWeb)[![Image 317: Website](https://camo.githubusercontent.com/fbcf70fc3c9c3e9b349e31bdcd7b3efdd9407574fcb31fc74732cfcd946788fd/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f576562736974652d396366)](https://ai-secure.github.io/AdvWeb/)
+
+*   [MobileSafetyBench: Evaluating Safety of Autonomous Agents in Mobile Device Control](https://github.com/jylee425/mobilesafetybench)
+
+[![Image 318: Star](https://camo.githubusercontent.com/60f51e4b8e41e0d3031f6ad7073a22f92529645efd85f1a6077ce3942dd17a4d/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f6a796c65653432352f6d6f62696c6573616665747962656e63682e7376673f7374796c653d736f6369616c266c6162656c3d53746172)](https://github.com/jylee425/mobilesafetybench)[![Image 319: Website](https://camo.githubusercontent.com/fbcf70fc3c9c3e9b349e31bdcd7b3efdd9407574fcb31fc74732cfcd946788fd/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f576562736974652d396366)](https://mobilesafetybench.github.io/)
+
+*   [EIA: Environmental Injection Attack on Generalist Web Agents for Privacy Leakage](https://github.com/OSU-NLP-Group/EIA_against_webagent)
+
+[![Image 320: Star](https://camo.githubusercontent.com/f26e45eb3f678f0c1dec930dbf7f9fdca9d1209c3ac49812259b3419f16d39d1/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f4f53552d4e4c502d47726f75702f4549415f616761696e73745f7765626167656e742e7376673f7374796c653d736f6369616c266c6162656c3d53746172)](https://github.com/OSU-NLP-Group/EIA_against_webagent)
+
+*   [Is Your LLM Secretly a World Model of the Internet? Model-Based Planning for Web Agents](https://github.com/OSU-NLP-Group/WebDreamer)
+
+[![Image 321: Star](https://camo.githubusercontent.com/0c481064f603bec4350e5df7ba799247441317245793f1d0d670abe1f18b5801/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f4f53552d4e4c502d47726f75702f576562447265616d65722e7376673f7374796c653d736f6369616c266c6162656c3d53746172)](https://github.com/OSU-NLP-Group/WebDreamer)
+
+*   [Caution for the Environment: Multimodal Agents are Susceptible to Environmental Distractions](https://arxiv.org/abs/2408.02544)
+
+*   [Security Matrix for Multimodal Agents on Mobile Devices: A Systematic and Proof of Concept Study](https://arxiv.org/html/2407.09295v2)
+
+Related Repositories
+--------------------
+
+[](https://github.com/showlab/Awesome-GUI-Agent#related-repositories)
+*   [awesome-llm-powered-agent](https://github.com/hyp1231/awesome-llm-powered-agent)
+*   [Awesome-LLM-based-Web-Agent-and-Tools](https://github.com/albzni/Awesome-LLM-based-Web-Agent-and-Tools)
+*   [awesome-ui-agents](https://github.com/opendilab/awesome-ui-agents/)
+*   [computer-control-agent-knowledge-base](https://github.com/James4Ever0/computer_control_agent_knowledge_base)
+*   [Awesome GUI Agent Paper List](https://github.com/OSU-NLP-Group/GUI-Agents-Paper-List/)
+
+Acknowledgements
+----------------
+
+[](https://github.com/showlab/Awesome-GUI-Agent#acknowledgements)
+This template is provided by [Awesome-Video-Diffusion](https://github.com/showlab/Awesome-Video-Diffusion) and [Awesome-MLLM-Hallucination](https://github.com/showlab/Awesome-MLLM-Hallucination).

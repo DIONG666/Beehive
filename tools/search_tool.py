@@ -60,7 +60,7 @@ class KnowledgeBaseSearchTool:
             
             # 首先进行向量检索
             top_k = top_k or Config.TOP_K
-            initial_results = await self.retriever.search(query, top_k * 2)
+            initial_results = await self.retriever.search(query, top_k)
             
             if not initial_results or len(initial_results) == 0:
                 return {

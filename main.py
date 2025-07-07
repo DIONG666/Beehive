@@ -41,7 +41,7 @@ class MultiAgentResearchSystem:
             return {
                 "answer": f"处理查询时出现错误: {str(e)}",
                 "citations": [],
-                "reasoning_trace": [],
+                "reasoning_trace": "",
                 "error": True
             }
     
@@ -76,16 +76,14 @@ class MultiAgentResearchSystem:
                 print("📋 研究结果:")
                 print("="*60)
                 print(f"\n💡 答案: {result['answer']}")
-                
+                if result.get('reasoning_trace'):
+                    print(f"\n🧠 推理过程:")
+                    print(result['reasoning_trace'])
+
                 if result.get('citations'):
-                    print(f"\n📚 引用文献:")
+                    print(f"\n📚 参考链接:")
                     for i, citation in enumerate(result['citations'], 1):
                         print(f"  [{i}] {citation}")
-                
-                if result.get('reasoning_trace'):
-                    print(f"\n🧠 推理轨迹:")
-                    for i, step in enumerate(result['reasoning_trace'], 1):
-                        print(f"  步骤 {i}: {step}")
                 
             except KeyboardInterrupt:
                 print("\n\n👋 用户中断，退出系统")

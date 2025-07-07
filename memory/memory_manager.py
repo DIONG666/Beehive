@@ -16,10 +16,7 @@ class MemoryEntry:
     timestamp: str
     query: str
     context: str
-    reasoning_steps: List[Dict[str, Any]]
-    search_results: List[Dict[str, Any]]
     final_answer: str
-    metadata: Dict[str, Any]
 
 
 class MemoryManager:
@@ -57,9 +54,7 @@ class MemoryManager:
             'session_id': session_id,
             'start_time': datetime.now().isoformat(),
             'queries': [],
-            'total_queries': 0,
-            'total_search_results': 0,
-            'reasoning_steps': []
+            'total_queries': 0
         }
         self._save_session()
     
@@ -68,19 +63,14 @@ class MemoryManager:
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
         return f"session_{timestamp}"
     
-    def add_memory_entry(self, query: str, context: str, reasoning_steps: List[Dict[str, Any]], 
-                        search_results: List[Dict[str, Any]], final_answer: str, 
-                        metadata: Dict[str, Any] = None) -> str:
+    def add_memory_entry(self, query: str, context: str, final_answer: str) -> str:
         """
         添加内存条目
         
         Args:
             query: 查询
             context: 上下文
-            reasoning_steps: 推理步骤
-            search_results: 搜索结果
             final_answer: 最终答案
-            metadata: 元数据
             
         Returns:
             内存条目ID
@@ -94,10 +84,7 @@ class MemoryManager:
                 timestamp=timestamp,
                 query=query,
                 context=context,
-                reasoning_steps=reasoning_steps,
-                search_results=search_results,
-                final_answer=final_answer,
-                metadata=metadata or {}
+                final_answer=final_answer
             )
             
             self.memory_entries.append(entry)
@@ -109,8 +96,6 @@ class MemoryManager:
                 'timestamp': timestamp
             })
             self.current_session['total_queries'] += 1
-            self.current_session['total_search_results'] += len(search_results)
-            self.current_session['reasoning_steps'].extend(reasoning_steps)
             
             # 保存内存
             self._save_memory()
@@ -246,8 +231,6 @@ class MemoryManager:
                 'session_id': self.current_session['session_id'],
                 'duration': self._calculate_session_duration(),
                 'total_queries': self.current_session['total_queries'],
-                'total_search_results': self.current_session['total_search_results'],
-                'avg_reasoning_steps': len(self.current_session['reasoning_steps']) / max(1, self.current_session['total_queries']),
                 'queries': self.current_session['queries']
             }
         except Exception as e:
@@ -331,19 +314,16 @@ class MemoryManager:
         try:
             total_entries = len(self.memory_entries)
             
-            if total_entries == 0:
-                return {
-                    'total_entries': 0,
-                    'avg_query_length': 0,
-                    'avg_answer_length': 0,
-                    'most_active_day': 'N/A',
-                    'total_reasoning_steps': 0
-                }
+            if total_entries == 0:            return {
+                'total_entries': 0,
+                'avg_query_length': 0,
+                'avg_answer_length': 0,
+                'most_active_day': 'N/A'
+            }
             
             # 基础统计
             total_query_chars = sum(len(entry.query) for entry in self.memory_entries)
             total_answer_chars = sum(len(entry.final_answer) for entry in self.memory_entries)
-            total_reasoning_steps = sum(len(entry.reasoning_steps) for entry in self.memory_entries)
             
             # 按日期统计
             date_counts = {}
@@ -361,8 +341,6 @@ class MemoryManager:
                 'avg_query_length': total_query_chars / total_entries,
                 'avg_answer_length': total_answer_chars / total_entries,
                 'most_active_day': most_active_day,
-                'total_reasoning_steps': total_reasoning_steps,
-                'avg_reasoning_steps_per_query': total_reasoning_steps / total_entries,
                 'date_distribution': date_counts
             }
             
@@ -390,18 +368,6 @@ class MemoryManager:
         except Exception as e:
             print(f"❌ 保存会话失败: {str(e)}")
     
-    def add_reasoning_step(self, step: Dict[str, Any]):
-        """
-        添加推理步骤到当前会话
-        
-        Args:
-            step: 推理步骤
-        """
-        self.current_session['reasoning_steps'].append({
-            'timestamp': datetime.now().isoformat(),
-            'step': step
-        })
-        self._save_session()
     
     def get_similar_queries(self, query: str, limit: int = 5) -> List[Dict[str, Any]]:
         """
