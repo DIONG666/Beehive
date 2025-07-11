@@ -14,18 +14,22 @@ class SummarizerTool:
         self.enabled = Config.ENABLE_SUMMARIZER
         self.max_length = Config.MAX_CONTEXT_LENGTH
         self.planner = None
-        self._initialize_planner()
+        self.llm_client = None
+        self._initialize_llm()
     
-    def _initialize_planner(self):
-        """初始化规划器用于LLM摘要"""
+    def _initialize_llm(self):
+        """初始化LLM客户端用于摘要"""
         try:
-            from planner.planner import DeepSeekPlanner
-            self.planner = DeepSeekPlanner()
+            from openai import OpenAI
+            self.llm_client = OpenAI(
+                api_key=Config.DEEPSEEK_API_KEY,
+                base_url=Config.DEEPSEEK_BASE_URL
+            )
         except ImportError as e:
-            print(f"⚠️ 警告: 无法导入规划器 - {e}")
+            print(f"⚠️ 警告: 无法初始化LLM客户端 - {e}")
             print("将使用基础摘要功能")
     
-    async def summarize(self, text: str, max_length: Optional[int] = None, 
+    def summarize(self, text: str, max_length: Optional[int] = None, 
                        style: str = "general") -> Dict[str, Any]:
         """
         对文本进行摘要
@@ -65,8 +69,8 @@ class SummarizerTool:
                 }
             
             # 根据是否有LLM选择摘要方法
-            if self.planner:
-                summary = await self._llm_summarize(text, max_len, style)
+            if self.llm_client:
+                summary = self._llm_summarize(text, max_len, style)
                 method = 'llm'
             else:
                 summary = self._extractive_summarize(text, max_len)
@@ -97,9 +101,9 @@ class SummarizerTool:
                 'method': 'truncation',
                 'error': f'摘要生成失败，返回截断版本: {str(e)}'
             }
-    
-    async def _llm_summarize(self, query: str, text: str, max_length: int, 
-                           style: str) -> str:
+
+    def _llm_summarize(self, query: str, text: str, max_length: int,
+                       style: str) -> str:
         """
         使用LLM生成摘要
         
@@ -120,7 +124,7 @@ class SummarizerTool:
         }
         
         prompt = style_prompts.get(style, style_prompts['general'])
-        prompt += f"\n\n查询内容：{query}\n\n原文：\n{text}\n\n要求：\n1. 重点总结与查询内容「{query}」最相关的信息\n2. 优先提取能回答查询的关键内容和细节\n3. 严格控制摘要长度不超过{max_length}字符\n4. 保持相关信息的完整性和准确性\n5. 语言简洁清晰，直接生成摘要内容"
+        prompt += f"\n\n查询内容：{query}\n\n原文：\n{text}\n\n要求：\n1. 重点总结与查询内容「{query}」最相关的信息\n2. 优先提取能回答查询的关键内容和细节\n3. 严格控制摘要长度不超过{max_length}字符\n4. 保持相关信息的完整性和准确性\n5. 语言简洁清晰，直接生成摘要内容，不要生成其他没有用的内容"
         
         messages = [
             {"role": "system", "content": "你是一个专业的文本摘要专家。"},
@@ -128,15 +132,23 @@ class SummarizerTool:
         ]
         
         try:
-            summary = await self.planner.generate_response(messages)
-            print(f"摘要内容：\n{summary[:200]}...")  # 只打印前200字符
+            response = self.llm_client.chat.completions.create(
+                model='deepseek-chat',  # 使用v3模型
+                messages=messages,
+                temperature=0.3,
+                max_tokens=1024,
+                stream=False,
+            )
+            summary = response.choices[0].message.content.strip()
+            # print(f"摘要内容:\n{summary[:200]}...")  # 只打印前200字符
             
             # 如果摘要仍然过长，进行截断
             if len(summary) > max_length:
                 summary = summary[:max_length].rsplit('。', 1)[0] + '。'
             
             return summary
-        except:
+        except Exception as e:
+            print(f"❌ LLM摘要失败: {str(e)}，回退到抽取式摘要")
             # LLM失败时回退到抽取式摘要
             return self._extractive_summarize(text, max_length)
     
@@ -258,3 +270,138 @@ class SummarizerTool:
         
         return score
     
+    def batch_summarize(self, query: str, text: str, 
+                       chunk_size: int = 5000, 
+                       chunk_summary_length: int = 300,
+                       final_summary_length: int = 1000,
+                       style: str = "general") -> Dict[str, Any]:
+        """
+        分批总结长文档
+        
+        Args:
+            query: 查询内容
+            text: 待总结的文本
+            chunk_size: 每批处理的字符数 (默认5000)
+            chunk_summary_length: 每批总结的长度 (默认300字符)
+            final_summary_length: 最终总结的长度 (默认1000字符)
+            style: 总结风格
+            
+        Returns:
+            总结结果字典
+        """
+        if not text or not text.strip():
+            return {
+                'summary': '',
+                'original_length': 0,
+                'summary_length': 0,
+                'compression_ratio': 0,
+                'method': 'empty',
+                'chunks_processed': 0,
+                'error': '输入文本为空'
+            }
+        
+        try:
+            print(f"📝 开始分批总结，原文长度: {len(text)} 字符")
+            print(f"📦 分批参数: 块大小={chunk_size}, 块总结长度={chunk_summary_length}, 最终长度={final_summary_length}")
+            
+            # 分割文本为块
+            chunks = self._split_text_into_chunks(text, chunk_size)
+            print(f"📦 文本分割为 {len(chunks)} 块")
+            
+            # 对每个块进行总结
+            chunk_summaries = []
+            for i, chunk in enumerate(chunks):
+                print(f"📝 正在总结第 {i+1}/{len(chunks)} 块 (长度: {len(chunk)} 字符)")
+                
+                if self.llm_client:
+                    chunk_summary = self._llm_summarize(query, chunk, chunk_summary_length, style)
+                else:
+                    chunk_summary = self._extractive_summarize(chunk, chunk_summary_length)
+                
+                chunk_summaries.append(chunk_summary)
+                print(f"✅ 第 {i+1} 块总结完成 (长度: {len(chunk_summary)} 字符)")
+            
+            # 合并所有块的总结
+            combined_summary = "\n\n".join(chunk_summaries)
+            print(f"🔗 合并所有块总结，总长度: {len(combined_summary)} 字符")
+            
+            # 对合并后的总结进行最终总结
+            if len(combined_summary) <= final_summary_length:
+                print("📝 合并总结已符合长度要求，无需再次总结")
+                final_summary = combined_summary
+            else:
+                print("📝 对合并总结进行最终总结")
+                if self.llm_client:
+                    final_summary = self._llm_summarize(query, combined_summary, final_summary_length, style)
+                else:
+                    final_summary = self._extractive_summarize(combined_summary, final_summary_length)
+            
+            compression_ratio = len(final_summary) / len(text)
+            
+            print(f"✅ 分批总结完成，最终压缩比: {compression_ratio:.3f}")
+            
+            return final_summary
+            
+        except Exception as e:
+            print(f"❌ 分批总结出错: {str(e)}")
+            # 出错时回退到常规总结
+            print("🔄 回退到常规总结")
+            return self.summarize(text, final_summary_length, style)
+    
+    def _split_text_into_chunks(self, text: str, chunk_size: int) -> List[str]:
+        """
+        将文本分割为指定大小的块，尽量在句子边界分割
+        
+        Args:
+            text: 原文本
+            chunk_size: 每块的目标大小
+            
+        Returns:
+            文本块列表
+        """
+        if len(text) <= chunk_size:
+            return [text]
+        
+        chunks = []
+        current_chunk = ""
+        
+        # 先尝试按段落分割
+        paragraphs = text.split('\n\n')
+        
+        for paragraph in paragraphs:
+            # 如果当前块加上这个段落不会超出大小限制
+            if len(current_chunk) + len(paragraph) + 2 <= chunk_size:
+                if current_chunk:
+                    current_chunk += "\n\n" + paragraph
+                else:
+                    current_chunk = paragraph
+            else:
+                # 如果当前块不为空，先保存
+                if current_chunk:
+                    chunks.append(current_chunk)
+                    current_chunk = ""
+                
+                # 如果段落本身就超过块大小，需要进一步分割
+                if len(paragraph) > chunk_size:
+                    # 按句子分割段落
+                    sentences = self._split_sentences(paragraph)
+                    current_sentence_chunk = ""
+                    
+                    for sentence in sentences:
+                        if len(current_sentence_chunk) + len(sentence) <= chunk_size:
+                            current_sentence_chunk += sentence
+                        else:
+                            if current_sentence_chunk:
+                                chunks.append(current_sentence_chunk)
+                            current_sentence_chunk = sentence
+                    
+                    if current_sentence_chunk:
+                        current_chunk = current_sentence_chunk
+                else:
+                    current_chunk = paragraph
+        
+        # 保存最后一个块
+        if current_chunk:
+            chunks.append(current_chunk)
+        
+        return chunks

@@ -6,7 +6,7 @@ import argparse
 import json
 import os
 import time
-import asyncio
+import io
 import sys
 from typing import List, Dict, Any
 from datetime import datetime
@@ -62,7 +62,7 @@ def generate_research_prompt(prompt: str, wiki_links: List[str]) -> str:
     else:
         return f"问题: {prompt}"
 
-async def get_system_response(query: str, context: str = "") -> Dict[str, Any]:
+def get_system_response(query: str, context: str = "") -> Dict[str, Any]:
     """
     使用多智能体系统获取回答
     
@@ -79,7 +79,7 @@ async def get_system_response(query: str, context: str = "") -> Dict[str, Any]:
         system = MultiAgentResearchSystem()
         
         # 调用系统
-        result = await system.research_query(query, context)
+        result =  system.research_query(query, context)
         return result
         
     except Exception as e:
@@ -118,9 +118,9 @@ def evaluate_response_with_deepseek(question: str, system_response: str, ground_
 - 标准答案: {ground_truth}
 
 ===输出格式===
-请按以下格式提供你的最终评估：
-"解释:" (你是如何做出决定的?)
-"决定:" ("TRUE" 或 "FALSE")
+严格按照以下输出格式输出，不要输出其它无关内容：
+<explanation>(你是如何做出决定的?)</explanation>
+<decision>("TRUE" 或 "FALSE")</decision>
 
 请开始评估。"""
 
@@ -131,11 +131,12 @@ def evaluate_response_with_deepseek(question: str, system_response: str, ground_
                 {"role": "system", "content": "你是一个客观公正的AI评估助手。"},
                 {"role": "user", "content": evaluation_prompt}
             ],
-            max_tokens=500,
+            max_tokens=4096,
             temperature=0.3,
         )
         
         evaluation_text = evaluation_response.choices[0].message.content.strip()
+        print(f"📋 DeepSeek评估结果:\n{evaluation_text}")
         
         # 提取决定和解释
         lines = evaluation_text.split('\n')
@@ -144,13 +145,13 @@ def evaluate_response_with_deepseek(question: str, system_response: str, ground_
         
         for line in lines:
             line = line.strip()
-            if line.startswith("决定:") or line.startswith("Decision:"):
+            if "决定:" in line or "Decision:" in line:
                 decision_part = line.split(":", 1)[1].strip().upper()
                 if "TRUE" in decision_part:
                     decision = "TRUE"
                 elif "FALSE" in decision_part:
                     decision = "FALSE"
-            elif line.startswith("解释:") or line.startswith("Explanation:"):
+            elif "解释:" in line or "Explanation:" in line:
                 explanation = line.split(":", 1)[1].strip()
         
         return {"decision": decision, "explanation": explanation}
@@ -159,7 +160,7 @@ def evaluate_response_with_deepseek(question: str, system_response: str, ground_
         print(f"❌ DeepSeek评估失败: {str(e)}")
         return {"decision": "FALSE", "explanation": f"评估错误: {str(e)}"}
 
-async def process_single_item(item: Dict[str, Any], index: int) -> Dict[str, Any]:
+def process_single_item(item: Dict[str, Any], index: int) -> Dict[str, Any]:
     """
     处理单个评测项目
     
@@ -191,7 +192,7 @@ async def process_single_item(item: Dict[str, Any], index: int) -> Dict[str, Any
     
     # 使用多智能体系统获取回答
     try:
-        system_result = await get_system_response(prompt)
+        system_result =  get_system_response(prompt)
         system_answer = system_result.get('answer', '')
         system_citations = system_result.get('citations', [])
         reasoning_trace = system_result.get('reasoning_trace', "")
@@ -235,7 +236,7 @@ async def process_single_item(item: Dict[str, Any], index: int) -> Dict[str, Any
         'response_time': response_time,
     }
 
-async def main():
+def main():
     print("🚀 开始FRAMES基准评测")
     print("="*60)
     
@@ -282,7 +283,7 @@ async def main():
             continue
         
         try:
-            result = await process_single_item(item, index)
+            result =  process_single_item(item, index)
             save_result(full_filename, result)
             processed_count += 1
             
@@ -324,4 +325,4 @@ async def main():
 
 if __name__ == "__main__":
     # 运行评测
-    asyncio.run(main())
+    main()

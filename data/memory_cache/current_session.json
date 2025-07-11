@@ -1,6 +1,12 @@
 {
-  "session_id": "session_20250707_204936",
-  "start_time": "2025-07-07T20:49:36.575753",
-  "queries": [],
-  "total_queries": 0
+  "session_id": "session_20250711_155739",
+  "start_time": "2025-07-11T15:57:39.578008",
+  "queries": [
+    {
+      "entry_id": "entry_20250711_160228_192989",
+      "query": "How many more solo studio albums did Taylor Swift release than Beyonce between the years 2003-2023 (not including re-recorded albums)?",
+      "timestamp": "2025-07-11T16:02:28.193052"
+    }
+  ],
+  "total_queries": 1
 }

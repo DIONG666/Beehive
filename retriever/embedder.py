@@ -19,7 +19,7 @@ class JinaEmbedder:
         self.embedding_dim = Config.EMBEDDING_DIM
         self.enabled = bool(self.api_key)
         
-    async def embed_texts(self, texts: List[str]) -> List[List[float]]:
+    def embed_texts(self, texts: List[str]) -> List[List[float]]:
         """
         对文本列表进行嵌入
         
@@ -42,7 +42,7 @@ class JinaEmbedder:
             
             for i in range(0, len(texts), batch_size):
                 batch_texts = texts[i:i + batch_size]
-                batch_embeddings = await self._embed_batch(batch_texts)
+                batch_embeddings =  self._embed_batch(batch_texts)
                 all_embeddings.extend(batch_embeddings)
             
             print(f"✅ 嵌入完成，生成 {len(all_embeddings)} 个向量")
@@ -53,7 +53,7 @@ class JinaEmbedder:
             print("回退到随机向量")
             return [self._generate_random_embedding() for _ in texts]
     
-    async def embed_single(self, text: str) -> List[float]:
+    def embed_single(self, text: str) -> List[float]:
         """
         对单个文本进行嵌入
         
@@ -63,10 +63,10 @@ class JinaEmbedder:
         Returns:
             嵌入向量
         """
-        embeddings = await self.embed_texts([text])
+        embeddings =  self.embed_texts([text])
         return embeddings[0] if embeddings else self._generate_random_embedding()
     
-    async def _embed_batch(self, texts: List[str]) -> List[List[float]]:
+    def _embed_batch(self, texts: List[str]) -> List[List[float]]:
         """
         批量嵌入文本
         
@@ -251,7 +251,7 @@ class LocalEmbedder:
             embedding[(i + 1) % self.embedding_dim] = 0.5
             self.word_embeddings[word] = embedding.tolist()
     
-    async def embed_texts(self, texts: List[str]) -> List[List[float]]:
+    def embed_texts(self, texts: List[str]) -> List[List[float]]:
         """
         使用简单方法嵌入文本
         
@@ -296,6 +296,6 @@ class LocalEmbedder:
         
         return embedding.tolist()
     
-    async def embed_single(self, text: str) -> List[float]:
+    def embed_single(self, text: str) -> List[float]:
         """嵌入单个文本"""
         return self._embed_simple(text)

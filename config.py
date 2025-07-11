@@ -17,9 +17,6 @@ class Config:
     JINA_EMBEDDING_MODEL = "jina-embeddings-v4"
     JINA_RERANKER_MODEL = "jina-reranker-m0"
     
-    # 搜索配置
-    BING_API_KEY = os.getenv("BING_API_KEY", "")
-    
     # 项目路径配置
     PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
     DATA_DIR = os.path.join(PROJECT_ROOT, "data")

@@ -24,9 +24,8 @@ class DeepSeekPlanner:
         )
         self.model = Config.DEEPSEEK_MODEL
         self.temperature = Config.TEMPERATURE
-        self.max_context_length = Config.MAX_CONTEXT_LENGTH
     
-    async def generate_response(self, messages: List[Dict[str, str]], 
+    def generate_response(self, messages: List[Dict[str, str]], 
                               temperature: Optional[float] = None) -> str:
         """
         生成模型响应
@@ -43,14 +42,14 @@ class DeepSeekPlanner:
                 model=self.model,
                 messages=messages,
                 temperature=temperature or self.temperature,
-                max_tokens=1024,
+                max_tokens=8192,
                 stream=False,
             )
             return response.choices[0].message.content.strip()
         except Exception as e:
             raise Exception(f"DeepSeek API调用失败: {str(e)}")
     
-    async def decompose_query(self, query: str) -> List[str]:
+    def decompose_query(self, query: str) -> List[str]:
         """
         分解复杂查询为子问题或提取web链接
         
@@ -66,25 +65,20 @@ class DeepSeekPlanner:
             {"role": "user", "content": QUERY_DECOMPOSITION_PROMPT.format(query=query)}
         ]
         
-        response = await self.generate_response(messages)
-        print(f"🔍 分解查询: {query}\n响应: \n{response}")
+        response = self.generate_response(messages)
+        print(f"🔍 分解查询: \n{response}")
+
+        # 提取链接和子查询
+        links = self._extract_tag_content(response, "link")
+        subqueries = self._extract_tag_content(response, "subquery")
         
-        # 解析子问题
-        sub_queries = []
-        lines = response.split('\n')
-        for line in lines:
-            line = line.strip()
-            if line and ('子问题' in line or '链接' in line):
-                # 提取实际的查询内容
-                if ':' in line:
-                    query_content = line.split(':', 1)[1].strip()
-                    sub_queries.append(query_content)
+        # 优先返回链接，如果没有链接则返回子查询
+        result = links if links else subqueries
         
-        print(f"🔍 分解结果: {sub_queries}")
-        return sub_queries if sub_queries else [query]
+        return result if result else [query]
     
     
-    async def reflect_on_progress(self, query: str, current_info: str) -> Dict[str, str]:
+    def reflect_on_progress(self, query: str, current_info: str) -> Dict[str, str]:
         """
         反思当前进展
         
@@ -102,47 +96,36 @@ class DeepSeekPlanner:
             )}
         ]
 
-        response = await self.generate_response(messages)
-        print(f"📝 反思进展: {query}\n响应: \n{response}")
+        response = self.generate_response(messages)
+        print(f"📝 反思进展: \n{response}")
         
-        # 解析反思结果     
-        lines = response.split('\n')
-        can_answer = False
-        answer = ""
-        reasoning_trace = ""
+        # 使用标签提取结果
+        judgment = self._extract_single_tag_content(response, "judgment")
+        answer = self._extract_single_tag_content(response, "answer")
+        reasoning = self._extract_single_tag_content(response, "reasoning")
+        citations_str = self._extract_single_tag_content(response, "citations")
+        suggestions_str = self._extract_single_tag_content(response, "suggestions")
+        
+        # 处理引用和建议
         citations = []
+        if citations_str and citations_str != "无":
+            citations = [c.strip() for c in citations_str.split(';') if c.strip()]
+        
         suggested_queries = []
+        if suggestions_str and suggestions_str != "无":
+            suggested_queries = [q.strip() for q in suggestions_str.split(';') if q.strip()]
         
-        for line in lines:
-            line = line.strip()
-            if line.startswith('判断:'):
-                can_answer = '是' in line
-            elif line.startswith('答案:'):
-                answer = line.split(':', 1)[1].strip()
-            elif line.startswith('推理过程:'):
-                reasoning_trace = line.split(':', 1)[1].strip()
-            elif line.startswith('参考链接:'):
-                citations_str = line.split(':', 1)[1].strip()
-                if citations_str and citations_str != "无":
-                    citations = [c.strip() for c in citations_str.split(';') if c.strip()]
-            elif line.startswith('建议查询:'):
-                queries_str = line.split(':', 1)[1].strip()
-                if queries_str and queries_str != "无":
-                    suggested_queries = [q.strip() for q in queries_str.split(';') if q.strip()]
-        
-        print(f"反思结果: can_answer={can_answer}, answer='{answer}', "
-              f"reasoning_trace='{reasoning_trace}', citations={citations}, "
-              f"suggested_queries={suggested_queries}")
+        can_answer = "是" in judgment
         
         return {
             'can_answer': can_answer,
             'answer': answer if can_answer else "",
-            'reasoning_trace': reasoning_trace,
+            'reasoning_trace': reasoning,
             'citations': citations,
             'suggested_queries': suggested_queries
         }
     
-    async def generate_final_answer(self, query: str, context: str) -> Dict[str, Any]:
+    def generate_final_answer(self, query: str, context: str) -> Dict[str, Any]:
         """
         生成最终答案
         
@@ -162,31 +145,53 @@ class DeepSeekPlanner:
             )}
         ]
         
-        response = await self.generate_response(messages)
-        print(f"📋 生成最终答案: {query}\n响应: \n{response}")
+        response = self.generate_response(messages)
+        print(f"📋 生成最终答案: \n{response}")
         
-        # 解析最终答案
-        lines = response.split('\n')
-        answer = ""
-        reasoning_trace = ""
+        # 使用标签提取结果
+        answer = self._extract_single_tag_content(response, "answer")
+        reasoning = self._extract_single_tag_content(response, "reasoning")
+        citations_str = self._extract_single_tag_content(response, "citations")
+        
+        # 处理引用
         citations = []
-        
-        for line in lines:
-            line = line.strip()
-            if line.startswith('答案:'):
-                answer = line.split(':', 1)[1].strip()
-            elif line.startswith('推理过程:'):
-                reasoning_trace = line.split(':', 1)[1].strip()
-            elif line.startswith('参考链接:'):
-                citations_str = line.split(':', 1)[1].strip()
-                if citations_str and citations_str != "无":
-                    citations = [c.strip() for c in citations_str.split(';') if c.strip()]
+        if citations_str and citations_str != "无":
+            citations = [c.strip() for c in citations_str.split(';') if c.strip()]
 
-        print(f"回答内容：answer='{answer}', reasoning_trace='{reasoning_trace}', citations={citations}")
+        print(f"回答内容：answer='{answer}', reasoning='{reasoning}', citations={citations}")
 
         return {
             'answer': answer,
-            'reasoning_trace': reasoning_trace,
+            'reasoning_trace': reasoning,
             'citations': citations,
         }
     
+    def _extract_tag_content(self, text: str, tag: str) -> List[str]:
+        """
+        提取标签内容
+        
+        Args:
+            text: 包含标签的文本
+            tag: 标签名（不包含尖括号）
+            
+        Returns:
+            标签内容列表
+        """
+        pattern = f"<{tag}>(.*?)</{tag}>"
+        matches = re.findall(pattern, text, re.DOTALL | re.IGNORECASE)
+        return [match.strip() for match in matches if match.strip()]
+    
+    def _extract_single_tag_content(self, text: str, tag: str) -> str:
+        """
+        提取单个标签内容
+        
+        Args:
+            text: 包含标签的文本
+            tag: 标签名（不包含尖括号）
+            
+        Returns:
+            标签内容字符串，如果未找到返回空字符串
+        """
+        contents = self._extract_tag_content(text, tag)
+        return contents[0] if contents else ""
+

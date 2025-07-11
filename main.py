@@ -1,7 +1,6 @@
 """
 系统入口：负责接收输入并执行主推理流程
 """
-import asyncio
 import argparse
 from typing import Optional, Dict, Any
 from config import Config
@@ -16,7 +15,7 @@ class MultiAgentResearchSystem:
         self.config = Config()
         self.main_agent = MainAgent()
         
-    async def research_query(self, query: str, context: Optional[str] = None) -> Dict[str, Any]:
+    def research_query(self, query: str, context: Optional[str] = None) -> Dict[str, Any]:
         """
         处理研究查询
         
@@ -28,10 +27,8 @@ class MultiAgentResearchSystem:
             包含答案、引用和推理轨迹的字典
         """
         try:
-            print(f"🔍 开始处理查询: {query}")
-            
             # 使用主Agent执行ReAct推理
-            result = await self.main_agent.execute_reasoning(query, context)
+            result = self.main_agent.execute_reasoning(query, context)
             
             print("✅ 查询处理完成")
             return result
@@ -45,7 +42,7 @@ class MultiAgentResearchSystem:
                 "error": True
             }
     
-    async def interactive_mode(self):
+    def interactive_mode(self):
         """交互模式"""
         print("🤖 多智能体深度研究系统启动")
         print("输入 'quit' 或 'exit' 退出系统")
@@ -69,7 +66,7 @@ class MultiAgentResearchSystem:
                     continue
                 
                 # 处理查询
-                result = await self.research_query(query)
+                result = self.research_query(query)
                 
                 # 显示结果
                 print("\n" + "="*60)
@@ -92,7 +89,7 @@ class MultiAgentResearchSystem:
                 print(f"\n❌ 系统错误: {str(e)}")
 
 
-async def main():
+def main():
     """主函数"""
     parser = argparse.ArgumentParser(description="多智能体深度研究系统")
     parser.add_argument("--mode", choices=["interactive"], 
@@ -107,7 +104,7 @@ async def main():
     if args.mode == "interactive":
         if args.query:
             # 单次查询模式
-            result = await system.research_query(args.query)
+            result = system.research_query(args.query)
             print(f"答案: {result['answer']}")
             if result.get('citations'):
                 print("引用:")
@@ -115,8 +112,8 @@ async def main():
                     print(f"  - {citation}")
         else:
             # 交互模式
-            await system.interactive_mode()
+            system.interactive_mode()
 
 
 if __name__ == "__main__":
-    asyncio.run(main())
+    main()

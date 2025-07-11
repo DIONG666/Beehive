@@ -13,27 +13,27 @@ QUERY_DECOMPOSITION_PROMPT = """请分析以下查询，如果包含Web链接则
 
 严格按照以下输出格式输出，不要输出其它无关内容：
 如果有Web链接（要将所有的链接都列出来）：
-链接1: [完整的Web URL]
-链接2: [完整的Web URL]
+<link>完整的Web URL</link>
+<link>完整的Web URL</link>
 ...
 
 如果没有Web链接：
-子问题1: [Wikipedia搜索词组]
-子问题2: [Wikipedia搜索词组]
-子问题3: [Wikipedia搜索词组]
+<subquery>Wikipedia搜索词组</subquery>
+<subquery>Wikipedia搜索词组</subquery>
+<subquery>Wikipedia搜索词组</subquery>
 ...
 
 示例：
 输入: "Tell me about artificial intelligence and machine learning from https://en.wikipedia.org/wiki/Artificial_intelligence"
 输出: 
-链接1: https://en.wikipedia.org/wiki/Artificial_intelligence
+<link>https://en.wikipedia.org/wiki/Artificial_intelligence</link>
 
 输入: "What are the latest developments in quantum computing?"
 输出:
-子问题1: quantum computing
-子问题2: quantum computer development
-子问题3: quantum algorithms
-子问题4: quantum supremacy
+<subquery>quantum computing</subquery>
+<subquery>quantum computer development</subquery>
+<subquery>quantum algorithms</subquery>
+<subquery>quantum supremacy</subquery>
 """
 
 # 反思提示模板
@@ -48,31 +48,31 @@ REFLECTION_PROMPT = """基于以下信息，判断是否能够回答用户问题
 3. 如果不能，还需要搜索什么信息？给出下一步的查询建议
 
 严格按照以下输出格式输出，不要输出其它无关内容：
-判断: 是/否
-答案: [如果能回答则提供答案，否则写"信息不足"]
-推理过程：[如果能回答则给出推理过程，否则留空]
-参考链接：[如果能回答则给出相关链接，用分号分隔多个，链接只能使用已获得的信息中出现的链接]
-建议查询: [如果不能回答，给出建议的新查询，用分号分隔多个，新查询应该是简洁的英文短语或关键词组合]
+<judgment>是/否</judgment>
+<answer>如果能回答则提供答案，否则写"信息不足"</answer>
+<reasoning>如果能回答则给出推理过程，否则留空</reasoning>
+<citations>如果能回答则给出相关链接，多个链接用分号分隔，链接只能使用已获得的信息中出现的链接</citations>
+<suggestions>如果不能回答，给出建议的新查询，多个查询用分号分隔，新查询应该是简洁的英文短语或关键词组合</suggestions>
 
 示例1：
 输入: "What is the capital of France?"
 已获得的信息: "France is a country in Europe with a population of 67 million people. Paris is the largest city and capital of France. 参考链接：https://en.wikipedia.org/wiki/France"
 输出:
-判断: 是
-答案: 巴黎是法国的首都
-推理过程：根据已获得的信息，巴黎是法国的首都。
-参考链接：https://en.wikipedia.org/wiki/France
-建议查询: 无
+<judgment>是</judgment>
+<answer>巴黎是法国的首都</answer>
+<reasoning>根据已获得的信息，巴黎是法国的首都。</reasoning>
+<citations>https://en.wikipedia.org/wiki/France</citations>
+<suggestions></suggestions>
 
 示例2：
 输入: "How does machine learning work in autonomous vehicles?"
 已获得的信息: "Machine learning is a subset of artificial intelligence that enables computers to learn from data."
 输出:
-判断: 否
-答案: 信息不足
-推理过程：无
-参考链接：无
-建议查询: autonomous vehicle technology; machine learning algorithms in cars; self-driving car sensors
+<judgment>否</judgment>
+<answer>信息不足</answer>
+<reasoning></reasoning>
+<citations></citations>
+<suggestions>autonomous vehicle technology; machine learning algorithms in cars; self-driving car sensors</suggestions>
 """
 
 # 最终答案整合提示
@@ -82,9 +82,9 @@ FINAL_ANSWER_PROMPT = """基于以下信息，请生成你最有把握的最终�
 已获得的信息: {context}
 
 严格按照以下输出格式输出，不要输出其它无关内容：
-答案: [简洁明确的答案]
-推理过程：[详细的解释和推理过程]
-参考链接: [用分号分隔多个，链接只能使用已获得的信息中出现的链接]
+<answer>简洁明确的答案</answer>
+<reasoning>详细的解释和推理过程</reasoning>
+<citations>多个链接用分号分隔，链接只能使用已获得的信息中出现的链接</citations>
 
 要求：
 1. 答案必须基于提供的证据
@@ -94,7 +94,7 @@ FINAL_ANSWER_PROMPT = """基于以下信息，请生成你最有把握的最终�
 输入: "What is the capital of France?"
 已获得的信息: "France is a country in Europe with a population of 67 million people. Paris is the largest city and capital of France. 参考链接：https://en.wikipedia.org/wiki/France"
 输出:
-答案: 巴黎是法国的首都
-推理过程：根据已获得的信息，巴黎是法国的首都。
-参考链接: https://en.wikipedia.org/wiki/France
+<answer>巴黎是法国的首都</answer>
+<reasoning>根据已获得的信息，巴黎是法国的首都。</reasoning>
+<citations>https://en.wikipedia.org/wiki/France</citations>
 """

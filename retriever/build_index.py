@@ -34,7 +34,7 @@ class IndexBuilder:
             print(f"⚠️ 警告: 无法导入嵌入器 - {e}")
             print("请确保已安装相关依赖")
     
-    async def build_index_from_directory(self, data_dir: str, 
+    def build_index_from_directory(self, data_dir: str, 
                                        file_patterns: List[str] = None) -> bool:
         """
         从目录构建索引
@@ -54,20 +54,20 @@ class IndexBuilder:
                 return False
             
             # 加载文档
-            documents = await self._load_documents_from_directory(data_dir, file_patterns)
+            documents =  self._load_documents_from_directory(data_dir, file_patterns)
             
             if not documents:
                 print("❌ 未找到任何文档")
                 return False
             
             # 构建索引
-            return await self.build_index_from_documents(documents)
+            return  self.build_index_from_documents(documents)
             
         except Exception as e:
             print(f"❌ 构建索引失败: {str(e)}")
             return False
     
-    async def _load_documents_from_directory(self, data_dir: str, 
+    def _load_documents_from_directory(self, data_dir: str, 
                                            file_patterns: List[str] = None) -> List[Dict[str, Any]]:
         """
         从目录加载文档
@@ -91,7 +91,7 @@ class IndexBuilder:
                 # 检查文件扩展名
                 if any(file.endswith(pattern.replace('*', '')) for pattern in file_patterns):
                     try:
-                        doc = await self._load_single_document(file_path)
+                        doc =  self._load_single_document(file_path)
                         if doc:
                             documents.append(doc)
                     except Exception as e:
@@ -101,7 +101,7 @@ class IndexBuilder:
         print(f"📄 加载了 {len(documents)} 个文档")
         return documents
     
-    async def _load_single_document(self, file_path: str) -> Optional[Dict[str, Any]]:
+    def _load_single_document(self, file_path: str) -> Optional[Dict[str, Any]]:
         """
         加载单个文档
         
@@ -150,7 +150,7 @@ class IndexBuilder:
             print(f"❌ 读取文件失败 {file_path}: {str(e)}")
             return None
     
-    async def build_index_from_documents(self, documents: List[Dict[str, Any]]) -> bool:
+    def build_index_from_documents(self, documents: List[Dict[str, Any]]) -> bool:
         """
         从文档列表构建索引
         
@@ -179,7 +179,7 @@ class IndexBuilder:
                 return False
             
             print("🔄 生成文档嵌入...")
-            embeddings = await self.embedder.embed_texts(texts)
+            embeddings =  self.embedder.embed_texts(texts)
             
             if not embeddings:
                 print("❌ 嵌入生成失败")
@@ -312,7 +312,7 @@ class IndexBuilder:
         from datetime import datetime
         return datetime.now()
     
-    async def update_index(self, new_documents: List[Dict[str, Any]]) -> bool:
+    def update_index(self, new_documents: List[Dict[str, Any]]) -> bool:
         """
         更新索引（添加新文档）
         
@@ -333,7 +333,7 @@ class IndexBuilder:
                     text = doc['title'] + '\n' + text
                 new_texts.append(text)
             
-            new_embeddings = await self.embedder.embed_texts(new_texts)
+            new_embeddings =  self.embedder.embed_texts(new_texts)
             
             # 更新文档和嵌入列表
             self.documents.extend(new_documents)
@@ -364,7 +364,7 @@ class IndexBuilder:
         }
 
 
-async def main():
+def main():
     """主函数，用于命令行构建索引"""
     import argparse
     
@@ -376,7 +376,7 @@ async def main():
     args = parser.parse_args()
     
     builder = IndexBuilder()
-    success = await builder.build_index_from_directory(args.data_dir, args.patterns)
+    success =  builder.build_index_from_directory(args.data_dir, args.patterns)
     
     if success:
         stats = builder.get_index_stats()
@@ -390,5 +390,5 @@ async def main():
 
 
 if __name__ == "__main__":
-    import asyncio
-    exit_code = asyncio.run(main())
+    import io
+    exit_code = io.run(main())

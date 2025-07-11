@@ -1,7 +1,7 @@
 """
 内部知识库搜索工具：调用 FAISS + reranker
 """
-import asyncio
+import io
 from typing import List, Dict, Any, Optional
 from config import Config
 import sys
@@ -32,7 +32,7 @@ class KnowledgeBaseSearchTool:
             print(f"⚠️ 警告: 无法导入检索组件 - {e}")
             print("请确保已正确安装相关依赖")
     
-    async def search(self, query: str, top_k: Optional[int] = None) -> Dict[str, Any]:
+    def search(self, query: str, top_k: Optional[int] = None) -> Dict[str, Any]:
         """
         在知识库中搜索相关文档，返回最相关结果和相关性状态
         
@@ -60,7 +60,7 @@ class KnowledgeBaseSearchTool:
             
             # 首先进行向量检索
             top_k = top_k or Config.TOP_K
-            initial_results = await self.retriever.search(query, top_k)
+            initial_results =  self.retriever.search(query, top_k)
             
             if not initial_results or len(initial_results) == 0:
                 return {
@@ -83,7 +83,7 @@ class KnowledgeBaseSearchTool:
                 
                 if self.reranker:
                     try:
-                        reranked_results = await self.reranker.rerank(
+                        reranked_results =  self.reranker.rerank(
                             query, initial_results, Config.RERANK_TOP_K
                         )
                         final_results = reranked_results[:top_k]
@@ -119,7 +119,7 @@ class KnowledgeBaseSearchTool:
                 'use_knowledge_base': False
             }
     
-    async def add_document_to_knowledge_base(self, document: Dict[str, Any]) -> bool:
+    def add_document_to_knowledge_base(self, document: Dict[str, Any]) -> bool:
         """
         将新文档添加到知识库
         

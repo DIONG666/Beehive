@@ -1,10 +1,9 @@
 """
 Web搜索工具：使用Jina API读取Web内容
 """
-import asyncio
-import aiohttp
 import os
 import json
+import requests
 from typing import List, Dict, Any, Optional
 import sys
 
@@ -21,10 +20,9 @@ class WebSearchTool:
         """初始化Web搜索工具"""
         self.jina_api_key = Config.JINA_API_KEY
         self.enabled = Config.ENABLE_WEB_SEARCH and bool(self.jina_api_key)
-        self.jina_reader_endpoint = "https://r.jina.ai/"
         self.knowledge_base_dir = Config.KNOWLEDGE_BASE_DIR
 
-    async def _search_via_jina(self, query: str, count: int = 5) -> List[str]:
+    def _search_via_jina(self, query: str, count: int = 5) -> List[str]:
         """
         使用Jina API搜索Web内容
         
@@ -41,42 +39,41 @@ class WebSearchTool:
             headers = {
                 "Authorization": f"Bearer {self.jina_api_key}",
                 "X-Respond-With": "no-content",
-                "X-Site": "https://en.wikipedia.org/wiki/"
+                # "X-Site": "https://en.wikipedia.org/wiki/"
             }
             
-            async with aiohttp.ClientSession() as session:
-                async with session.get(search_url, headers=headers) as response:
-                    if response.status == 200:
-                        text = await response.text()
-                        
-                        # 解析搜索结果，提取URL
-                        urls = []
-                        lines = text.split('\n')
-                        
-                        for line in lines:
-                            if line.strip().startswith('[') and 'URL Source:' in line:
-                                # 提取URL
-                                url_start = line.find('https://')
-                                if url_start != -1:
-                                    url = line[url_start:].strip()
-                                    urls.append(url)
-                                    
-                                    if len(urls) >= count:
-                                        break
-                        
-                        print(f"✅ 找到 {len(urls)} 个Web页面URL：{', '.join(urls)}")
-                        return urls
-                    else:
-                        print(f"⚠️ Jina搜索API返回状态码: {response.status}")
-                        return []
-                        
+            response = requests.get(search_url, headers=headers, timeout=30)
+            if response.status_code == 200:
+                text = response.text
+                
+                # 解析搜索结果，提取URL
+                urls = []
+                lines = text.split('\n')
+                
+                for line in lines:
+                    if line.strip().startswith('[') and 'URL Source:' in line:
+                        # 提取URL
+                        url_start = line.find('https://')
+                        if url_start != -1:
+                            url = line[url_start:].strip()
+                            urls.append(url)
+                            
+                            if len(urls) >= count:
+                                break
+                
+                print(f"✅ 找到 {len(urls)} 个Web页面URL：{', '.join(urls)}")
+                return urls
+            else:
+                print(f"⚠️ Jina搜索API返回状态码: {response.status_code}")
+                return []
+                
         except Exception as e:
             print(f"❌ Jina搜索失败: {str(e)}")
             return []
        
     
     
-    async def _get_content_via_jina(self, url: str) -> str:
+    def _get_content_via_jina(self, url: str) -> str:
         """
         使用Jina API获取网页内容
         
@@ -87,30 +84,35 @@ class WebSearchTool:
             网页内容
         """
         try:
-            jina_url = f"{self.jina_reader_endpoint}{url}"
+            # 如果url是英文wiki，转换为中文wiki/镜像wiki
+            if "en.wikipedia.org" in url:
+                # url = url.replace("en.wikipedia.org", "zh.wikipedia.org/wiki/")
+                url = url.replace("en.wikipedia.org/wiki/", "encyclopedia.thefreedictionary.com/")
+                print(f"🔄 转换为镜像Wikipedia: {url}")
+            
+            jina_url = f"https://r.jina.ai/{url}"
             headers = {
-                'Authorization': f'Bearer {self.jina_api_key}'
+                # 'Authorization': f'Bearer {self.jina_api_key}'
             }
             
-            async with aiohttp.ClientSession() as session:
-                async with session.get(jina_url, headers=headers) as response:
-                    if response.status == 200:
-                        content = await response.text()
-                        print(f"✅ 通过Jina API获取内容，长度: {len(content)}")
-                        # 提取URL中https://后面的内容，并替换特殊字符为下划线
-                        title = url.split("https://")[-1].replace(".", "_").replace("/", "_").replace(" ", "_")
-                        await self._save_to_knowledge_base(title, content)
-                        return content
-                    else:
-                        print(f"⚠️ Jina API返回状态码: {response.status}")
-                        return f"无法通过Jina API获取内容: HTTP {response.status}"
+            response = requests.get(jina_url, headers=headers, timeout=30)
+            if response.status_code == 200:
+                content = response.text
+                print(f"✅ 通过Jina API获取内容，长度: {len(content)}")
+                # 提取URL中https://后面的内容，并替换特殊字符为下划线
+                title = url.split("https://")[-1].replace(".", "_").replace("/", "_").replace(" ", "_")
+                self._save_to_knowledge_base(title, content)
+                return content
+            else:
+                print(f"⚠️ Jina API返回状态码: {response.status_code}")
+                return f"无法通过Jina API获取内容: HTTP {response.status_code}"
                         
         except Exception as e:
             print(f"❌ Jina API调用出错: {str(e)}")
             return f"Jina API调用失败: {str(e)}"
         
     
-    async def _save_to_knowledge_base(self, title: str, content: str) -> Optional[str]:
+    def _save_to_knowledge_base(self, title: str, content: str) -> Optional[str]:
         """
         将内容保存到知识库
         
@@ -154,7 +156,9 @@ if __name__ == "__main__":
     web_search_tool = WebSearchTool()
 
     # 测试搜索功能
-    asyncio.run(web_search_tool._search_via_jina("Artificial Intelligence", count=3))
+    urls = web_search_tool._search_via_jina("Artificial Intelligence", count=3)
+    print(f"搜索结果: {urls}")
     
     # 测试获取内容
-    asyncio.run(web_search_tool._get_content_via_jina("https://en.wikipedia.org/wiki/Artificial_intelligence"))
+    content = web_search_tool._get_content_via_jina("https://en.wikipedia.org/wiki/Artificial_intelligence")
+    print(f"内容预览: {content[:200]}...")

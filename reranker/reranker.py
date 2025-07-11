@@ -17,7 +17,7 @@ class JinaReranker:
         self.api_url = "https://api.jina.ai/v1/rerank"
         self.enabled = bool(self.api_key)
     
-    async def rerank(self, query: str, documents: List[Dict[str, Any]], 
+    def rerank(self, query: str, documents: List[Dict[str, Any]], 
                     top_k: int = None) -> List[Dict[str, Any]]:
         """
         重新排序文档
@@ -51,7 +51,7 @@ class JinaReranker:
                 doc_texts.append(text)
             
             # 调用Jina reranker API
-            reranked_scores = await self._call_reranker_api(query, doc_texts)
+            reranked_scores =  self._call_reranker_api(query, doc_texts)
             
             if not reranked_scores:
                 print("⚠️ 重排序失败，返回原始顺序")
@@ -69,7 +69,7 @@ class JinaReranker:
             print(f"❌ 重排序过程失败: {str(e)}")
             return documents[:top_k] if top_k else documents
     
-    async def _call_reranker_api(self, query: str, 
+    def _call_reranker_api(self, query: str, 
                                documents: List[str]) -> List[Tuple[int, float]]:
         """
         调用Jina reranker API
@@ -153,7 +153,7 @@ class JinaReranker:
         
         return reranked_docs
     
-    async def batch_rerank(self, query_doc_pairs: List[Tuple[str, List[Dict[str, Any]]]]) -> List[List[Dict[str, Any]]]:
+    def batch_rerank(self, query_doc_pairs: List[Tuple[str, List[Dict[str, Any]]]]) -> List[List[Dict[str, Any]]]:
         """
         批量重排序
         
@@ -166,7 +166,7 @@ class JinaReranker:
         results = []
         
         for query, documents in query_doc_pairs:
-            reranked = await self.rerank(query, documents)
+            reranked =  self.rerank(query, documents)
             results.append(reranked)
         
         return results
@@ -193,7 +193,7 @@ class SimpleReranker:
         """初始化简单重排序器"""
         self.enabled = True
     
-    async def rerank(self, query: str, documents: List[Dict[str, Any]], 
+    def rerank(self, query: str, documents: List[Dict[str, Any]], 
                     top_k: int = None) -> List[Dict[str, Any]]:
         """
         使用简单规则重排序
@@ -312,7 +312,7 @@ class HybridReranker:
         self.simple_reranker = SimpleReranker()
         self.use_jina = self.jina_reranker.enabled
     
-    async def rerank(self, query: str, documents: List[Dict[str, Any]], 
+    def rerank(self, query: str, documents: List[Dict[str, Any]], 
                     top_k: int = None) -> List[Dict[str, Any]]:
         """
         混合重排序
@@ -327,19 +327,19 @@ class HybridReranker:
         """
         if self.use_jina:
             # 优先使用Jina reranker
-            jina_results = await self.jina_reranker.rerank(query, documents, top_k)
+            jina_results =  self.jina_reranker.rerank(query, documents, top_k)
             
             # 如果Jina失败，回退到简单重排序
             if not jina_results or len(jina_results) == 0:
                 print("⚠️ Jina重排序失败，使用简单重排序")
-                return await self.simple_reranker.rerank(query, documents, top_k)
+                return  self.simple_reranker.rerank(query, documents, top_k)
             
             return jina_results
         else:
             # 直接使用简单重排序
-            return await self.simple_reranker.rerank(query, documents, top_k)
+            return  self.simple_reranker.rerank(query, documents, top_k)
     
-    async def dual_rerank(self, query: str, documents: List[Dict[str, Any]], 
+    def dual_rerank(self, query: str, documents: List[Dict[str, Any]], 
                          top_k: int = None, blend_ratio: float = 0.7) -> List[Dict[str, Any]]:
         """
         双重排序：结合Jina和简单重排序的结果
@@ -354,12 +354,12 @@ class HybridReranker:
             混合重排序结果
         """
         if not self.use_jina:
-            return await self.simple_reranker.rerank(query, documents, top_k)
+            return  self.simple_reranker.rerank(query, documents, top_k)
         
         try:
             # 获取两种重排序结果
-            jina_results = await self.jina_reranker.rerank(query, documents.copy())
-            simple_results = await self.simple_reranker.rerank(query, documents.copy())
+            jina_results =  self.jina_reranker.rerank(query, documents.copy())
+            simple_results =  self.simple_reranker.rerank(query, documents.copy())
             
             # 混合分数
             blended_results = self._blend_rankings(jina_results, simple_results, blend_ratio)
@@ -368,7 +368,7 @@ class HybridReranker:
             
         except Exception as e:
             print(f"❌ 双重排序失败: {str(e)}")
-            return await self.simple_reranker.rerank(query, documents, top_k)
+            return  self.simple_reranker.rerank(query, documents, top_k)
     
     def _blend_rankings(self, jina_results: List[Dict[str, Any]], 
                        simple_results: List[Dict[str, Any]], 

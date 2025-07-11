@@ -86,7 +86,7 @@ class VectorRetriever:
             self.index = None
             self.documents = []
     
-    async def search(self, query: str, top_k: int = 10) -> List[Dict[str, Any]]:
+    def search(self, query: str, top_k: int = 10) -> List[Dict[str, Any]]:
         """
         搜索相关文档
         
@@ -117,12 +117,12 @@ class VectorRetriever:
             print(f"🔍 搜索查询: {query}")
             
             # 生成查询嵌入
-            query_embedding = await self.embedder.embed_single(query)
+            query_embedding =  self.embedder.embed_single(query)
             
             if self.index_type == 'faiss' and self.index:
-                results = await self._search_faiss(query_embedding, top_k)
+                results =  self._search_faiss(query_embedding, top_k)
             else:
-                results = await self._search_simple(query_embedding, top_k)
+                results =  self._search_simple(query_embedding, top_k)
             
             print(f"📋 找到 {len(results)} 个结果")
             return results
@@ -136,7 +136,7 @@ class VectorRetriever:
                 'error': True
             }]
     
-    async def _search_faiss(self, query_embedding: List[float], 
+    def _search_faiss(self, query_embedding: List[float], 
                           top_k: int) -> List[Dict[str, Any]]:
         """
         使用FAISS搜索
@@ -179,9 +179,9 @@ class VectorRetriever:
             
         except Exception as e:
             print(f"❌ FAISS搜索失败: {str(e)}")
-            return await self._search_simple(query_embedding, top_k)
+            return  self._search_simple(query_embedding, top_k)
     
-    async def _search_simple(self, query_embedding: List[float], 
+    def _search_simple(self, query_embedding: List[float], 
                            top_k: int) -> List[Dict[str, Any]]:
         """
         使用简单搜索
@@ -205,7 +205,7 @@ class VectorRetriever:
                         text = doc['title'] + '\n' + text
                     texts.append(text)
                 
-                doc_embeddings = await self.embedder.embed_texts(texts)
+                doc_embeddings =  self.embedder.embed_texts(texts)
             
             # 计算相似度
             similarities = self.embedder.batch_similarity(query_embedding, doc_embeddings)
@@ -232,7 +232,7 @@ class VectorRetriever:
             print(f"❌ 简单搜索失败: {str(e)}")
             return []
     
-    async def search_similar(self, document_id: str, top_k: int = 10) -> List[Dict[str, Any]]:
+    def search_similar(self, document_id: str, top_k: int = 10) -> List[Dict[str, Any]]:
         """
         搜索与指定文档相似的文档
         
@@ -265,10 +265,10 @@ class VectorRetriever:
                 target_text = target_doc.get('content', '')
                 if target_doc.get('title'):
                     target_text = target_doc['title'] + '\n' + target_text
-                target_embedding = await self.embedder.embed_single(target_text)
+                target_embedding =  self.embedder.embed_single(target_text)
             
             # 使用目标文档的嵌入进行搜索
-            results = await self._search_simple(target_embedding, top_k + 1)
+            results =  self._search_simple(target_embedding, top_k + 1)
             
             # 过滤掉目标文档本身
             filtered_results = [r for r in results if r.get('id') != document_id]
@@ -311,7 +311,7 @@ class VectorRetriever:
                 matching_docs.append(doc)
         return matching_docs
     
-    async def hybrid_search(self, query: str, top_k: int = 10, 
+    def hybrid_search(self, query: str, top_k: int = 10, 
                           keyword_weight: float = 0.3) -> List[Dict[str, Any]]:
         """
         混合搜索（语义搜索 + 关键词搜索）
@@ -326,7 +326,7 @@ class VectorRetriever:
         """
         try:
             # 语义搜索
-            semantic_results = await self.search(query, top_k * 2)
+            semantic_results =  self.search(query, top_k * 2)
             
             # 关键词搜索
             keyword_results = self._keyword_search(query, top_k * 2)
@@ -340,7 +340,7 @@ class VectorRetriever:
             
         except Exception as e:
             print(f"❌ 混合搜索失败: {str(e)}")
-            return await self.search(query, top_k)
+            return  self.search(query, top_k)
     
     def _keyword_search(self, query: str, top_k: int) -> List[Dict[str, Any]]:
         """
