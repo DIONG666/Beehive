@@ -1,17 +1,20 @@
-# Multi-Agent DeepResearch 智能研究系统
+# Beehive: An Efficient Multi-Agent Research System
 
-一个基于多智能体架构的深度研究系统，使用DeepSeek推理模型，集成知识库检索、网络搜索、智能摘要等功能，专为复杂研究任务设计。
+蜂巢（Beehive）是一个基于多智能体协作与多轮高效推理检索的深度研究系统。系统由负责任务规划、推理反思、答案生成的主智能体Planner，以及负责工具调用、知识检索、内容总结、内存管理的多个子智能体Worker组成。当用户提交查询请求后，Planner首先仔细分析用户需求，并将原查询分解成若干独立的子查询。随后系统将创建相应数量的Worker处理对应的子查询，Worker将在系统知识库和网络中搜索相关知识，并总结提炼出与原查询最相关的信息交付给Planner。Planner随后根据自身知识以及现有信息分析当前是否能够回答原查询，若可以回答，则生成最终答案并给出推理依据与信息来源；若不能回答，则推理分析当前还缺少哪些方面的信息，并生成新的子查询分配给Worker处理。系统将重复上述过程直至得到最终答案或达到最大迭代次数，若达到最大迭代次数，系统将根据当前获得的信息强制生成回答。
 
-## 🎯 核心特性
+经评测，Beehive在FRAMES基准上的准确率达79.9%，超过SOTA模型Gemini-Pro-1.5-0514 (Oracle retrieval) 7%，平均响应时间为245.5 秒。
+
+![系统架构](assets/architecture.png)
+
+## 🚀 核心特性
 
 - **🧠 智能推理**: 基于DeepSeek-R1模型的多轮推理循环
 - **🔍 多源检索**: 知识库检索 + 网络搜索的混合检索策略  
 - **📝 智能摘要**: 支持分块并行处理的长文档摘要
 - **🔄 自适应路由**: 根据相关性自动选择最佳信息源
 - **💾 记忆管理**: 持久化存储推理历史和上下文
-- **📊 基准评测**: 支持FRAMES等研究基准测试
 
-## 🏗️ 系统架构
+## 🏗️ 代码结构
 
 ```
 Multi-Agent-DeepResearch/
@@ -58,12 +61,12 @@ Multi-Agent-DeepResearch/
 
 ```bash
 # 克隆项目
-git clone <repository-url>
+git clone https://github.com/DIONG666/Beehive.git
 cd Multi-Agent-DeepResearch
 
-# 设置API密钥
+# 设置API密钥（config.py中已设置默认密钥，仅供项目考核时使用）
 export DEEPSEEK_API_KEY="your_deepseek_api_key"
-export JINA_API_KEY="your_jina_api_key"        # 可选，用于嵌入和重排序
+export JINA_API_KEY="your_jina_api_key" 
 
 # 一键安装
 bash setup.sh
@@ -78,7 +81,7 @@ python main.py --query "人工智能的最新发展趋势是什么？"
 # 交互模式
 python main.py --mode interactive
 
-# 包含Wikipedia链接的查询
+# 包含指定链接的查询
 python main.py --query "请分析 https://en.wikipedia.org/wiki/Machine_learning 这篇文章的主要内容"
 ```
 
@@ -87,9 +90,6 @@ python main.py --query "请分析 https://en.wikipedia.org/wiki/Machine_learning
 ```bash
 # 运行FRAMES基准评测
 python evaluate.py
-
-# 查看评测结果
-ls data/evaluation_results/
 ```
 
 ## 🔧 系统配置
@@ -106,7 +106,7 @@ JINA_API_KEY = "your_jina_key"         # Jina API密钥 (可选)
 ```python
 MAX_ITERATIONS = 3                     # 最大推理轮次
 MAX_CONTEXT_LENGTH = 8192             # 最大上下文长度
-TEMPERATURE = 0.7                      # 生成温度
+TEMPERATURE = 0.7                      # 智能体生成温度
 ```
 
 ### 检索参数
@@ -115,96 +115,6 @@ TOP_K = 20                            # 检索文档数量
 RERANK_TOP_K = 5                      # 重排序后保留数量
 EMBEDDING_DIM = 2048                  # 嵌入维度
 ```
-
-## 🧠 智能推理流程
-
-系统采用多轮自适应推理策略：
-
-### 1. 查询分析
-- **链接检测**: 自动识别和提取Wikipedia链接
-- **查询分解**: 将复杂问题分解为可处理的子任务
-
-### 2. 信息检索
-- **知识库优先**: 首先搜索本地知识库
-- **相关性评估**: 基于向量相似度判断信息质量
-- **动态切换**: 相关性不足时自动切换到网络搜索
-
-### 3. 内容处理
-- **智能摘要**: 对长文档进行分块并行摘要
-- **信息融合**: 合并多源信息构建完整上下文
-
-### 4. 答案生成
-- **充分性判断**: 评估信息是否足够回答问题
-- **迭代改进**: 信息不足时自动扩展搜索
-- **质量保证**: 生成引用和推理轨迹
-
-## �️ 核心模块详解
-
-### 主智能体 (MainAgent)
-```python
-# 执行推理任务
-agent = MainAgent()
-result = agent.execute_reasoning(query, context)
-```
-
-- 控制整个推理流程
-- 协调各个工具模块
-- 管理推理状态和上下文
-
-### 推理规划器 (DeepSeekPlanner)
-```python
-# 查询分解
-sub_queries = planner.decompose_query(query)
-
-# 进度反思
-reflection = planner.reflect_on_progress(query, context)
-
-# 答案生成
-answer = planner.generate_final_answer(query, context)
-```
-
-- 基于DeepSeek-R1模型
-- 支持查询分解、进度评估、答案生成
-- 内置重试机制确保响应质量
-
-### 搜索工具 (SearchTools)
-```python
-# 知识库搜索
-kb_result = search_tool.search(query)
-
-# 网络搜索
-web_result = web_search_tool.search(query)
-```
-
-- **知识库搜索**: FAISS向量检索 + Jina重排序
-- **网络搜索**: Jina API实时搜索Wikipedia
-- **智能路由**: 基于相关性自动选择搜索源
-
-### 摘要工具 (SummarizerTool)
-```python
-# 普通摘要
-summary = summarizer.summarize(text, max_length=1000)
-
-# 分批摘要（支持并行处理）
-summary = summarizer.batch_summarize(query, text, chunk_size=5000)
-```
-
-- 支持长文档分块处理
-- 可配置摘要长度和风格
-- 使用DeepSeek-Chat模型进行高质量摘要
-
-### 记忆管理 (MemoryManager)
-```python
-# 添加记忆
-memory_manager.add_memory_entry(query, context, answer)
-
-# 检索相关历史
-context = memory_manager.get_recent_context(num=3)
-```
-
-- 持久化存储对话历史
-- 基于相似度检索相关记忆
-- 自动管理会话状态
 
 ## 📊 使用示例
 
@@ -240,119 +150,6 @@ python main.py --mode interactive
 > 请推荐一些学习资源
 ```
 
-## 📈 性能特点
-
-### 检索效率
-- **向量检索**: 基于FAISS的高效相似度搜索
-- **智能缓存**: 避免重复检索提升响应速度
-- **并行处理**: 支持多查询并行处理
-
-### 摘要质量
-- **分块策略**: 5000字符块大小平衡质量和效率
-- **并行摘要**: 多块同时处理大幅提升速度
-- **二级压缩**: 先分块摘要再整体摘要保证质量
-
-### 推理能力
-- **多轮迭代**: 最多3轮推理确保答案完整性
-- **自我评估**: 内置充分性判断避免信息不足
-- **错误恢复**: 完善的异常处理和重试机制
-
-## 🔍 评测与验证
-
-### FRAMES基准测试
-```bash
-# 运行完整评测
-python evaluate.py
-
-# 查看结果统计
-cat data/evaluation_results/frames_evaluation_multi_agent.json
-```
-
-### 评测指标
-- **准确率**: 答案与标准答案的匹配度
-- **引用质量**: 参考资料的相关性和可靠性
-- **推理质量**: 推理过程的逻辑性和完整性
-- **响应时间**: 平均查询处理时间
-
-## � 高级功能
-
-### 1. 批量处理
-```python
-# 批量处理多个查询
-queries = ["问题1", "问题2", "问题3"]
-results = []
-for query in queries:
-    result = system.research_query(query)
-    results.append(result)
-```
-
-### 2. 自定义配置
-```python
-# 临时修改配置
-Config.MAX_ITERATIONS = 5
-Config.TOP_K = 30
-Config.TEMPERATURE = 0.3
-```
-
-### 3. 错误处理
-```python
-try:
-    result = system.research_query(query)
-    if result.get('error'):
-        print(f"处理出错: {result['answer']}")
-except Exception as e:
-    print(f"系统异常: {e}")
-```
-
-## � 故障排除
-
-### 常见问题
-
-**1. API密钥配置错误**
-```bash
-# 检查环境变量
-echo $DEEPSEEK_API_KEY
-export DEEPSEEK_API_KEY="your_actual_key"
-```
-
-**2. 知识库为空**
-```bash
-# 检查知识库目录
-ls -la data/knowledge_base/
-# 添加文档后重建索引
-python retriever/build_index.py
-```
-
-**3. 内存不足**
-```python
-# 在config.py中调整参数
-TOP_K = 10                    # 减少检索数量
-MAX_CONTEXT_LENGTH = 4096     # 减少上下文长度
-```
-
-**4. 网络连接问题**
-```python
-# 禁用网络搜索
-ENABLE_WEB_SEARCH = False
-```
-
-## 🤝 开发指南
-
-### 添加新工具
-1. 在 `tools/` 目录创建新工具类
-2. 实现标准接口方法
-3. 在 `main_agent.py` 中注册工具
-
-### 扩展评测指标
-1. 在 `evaluate.py` 中添加新的评估函数
-2. 更新统计报告生成逻辑
-3. 添加对应的测试用例
-
-### 自定义推理策略
-1. 修改 `planner/prompt_templates.py` 中的提示模板
-2. 调整 `main_agent.py` 中的推理循环逻辑
-3. 在 `config.py` 中添加相关参数
-
 ## 📄 许可证
 
 本项目采用 MIT 许可证。详见 [LICENSE](LICENSE) 文件。
@@ -364,8 +161,4 @@ ENABLE_WEB_SEARCH = False
 - [DeepSeek](https://www.deepseek.com/) - 强大的推理语言模型
 - [Jina AI](https://jina.ai/) - 高质量的嵌入和重排序服务  
 - [FAISS](https://github.com/facebookresearch/faiss) - 高效的向量相似度搜索
-- [FRAMES](https://github.com/microsoft/FRAMES) - 多步推理评测基准
-
----
-
-� **让AI成为你的智能研究伙伴！**
+- [FRAMES](https://huggingface.co/datasets/google/frames-benchmark) - 多步推理评测基准
