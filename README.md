@@ -64,6 +64,9 @@ Multi-Agent-DeepResearch/
 git clone https://github.com/DIONG666/Beehive.git
 cd Multi-Agent-DeepResearch
 
+# 创建虚拟环境
+conda create -n beehive python=3.10
+
 # 设置API密钥（config.py中已设置默认密钥，仅供项目考核时使用）
 export DEEPSEEK_API_KEY="your_deepseek_api_key"
 export JINA_API_KEY="your_jina_api_key" 
