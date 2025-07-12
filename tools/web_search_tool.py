@@ -22,7 +22,7 @@ class WebSearchTool:
         self.enabled = Config.ENABLE_WEB_SEARCH and bool(self.jina_api_key)
         self.knowledge_base_dir = Config.KNOWLEDGE_BASE_DIR
 
-    def _search_via_jina(self, query: str, count: int = 5) -> List[str]:
+    def _search_via_jina(self, query: str, links: List[str], count: int = 5) -> List[str]:
         """
         使用Jina API搜索Web内容
         
@@ -56,7 +56,9 @@ class WebSearchTool:
                         url_start = line.find('https://')
                         if url_start != -1:
                             url = line[url_start:].strip()
-                            urls.append(url)
+                            # 确保URL不重复
+                            if url not in urls and url not in links:
+                                urls.append(url)
                             
                             if len(urls) >= count:
                                 break

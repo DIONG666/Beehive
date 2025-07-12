@@ -305,11 +305,11 @@ def main():
     print(f"正确答案: {correct_answers}")
     print(f"准确率: {accuracy:.2%}")
     
-    # 按推理类型统计准确率
-    reasoning_types = set(r.get('reasoning_type', 'unknown') for r in results)
+    # 按单个推理类型统计准确率
+    reasoning_types = set(rt.strip() for r in results for rt in r.get('reasoning_type', 'unknown').split('|'))
     print(f"\n📈 按推理类型统计:")
     for rt in reasoning_types:
-        rt_samples = [r for r in results if r.get('reasoning_type') == rt]
+        rt_samples = [r for r in results if rt in r.get('reasoning_type', '')]
         if rt_samples:
             rt_correct = sum(1 for r in rt_samples if r.get('evaluation_decision') == 'TRUE')
             rt_accuracy = rt_correct / len(rt_samples)

@@ -88,7 +88,7 @@ class MainAgent:
         Returns:
             推理结果
         """
-
+        links = []
         # 步骤1: 使用planner分解查询或提取链接
         sub_queries = self.planner.decompose_query(query)
         
@@ -99,7 +99,7 @@ class MainAgent:
             # 步骤2: 对每个子查询进行搜索和总结
             for sub_query in sub_queries:
                 if sub_query and f"关于'{sub_query}'的总结" not in context:
-                    result = self._process_sub_query(query, sub_query)
+                    result = self._process_sub_query(query, sub_query, links)
                     if result:
                         context += f"\n\n关于'{sub_query}'的总结：{result['summary']}\n参考链接：{result['url']}"
 
@@ -121,7 +121,7 @@ class MainAgent:
         print("⚠️ 达到最大迭代次数，强制生成答案")
         return self._generate_final_answer(query, context, forced=True)
 
-    def _process_sub_query(self, query: str, sub_query: str) -> Optional[str]:
+    def _process_sub_query(self, query: str, sub_query: str, links: List[str]) -> Optional[str]:
         """
         处理单个子查询
         
@@ -140,6 +140,7 @@ class MainAgent:
                 # 直接从链接获取内容
                 document = self.tools['web_search']._get_content_via_jina(sub_query)
                 url = sub_query
+                links.append(url)
             else:
                 # 先搜索知识库
                 kb_result = self.tools['search_knowledge_base'].search(sub_query)
@@ -150,9 +151,10 @@ class MainAgent:
                 else:
                     print("🌐 知识库相关性不足，使用Web搜索")
                     # 使用web搜索
-                    web_results = self.tools['web_search']._search_via_jina(sub_query, count=1)
+                    web_results = self.tools['web_search']._search_via_jina(sub_query, links, count=1)
                     document = self.tools['web_search']._get_content_via_jina(web_results[0]) if web_results else None
                     url = web_results[0] if web_results else None
+                    links.append(url) if url else None
             
             if not document:
                 print(f"❌ 无法获取文档: {sub_query}")

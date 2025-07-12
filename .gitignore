@@ -1,2 +1,4 @@
 __pycache__/
+data/index
 data/knowledge_base
+data/memory_cache

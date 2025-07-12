@@ -37,17 +37,17 @@ fi
 
 # 检查数据目录
 echo "📁 检查数据目录..."
-if [ ! -d "data/frames_dataset" ]; then
+if [ ! -d "data/knowledge_base" ]; then
     echo "创建数据目录..."
-    mkdir -p data/frames_dataset
+    mkdir -p data/knowledge_base
 fi
 
 # 构建索引（如果有数据文件）
-if [ -d "data/frames_dataset" ] && [ "$(ls -A data/frames_dataset 2>/dev/null)" ]; then
+if [ -d "data/knowledge_base" ] && [ "$(ls -A data/knowledge_base 2>/dev/null)" ]; then
     echo "🔧 检测到数据文件，构建索引..."
-    python3 retriever/build_index.py --data-dir data/frames_dataset/
+    python3 retriever/build_index.py --data-dir data/knowledge_base/
 else
-    echo "⚠️ 未发现数据文件，请将文档放入 data/frames_dataset/ 目录"
+    echo "⚠️ 未发现数据文件，请将文档放入 data/knowledge_base/ 目录"
 fi
 
 echo ""
