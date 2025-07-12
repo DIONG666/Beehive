@@ -116,6 +116,18 @@ RERANK_TOP_K = 5                      # 重排序后保留数量
 EMBEDDING_DIM = 2048                  # 嵌入维度
 ```
 
+## 📚 评测结果
+
+以下是不同模型在FRAMES评测集上的评测结果（数据来源于https://github.com/codelion/optillm/tree/main）：
+
+| **Model**| **Accuracy**|
+|:--------:|:--------:|
+| Gemma2-27b|30.8|
+|gpt-4o-mini|50.6|
+|Gemini Flash 1.5|66.5|
+|Gemini Pro 1.5|72.9|
+|**Beehive**|**79.9**|
+
 ## 📊 使用示例
 
 ### 示例1: 简单问答
