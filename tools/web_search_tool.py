@@ -90,6 +90,7 @@ class WebSearchTool:
             if "en.wikipedia.org" in url:
                 # url = url.replace("en.wikipedia.org", "zh.wikipedia.org/wiki/")
                 url = url.replace("en.wikipedia.org/wiki/", "encyclopedia.thefreedictionary.com/")
+                url = url.replace("_", "+")
                 print(f"🔄 转换为镜像Wikipedia: {url}")
             
             jina_url = f"https://r.jina.ai/{url}"

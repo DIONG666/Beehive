@@ -8,12 +8,12 @@ class Config:
     """系统配置类"""
     
     # 模型配置
-    DEEPSEEK_API_KEY = os.getenv("DEEPSEEK_API_KEY", "")
+    DEEPSEEK_API_KEY = os.getenv("DEEPSEEK_API_KEY", "sk-33d0f52208a84f07812feccf3ede2f43")
     DEEPSEEK_BASE_URL = "https://api.deepseek.com"
     DEEPSEEK_MODEL = "deepseek-reasoner"
     
     # Jina API配置
-    JINA_API_KEY = os.getenv("JINA_API_KEY", "")
+    JINA_API_KEY = os.getenv("JINA_API_KEY", "jina_a5852c23a34549f5b5735cc313253719ejBZJXB9xF-RZi9Ht4Bn2NAhvkeC")
     JINA_EMBEDDING_MODEL = "jina-embeddings-v4"
     JINA_RERANKER_MODEL = "jina-reranker-m0"
     
